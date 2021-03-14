@@ -7,7 +7,7 @@ Download the dll from the release and reference in your project.
 Create an instance of the api you want to use by passing the IMemoryApi provided by BizHawk to an ExternalTool at runtime.
 
 ## Building
-Put a BizHawk folder in the folder that contains SotnApi.sln to reference the proper dll files.
+Put a BizHawk folder, containing a 2.6.0 or newer release, in the folder that contains SotnApi.sln to reference the proper dll files.
 
 ## Contributions
 I will continue to add functionality, but feel free to do so and make a pull request.
