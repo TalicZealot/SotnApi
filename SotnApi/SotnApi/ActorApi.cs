@@ -15,7 +15,6 @@ namespace SotnApi
         public ActorApi(IMemoryApi? memAPI)
         {
             if (memAPI == null) { throw new ArgumentNullException("Memory API is null"); }
-
             this.memAPI = memAPI;
         }
 

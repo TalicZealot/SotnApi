@@ -1,9 +1,10 @@
 # SotN Api
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/TalicZealot/SotnApi)
 
 An api for reading and manipulating game entities in ram through the BizHawk API.
 
 ## Usage
-Download the dll from the release and reference in your project.
+Download the dll from the release and put it in the ExternalTools folder. Reference in your project and use.
 Create an instance of the api you want to use by passing the IMemoryApi provided by BizHawk to an ExternalTool at runtime.
 
 ## Building

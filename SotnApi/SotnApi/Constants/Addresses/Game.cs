@@ -29,7 +29,7 @@ namespace SotnApi.Constants.Addresses
         };
 
         public static long Status = 0x03C734;
-        public static long StatusTransition = 0x03C9A4;
+        public static long Transition = 0x03C9A4;
         public static long Loading = 0x03CF7C;
         public static long MapOpen = 0x0974A4;
         public static long MenuOpen = 0x0973EC;

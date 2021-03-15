@@ -4,7 +4,7 @@ namespace SotnApi.Constants.Values.Game
 {
     public static class Various
     {
-        public static uint RowOffset = 0x80;
+        public static long RowOffset = 0x800;
         public static uint Prologue = 0x20;
 		public static uint LibraryWarped = 0x78;
 

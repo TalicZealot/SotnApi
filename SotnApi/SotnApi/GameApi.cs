@@ -18,6 +18,30 @@ namespace SotnApi
             this.memAPI = memAPI;
         }
 
+        public uint Status
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.Status);
+            }
+        }
+
+        public Character CurrentCharacter
+        {
+            get
+            {
+                uint character = memAPI.ReadByte(Game.Character);
+                if (character == 0)
+                {
+                    return Character.Alucard;
+                }
+                else
+                {
+                    return Character.Richter;
+                }
+            }
+        }
+
         public uint SecondCastle
         {
             get
@@ -58,16 +82,32 @@ namespace SotnApi
             }
         }
 
+        public bool IsLoading
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.Loading) == SotnApi.Constants.Values.Game.Status.Loading;
+            }
+        }
+
+        public bool InTransition
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.Transition) != SotnApi.Constants.Values.Game.Status.Transition;
+            }
+        }
+
         public bool CanMenu()
         {
-            bool notTransition = memAPI.ReadByte(Game.StatusTransition) != Status.Transition;
-            bool notLoading = memAPI.ReadByte(Game.Loading) != Status.Loading;
+            bool notTransition = !this.InTransition;
+            bool notLoading = !this.IsLoading;
             return (notTransition && notLoading);
         }
 
         public bool IsInMenu()
         {
-            bool menuOpen = memAPI.ReadByte(Game.MenuOpen) == Status.MenuOpen;
+            bool menuOpen = memAPI.ReadByte(Game.MenuOpen) == SotnApi.Constants.Values.Game.Status.MenuOpen;
             return menuOpen;
         }
 
@@ -81,9 +121,10 @@ namespace SotnApi
 
         public bool InAlucardMode()
         {
-            bool inGame = memAPI.ReadByte(Game.Status) == Status.InGame;
-            bool isAlucard = memAPI.ReadByte(Game.Character) == (int)Character.Alucard;
-            bool notInPrologue = memAPI.ReadByte(Game.Area) != Various.Prologue;
+            bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
+            bool isAlucard = this.CurrentCharacter == Character.Alucard;
+            uint area = memAPI.ReadByte(Game.Area);
+            bool notInPrologue = area != Various.Prologue && area > 0;
             return (inGame && isAlucard && notInPrologue);
         }
 
