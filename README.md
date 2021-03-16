@@ -1,5 +1,5 @@
 # SotN Api
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/TalicZealot/SotnApi)
+[![(latest) release | GitHub](https://img.shields.io/github/release/TalicZealot/SotnApi.svg?logo=github&logoColor=333333&style=popout)](https://github.com/TalicZealot/SotnApi/releases/latest)
 
 An api for reading and manipulating game entities in ram through the BizHawk API.
 

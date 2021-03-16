@@ -19,6 +19,31 @@ namespace SotnApi.Interfaces
         uint Rooms { get; set; }
         uint WarpsFirstCastle { get; set; }
         uint WarpsSecondCastle { get; set; }
+        bool WarpEntrance { get; set; }
+        bool WarpMines { get; set; }
+        bool WarpOuterWall { get; set; }
+        bool WarpKeep { get; set; }
+        bool WarpOlrox { get; set; }
+        bool WarpInvertedEntrance { get; set; }
+        bool WarpInvertedMines { get; set; }
+        bool WarpInvertedOuterWall { get; set; }
+        bool WarpInvertedKeep { get; set; }
+        bool WarpInvertedOlrox { get; set; }
+        bool OuterWallElevator { get; set; }
+        bool EntranceToMarble { get; set; }
+        bool AlchemyElevator { get; set; }
+        bool ChapelStatue { get; set; }
+        bool ColosseumElevator { get; set; }
+        bool ColosseumToChapel { get; set; }
+        bool MarbleBlueDoor { get; set; }
+        bool CavernsSwitchAndBridge { get; set; }
+        bool EntranceToCaverns { get; set; }
+        bool EntranceWarp { get; set; }
+        bool FirstClockRoomDoor { get; set; }
+        bool SecondClockRoomDoor { get; set; }
+        bool FirstDemonButton { get; set; }
+        bool SecondDemonButton { get; set; }
+        bool KeepStairs { get; set; }
         /// <summary> Wing Smash speed in pixels per frame. </summary>
         uint WingsmashHorizontalSpeed { get; set; }
         /// <summary> Alucard walking speed in pixels per frame. </summary>
@@ -52,13 +77,14 @@ namespace SotnApi.Interfaces
         uint DefencePotionTimer { get; set; }
         uint InvincibilityTimer { get; set; }
         uint ShineTimer { get; set; }
-        
+
         void ClearInventory();
         void GrantItemByName(string name);
-        void GrantRelicByName(Relic name);
+        void GrantRelic(Relic name);
+        void TakeRelic(Relic name);
         bool HasItemInInventory(string name);
         bool HasRelic(Relic name);
         void Heal(uint ammount);
-        void TakeRelicByName(Relic name);
+        void ActivateStopwatch();
     }
 }

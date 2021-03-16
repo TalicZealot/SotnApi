@@ -2,7 +2,7 @@
 
 namespace SotnApi.Constants.Addresses
 {
-	internal static class Strings
+	public static class Strings
 	{
 		//Bosses
 		public static long Slogra = 0x0E07C4;

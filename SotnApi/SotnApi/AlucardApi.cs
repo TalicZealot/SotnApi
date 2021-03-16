@@ -198,6 +198,476 @@ namespace SotnApi
             }
         }
 
+        public bool WarpEntrance
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if ((warps & (int)Warp.Entrance) == (int)Warp.Entrance)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps | (int)Warp.Entrance);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Entrance ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpMines
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if ((warps & (int)Warp.Mines) == (int)Warp.Mines)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps | (int)Warp.Mines);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Mines ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpOuterWall
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if ((warps & (int)Warp.OuterWall) == (int)Warp.OuterWall)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps | (int)Warp.OuterWall);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.OuterWall ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpKeep
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if ((warps & (int)Warp.Keep) == (int)Warp.Keep)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps | (int)Warp.Keep);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Keep ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpOlrox
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if ((warps & (int)Warp.Olrox) == (int)Warp.Olrox)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsFirstCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps | (int)Warp.Olrox);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Olrox ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsFirstCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpInvertedEntrance
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if ((warps & (int)Warp.Entrance) == (int)Warp.Entrance)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps | (int)Warp.Entrance);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Entrance ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpInvertedMines
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if ((warps & (int)Warp.Mines) == (int)Warp.Mines)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps | (int)Warp.Mines);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Mines ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpInvertedOuterWall
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if ((warps & (int)Warp.OuterWall) == (int)Warp.OuterWall)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps | (int)Warp.OuterWall);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.OuterWall ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpInvertedKeep
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if ((warps & (int)Warp.Keep) == (int)Warp.Keep)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps | (int)Warp.Keep);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Keep ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool WarpInvertedOlrox
+        {
+            get
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if ((warps & (int)Warp.Olrox) == (int)Warp.Olrox)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                var warps = memAPI.ReadByte(Stats.WarpsSecondCastle);
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps | (int)Warp.Olrox);
+                }
+                else
+                {
+                    uint invertedMask = (int)Warp.Olrox ^ 0xFF;
+                    memAPI.WriteByte(Stats.WarpsSecondCastle, warps & invertedMask);
+                }
+            }
+        }
+
+        public bool OuterWallElevator
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.OuterWallElevator) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.OuterWallElevator, value ? 0u : 1u);
+            }
+        }
+
+        public bool EntranceToMarble
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.EntranceToMarble) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.EntranceToMarble, value ? 0u : 1u);
+            }
+        }
+
+        public bool AlchemyElevator
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.AlchemyElevator) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.AlchemyElevator, value ? 0u : 1u);
+            }
+        }
+
+        public bool ChapelStatue
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.ChapelStatue) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.ChapelStatue, value ? 0u : 1u);
+            }
+        }
+
+        public bool ColosseumElevator
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.ColosseumElevator) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.ColosseumElevator, value ? 0u : 1u);
+            }
+        }
+
+        public bool ColosseumToChapel
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.ColosseumToChapel) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.ColosseumToChapel, value ? 0u : 1u);
+            }
+        }
+
+        public bool MarbleBlueDoor
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.MarbleBlueDoor) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.MarbleBlueDoor, value ? 0u : 1u);
+            }
+        }
+
+        public bool CavernsSwitchAndBridge
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.CavernsSwitchAndBridge) == 3;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.CavernsSwitchAndBridge, value ? 0u : 3u);
+            }
+        }
+
+        public bool EntranceToCaverns
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.EntranceToCaverns) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.EntranceToCaverns, value ? 0u : 1u);
+            }
+        }
+
+        public bool EntranceWarp
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.EntranceWarp) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.EntranceWarp, value ? 0u : 1u);
+            }
+        }
+
+        public bool FirstClockRoomDoor
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.FirstClockRoomDoor) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.FirstClockRoomDoor, value ? 0u : 1u);
+            }
+        }
+
+        public bool SecondClockRoomDoor
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.SecondClockRoomDoor) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.SecondClockRoomDoor, value ? 0u : 1u);
+            }
+        }
+
+        public bool FirstDemonButton
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.FirstDemonButton) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.FirstDemonButton, value ? 0u : 1u);
+            }
+        }
+
+        public bool SecondDemonButton
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.SecondDemonButton) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.SecondDemonButton, value ? 0u : 1u);
+            }
+        }
+
+        public bool KeepStairs
+        {
+            get
+            {
+                return memAPI.ReadByte(Shortcuts.KeepStairs) > 0;
+            }
+            set
+            {
+                memAPI.WriteByte(Shortcuts.KeepStairs, value ? 0u : 1u);
+            }
+        }
+
         public uint WingsmashHorizontalSpeed
         {
             get
@@ -479,12 +949,12 @@ namespace SotnApi
             return memAPI.ReadByte(Relics.AllRelics[name.ToString()]) > 0;
         }
 
-        public void TakeRelicByName(Relic name)
+        public void TakeRelic(Relic name)
         {
             memAPI.WriteByte(Relics.AllRelics[name.ToString()], 0);
         }
 
-        public void GrantRelicByName(Relic name)
+        public void GrantRelic(Relic name)
         {
             uint value = name.ToString().Contains("Card") ? 1u : 3u;
             memAPI.WriteByte(Relics.AllRelics[name.ToString()], value);
@@ -518,6 +988,11 @@ namespace SotnApi
         {
             memAPI.WriteS16(Effects.HealAmmount, (int)ammount);
             memAPI.WriteByte(Effects.HealTrigger, 1);
+        }
+
+        public void ActivateStopwatch()
+        {
+            memAPI.WriteByte(Effects.Activator, SotnApi.Constants.Values.Alucard.Effects.Stopwatch);
         }
 
         public void ClearInventory()
