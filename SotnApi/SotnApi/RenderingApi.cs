@@ -10,6 +10,7 @@ namespace SotnApi
     {
         private const int MaximumMapRows = 255;
         private const int MaximumMapCols = 255;
+        private const int MaximumColorValue = 0xF;
 
         private readonly IMemoryApi memAPI;
         public RenderingApi(IMemoryApi? memAPI)
@@ -23,6 +24,8 @@ namespace SotnApi
         {
             if (row > MaximumMapRows) throw new ArgumentOutOfRangeException(nameof(row));
             if (col > MaximumMapCols) throw new ArgumentOutOfRangeException(nameof(col));
+            if (color > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(color));
+            if (borderColor > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(borderColor));
 
             long start = Game.VramMapStart;
             long rowOffset = Various.RowOffset;
@@ -46,6 +49,19 @@ namespace SotnApi
             memAPI.WriteByte(start + ((row + 1) * rowOffset) + col, borderColor * 0x10 + borderColor, "GPURAM");
             memAPI.WriteByte(start + ((row + 1) * rowOffset) + col + 1, borderColor * 0x10 + borderColor, "GPURAM");
             memAPI.WriteByte(start + ((row + 1) * rowOffset) + col + 2, borderColor, "GPURAM");
+        }
+
+        public void ColorMapLocation(uint row, uint col, uint color)
+        {
+            if (row > MaximumMapRows) throw new ArgumentOutOfRangeException(nameof(row));
+            if (col > MaximumMapCols) throw new ArgumentOutOfRangeException(nameof(col));
+            if (color > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(color));
+
+            long start = Game.VramMapStart;
+            long rowOffset = Various.RowOffset;
+
+            memAPI.WriteByte(start + ((row - 1) * rowOffset) + col + 1, color * 0x10 + color, "GPURAM");
+            memAPI.WriteByte(start + (row * rowOffset) + col + 1, color * 0x10 + color, "GPURAM");
         }
 
         public bool RoomIsRendered(uint row, uint col)

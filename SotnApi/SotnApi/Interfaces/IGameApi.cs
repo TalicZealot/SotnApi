@@ -5,6 +5,7 @@ namespace SotnApi.Interfaces
     public interface IGameApi
     {
         uint Status { get; }
+        MainMenuCategory CurrentMainMenuCategory { get; }
         /// <returns>
         /// The current character, but prologue Richter still counts as Alucard.
         /// </returns>
@@ -17,6 +18,8 @@ namespace SotnApi.Interfaces
         bool IsLoading { get; }
         bool InTransition { get; }
 
+        bool EquipMenuOpen();
+        bool RelicMenuOpen();
         bool CanMenu();
         void ClearByte(long address);
         bool InAlucardMode();

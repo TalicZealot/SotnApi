@@ -33,6 +33,9 @@ namespace SotnApi.Constants.Addresses
         public static long Loading = 0x03CF7C;
         public static long MapOpen = 0x0974A4;
         public static long MenuOpen = 0x0973EC;
+        public static long MainMenuCategory = 0x03C9A8;
+        public static long EquipMenuOpen = 0x137948;
+        public static long RelicMenuOpen = 0x1FFF6A;
         public static long SecondCastle = 0x1E5458;
         public static long SettingsMenuOpen = 0x03D04E;
         public static long Room = 0x1375BC;

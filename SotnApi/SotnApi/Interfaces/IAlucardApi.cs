@@ -79,9 +79,14 @@ namespace SotnApi.Interfaces
         uint ShineTimer { get; set; }
 
         void ClearInventory();
+        string GetSelectedItemName();
+        Relic GetSelectedRelic();
         void GrantItemByName(string name);
+        void TakeOneItemByName(string name);
         void GrantRelic(Relic name);
         void TakeRelic(Relic name);
+        void GrantFirstCastleWarp(Warp warp);
+        void GrantSecondCastleWarp(Warp warp);
         bool HasItemInInventory(string name);
         bool HasRelic(Relic name);
         void Heal(uint ammount);

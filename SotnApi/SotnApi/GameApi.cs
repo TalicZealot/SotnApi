@@ -26,6 +26,14 @@ namespace SotnApi
             }
         }
 
+        public MainMenuCategory CurrentMainMenuCategory
+        {
+            get
+            {
+                return (MainMenuCategory)memAPI.ReadByte(Game.MainMenuCategory);
+            }
+        }
+
         public Character CurrentCharacter
         {
             get
@@ -96,6 +104,16 @@ namespace SotnApi
             {
                 return memAPI.ReadByte(Game.Transition) != SotnApi.Constants.Values.Game.Status.Transition;
             }
+        }
+
+        public bool EquipMenuOpen()
+        {
+            return memAPI.ReadByte(Game.EquipMenuOpen) > 0 && CurrentMainMenuCategory == MainMenuCategory.Equip;
+        }
+
+        public bool RelicMenuOpen()
+        {
+            return memAPI.ReadByte(Game.RelicMenuOpen) > 0 && CurrentMainMenuCategory == MainMenuCategory.Relics;
         }
 
         public bool CanMenu()

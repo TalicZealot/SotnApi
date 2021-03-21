@@ -9,6 +9,7 @@
         public static long CloakSlot = 0x097C10;
         public static long AccessorySlot1 = 0x097C14;
         public static long AccessorySlot2 = 0x097C18;
+        public static long RelicCursor = 0x03C9AC;
         public static long HandCursor = 0x03C9B4;
         public static long HelmCursor = 0x03C9B8;
         public static long ArmorCursor = 0x03C9BC;
@@ -20,6 +21,7 @@
         public static long ArmorInventoryStart = 0x097B37;
         public static long CloakInventoryStart = 0x097B67;
         public static long AccessoryInventoryStart = 0x097B70;
+        public static long Category = 0x03C9B0;
         public static long Subweapon = 0x097BFC;
     }
 }

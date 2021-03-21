@@ -22,11 +22,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.CurrentHP);
+                return memAPI.ReadU32(Stats.CurrentHP);
             }
             set
             {
-                memAPI.WriteByte(Stats.CurrentHP, value);
+                memAPI.WriteU32(Stats.CurrentHP, value);
             }
         }
 
@@ -34,11 +34,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.MaxHP);
+                return memAPI.ReadU32(Stats.MaxHP);
             }
             set
             {
-                memAPI.WriteByte(Stats.MaxHP, value);
+                memAPI.WriteU32(Stats.MaxHP, value);
             }
         }
 
@@ -46,11 +46,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.CurrentMana);
+                return memAPI.ReadU32(Stats.CurrentMana);
             }
             set
             {
-                memAPI.WriteByte(Stats.CurrentMana, value);
+                memAPI.WriteU32(Stats.CurrentMana, value);
             }
         }
 
@@ -58,11 +58,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.MaxMana);
+                return memAPI.ReadU32(Stats.MaxMana);
             }
             set
             {
-                memAPI.WriteByte(Stats.MaxMana, value);
+                memAPI.WriteU32(Stats.MaxMana, value);
             }
         }
 
@@ -70,11 +70,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.CurrentHearts);
+                return memAPI.ReadU32(Stats.CurrentHearts);
             }
             set
             {
-                memAPI.WriteByte(Stats.CurrentHearts, value);
+                memAPI.WriteU32(Stats.CurrentHearts, value);
             }
         }
 
@@ -82,11 +82,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.MaxHearts);
+                return memAPI.ReadU32(Stats.MaxHearts);
             }
             set
             {
-                memAPI.WriteByte(Stats.MaxHearts, value);
+                memAPI.WriteU32(Stats.MaxHearts, value);
             }
         }
 
@@ -94,11 +94,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Str);
+                return memAPI.ReadU32(Stats.Str);
             }
             set
             {
-                memAPI.WriteByte(Stats.Str, value);
+                memAPI.WriteU32(Stats.Str, value);
             }
         }
 
@@ -106,11 +106,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Con);
+                return memAPI.ReadU32(Stats.Con);
             }
             set
             {
-                memAPI.WriteByte(Stats.Con, value);
+                memAPI.WriteU32(Stats.Con, value);
             }
         }
 
@@ -118,11 +118,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Int);
+                return memAPI.ReadU32(Stats.Int);
             }
             set
             {
-                memAPI.WriteByte(Stats.Int, value);
+                memAPI.WriteU32(Stats.Int, value);
             }
         }
 
@@ -130,11 +130,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Lck);
+                return memAPI.ReadU32(Stats.Lck);
             }
             set
             {
-                memAPI.WriteByte(Stats.Lck, value);
+                memAPI.WriteU32(Stats.Lck, value);
             }
         }
 
@@ -142,11 +142,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Gold);
+                return memAPI.ReadU32(Stats.Gold);
             }
             set
             {
-                memAPI.WriteByte(Stats.Gold, value);
+                memAPI.WriteU32(Stats.Gold, value);
             }
         }
 
@@ -154,11 +154,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Experience);
+                return memAPI.ReadU32(Stats.Experience);
             }
             set
             {
-                memAPI.WriteByte(Stats.Experience, value);
+                memAPI.WriteU32(Stats.Experience, value);
             }
         }
 
@@ -166,11 +166,11 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.Rooms);
+                return memAPI.ReadU32(Stats.Rooms);
             }
             set
             {
-                memAPI.WriteByte(Stats.Rooms, value);
+                memAPI.WriteU32(Stats.Rooms, value);
             }
         }
 
@@ -944,6 +944,53 @@ namespace SotnApi
             }
         }
 
+        public string GetSelectedItemName()
+        {
+            string item;
+            uint category = memAPI.ReadByte(Inventory.Category);
+            uint cursor;
+            int itemIndex = 0;
+            switch (category)
+            {
+                case 0:
+                case 1:
+                    cursor = memAPI.ReadByte(Inventory.HandCursor);
+                    itemIndex = (int)memAPI.ReadByte(Inventory.HandInventoryStart + cursor);
+                    break;
+                case 2:
+                    cursor = memAPI.ReadByte(Inventory.HelmCursor);
+                    itemIndex = (int)memAPI.ReadByte(Inventory.HelmInventoryStart + cursor - 1) + Equipment.HandCount + 1;
+                    break;
+                case 3:
+                    cursor = memAPI.ReadByte(Inventory.ArmorCursor);
+                    itemIndex = (int)memAPI.ReadByte(Inventory.ArmorInventoryStart + cursor - 1) + Equipment.HandCount + 1;
+                    break;
+                case 4:
+                    cursor = memAPI.ReadByte(Inventory.CloakCursor);
+                    itemIndex = (int)memAPI.ReadByte(Inventory.CloakInventoryStart + cursor - 1) + Equipment.HandCount + 1;
+                    break;
+                case 5:
+                case 6:
+                    cursor = memAPI.ReadByte(Inventory.AccessoryCursor);
+                    itemIndex = (int)memAPI.ReadByte(Inventory.AccessoryInventoryStart + cursor - 1) + Equipment.HandCount + 1;
+                    break;
+                default:
+                    break;
+            }
+            item = Equipment.Items[itemIndex];
+            return item;
+        }
+
+        public Relic GetSelectedRelic()
+        {
+            uint cursor = memAPI.ReadByte(Inventory.RelicCursor);
+            if (cursor > 22)
+            {
+                cursor += 2;
+            }
+            return (Relic)cursor;
+        }
+
         public bool HasRelic(Relic name)
         {
             return memAPI.ReadByte(Relics.AllRelics[name.ToString()]) > 0;
@@ -958,6 +1005,16 @@ namespace SotnApi
         {
             uint value = name.ToString().Contains("Card") ? 1u : 3u;
             memAPI.WriteByte(Relics.AllRelics[name.ToString()], value);
+        }
+
+        public void GrantFirstCastleWarp(Warp warp)
+        {
+            memAPI.WriteByte(Stats.WarpsFirstCastle, WarpsFirstCastle | (uint)warp);
+        }
+
+        public void GrantSecondCastleWarp(Warp warp)
+        {
+            memAPI.WriteByte(Stats.WarpsSecondCastle, WarpsSecondCastle | (uint)warp);
         }
 
         public bool HasItemInInventory(string name)
@@ -982,6 +1039,20 @@ namespace SotnApi
             {
                 SortItemInventory((uint)item);
             }
+        }
+
+        public void TakeOneItemByName(string name)
+        {
+            if (name == null) throw new ArgumentNullException(nameof(name));
+            int item = Equipment.Items.IndexOf(name);
+            if (item == -1) throw new ArgumentException("Invalid item name!");
+            uint itemCount = memAPI.ReadByte(Inventory.HandQuantityStart + item);
+            if (itemCount == 0)
+            {
+                Console.WriteLine($"Item {name} not in inventory.");
+                return;
+            }
+            memAPI.WriteByte(Inventory.HandQuantityStart + item, itemCount - 1);
         }
 
         public void Heal(uint ammount)
