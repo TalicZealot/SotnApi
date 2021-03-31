@@ -91,5 +91,6 @@ namespace SotnApi.Interfaces
         bool HasRelic(Relic name);
         void Heal(uint ammount);
         void ActivateStopwatch();
+        void ActivatePotion(Potion potion);
     }
 }

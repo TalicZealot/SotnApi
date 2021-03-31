@@ -181,7 +181,7 @@ namespace SotnApi
 
         public string ReadPresetName()
         {
-            return ReadString(Game.PresetStart);
+            return ReadString(Game.PresetStart).Trim();
         }
 
         private string ReadString(long address)

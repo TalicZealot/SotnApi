@@ -496,7 +496,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.OuterWallElevator, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.OuterWallElevator, value ? 1u : 0u);
             }
         }
 
@@ -508,7 +508,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.EntranceToMarble, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.EntranceToMarble, value ? 1u : 0u);
             }
         }
 
@@ -520,7 +520,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.AlchemyElevator, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.AlchemyElevator, value ? 1u : 0u);
             }
         }
 
@@ -532,7 +532,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.ChapelStatue, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.ChapelStatue, value ? 1u : 0u);
             }
         }
 
@@ -544,7 +544,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.ColosseumElevator, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.ColosseumElevator, value ? 1u : 0u);
             }
         }
 
@@ -556,7 +556,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.ColosseumToChapel, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.ColosseumToChapel, value ? 1u : 0u);
             }
         }
 
@@ -568,7 +568,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.MarbleBlueDoor, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.MarbleBlueDoor, value ? 1u : 0u);
             }
         }
 
@@ -580,7 +580,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.CavernsSwitchAndBridge, value ? 0u : 3u);
+                memAPI.WriteByte(Shortcuts.CavernsSwitchAndBridge, value ? 3u : 0u);
             }
         }
 
@@ -592,7 +592,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.EntranceToCaverns, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.EntranceToCaverns, value ? 1u : 0u);
             }
         }
 
@@ -604,7 +604,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.EntranceWarp, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.EntranceWarp, value ? 1u : 0u);
             }
         }
 
@@ -616,7 +616,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.FirstClockRoomDoor, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.FirstClockRoomDoor, value ? 1u : 0u);
             }
         }
 
@@ -628,7 +628,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.SecondClockRoomDoor, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.SecondClockRoomDoor, value ? 1u : 0u);
             }
         }
 
@@ -640,7 +640,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.FirstDemonButton, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.FirstDemonButton, value ? 1u : 0u);
             }
         }
 
@@ -652,7 +652,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.SecondDemonButton, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.SecondDemonButton, value ? 1u : 0u);
             }
         }
 
@@ -664,7 +664,7 @@ namespace SotnApi
             }
             set
             {
-                memAPI.WriteByte(Shortcuts.KeepStairs, value ? 0u : 1u);
+                memAPI.WriteByte(Shortcuts.KeepStairs, value ? 1u : 0u);
             }
         }
 
@@ -1055,15 +1055,21 @@ namespace SotnApi
             memAPI.WriteByte(Inventory.HandQuantityStart + item, itemCount - 1);
         }
 
-        public void Heal(uint ammount)
+        public void Heal(uint amount)
         {
-            memAPI.WriteS16(Effects.HealAmmount, (int)ammount);
+            memAPI.WriteS16(Effects.HealAmount, (int)amount);
             memAPI.WriteByte(Effects.HealTrigger, 1);
         }
 
         public void ActivateStopwatch()
         {
             memAPI.WriteByte(Effects.Activator, SotnApi.Constants.Values.Alucard.Effects.Stopwatch);
+        }
+
+        public void ActivatePotion(Potion potion)
+        {
+            memAPI.WriteByte(Effects.Activator, SotnApi.Constants.Values.Alucard.Effects.Potion);
+            memAPI.WriteByte(Effects.ActivatorIndex, (uint)potion);
         }
 
         public void ClearInventory()
