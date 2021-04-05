@@ -102,7 +102,7 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Game.Transition) != SotnApi.Constants.Values.Game.Status.Transition;
+                return memAPI.ReadByte(Game.Transition) == SotnApi.Constants.Values.Game.Status.Transition;
             }
         }
 

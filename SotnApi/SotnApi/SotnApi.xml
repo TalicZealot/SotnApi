@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SotnApi</name>
+    </assembly>
+    <members>
+        <member name="M:SotnApi.ActorApi.FindAvailableActorSlot">
+            <summary>
+            Scans memory for an empty actor slot.
+            </summary>
+            <returns>
+            The address where the slot starts. Or 0 if a free slot was not found.
+            </returns>
+        </member>
+        <member name="T:SotnApi.Constants.Values.Game.Enums.Character">
+            <summary>Prologue Richter still counts as Alucard</summary>
+        </member>
+        <member name="T:SotnApi.Interfaces.IActorApi">
+            <summary>
+            Spawns, finds and edits actor entities in memory.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IActorApi.FindEnemy(System.Int32,System.Int32)">
+            <summary>
+            Scans memory for an enemy that matches the hp range specified.
+            </summary>
+            <returns>
+            The address where the enemy entity starts. Or 0 if the enemy was not found.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IActorApi.GetActor(System.Int64)">
+            <returns>
+            Byte range of the enemy entity.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IActorApi.SpawnActor(SotnApi.Models.Actor)">
+            <summary>
+            Copies the actor data to memory. Spawning it in-game.
+            </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.WingsmashHorizontalSpeed">
+            <summary> Wing Smash speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.WalkingWholeSpeed">
+            <summary> Alucard walking speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.WalkingFractSpeed">
+            <summary> Alucard walking fractional speed. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingHorizontalWholeSpeed">
+            <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingHorizontalFractSpeed">
+            <summary> Alucard jumping horizontal fractional speed. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.FallingHorizontalWholeSpeed">
+            <summary> Alucard falling horizontal speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.FallingHorizontalFractSpeed">
+            <summary> Alucard falling horizontal fractional speed. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.WolfDashTopRightSpeed">
+            <summary> Alucard standard wolf dash going left to right maximum speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.WolfDashTopLeftSpeed">
+            <summary> Alucard standard wolf dash going right to left maximum speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashDecel">
+            <summary> Alucard backdash deceleration rate. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.CurrentCharacter">
+            <returns>
+            The current character, but prologue Richter still counts as Alucard.
+            </returns>
+        </member>
+        <member name="T:SotnApi.Models.Actor">
+            <summary>
+            A live entity object rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
+            </summary>
+        </member>
+    </members>
+</doc>
