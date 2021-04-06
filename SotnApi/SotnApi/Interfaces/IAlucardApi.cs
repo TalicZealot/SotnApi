@@ -77,6 +77,7 @@ namespace SotnApi.Interfaces
         uint DefencePotionTimer { get; set; }
         uint InvincibilityTimer { get; set; }
         uint ShineTimer { get; set; }
+        uint CurseTimer { get; set; }
 
         void ClearInventory();
         string GetSelectedItemName();

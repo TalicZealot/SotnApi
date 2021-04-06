@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
@@ -50,11 +51,11 @@ namespace SotnApi
             }
         }
 
-        public uint SecondCastle
+        public bool SecondCastle
         {
             get
             {
-                return memAPI.ReadByte(Game.SecondCastle);
+                return memAPI.ReadByte(Game.SecondCastle) > 0;
             }
         }
 
@@ -181,7 +182,10 @@ namespace SotnApi
 
         public string ReadPresetName()
         {
-            return ReadString(Game.PresetStart).Trim();
+            string preset = ReadString(Game.PresetStart).Trim();
+            string pattern = @" ([a-z.]{4,10}) ";
+            Match match = Regex.Match(preset, pattern, RegexOptions.IgnoreCase);
+            return match.Value.Trim();
         }
 
         private string ReadString(long address)

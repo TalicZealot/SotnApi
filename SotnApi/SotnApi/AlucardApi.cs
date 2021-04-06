@@ -944,6 +944,18 @@ namespace SotnApi
             }
         }
 
+        public uint CurseTimer
+        {
+            get
+            {
+                return memAPI.ReadByte(Timers.Curse);
+            }
+            set
+            {
+                memAPI.WriteByte(Timers.Curse, value);
+            }
+        }
+
         public string GetSelectedItemName()
         {
             string item;

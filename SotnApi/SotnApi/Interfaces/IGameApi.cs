@@ -2,31 +2,97 @@
 
 namespace SotnApi.Interfaces
 {
+    /// <returns>
+    /// Controls
+    /// </returns>
     public interface IGameApi
     {
+        /// <returns>
+        /// The current Status of the game.
+        /// </returns>
+        /// <example>
+        /// MainMenu
+        /// </example>
+        /// <example>
+        /// InGame
+        /// </example>
         uint Status { get; }
+        /// <returns>
+        /// Returns the currently selected category in the menu.
+        /// </returns>
         MainMenuCategory CurrentMainMenuCategory { get; }
         /// <returns>
         /// The current character, but prologue Richter still counts as Alucard.
         /// </returns>
         Character CurrentCharacter { get; }
+        /// <returns>
+        /// Index for the current area or subarea.
+        /// </returns>
         uint Area { get; }
+        /// <returns>
+        /// Room for the current room or subroom.
+        /// </returns>
         uint Room { get; }
-        uint SecondCastle { get; }
+        /// <returns>
+        /// True if the player is in the second castle. 
+        /// </returns>
+        bool SecondCastle { get; }
+        /// <returns>
+        /// Zone Byte1.
+        /// </returns>
         uint Zone { get; }
+        /// <returns>
+        /// Zone Byte2.
+        /// </returns>
         uint Zone2 { get; }
+        /// <returns>
+        /// True of the game is in the process of loading a new area.
+        /// </returns>
         bool IsLoading { get; }
+        /// <returns>
+        /// True of the game is in the process of loading a new screen.
+        /// </returns>
         bool InTransition { get; }
 
+        /// <summary>
+        /// Checks if the item equip menu is currently open.
+        /// </summary>
         bool EquipMenuOpen();
+        /// <summary>
+        /// Checks if the relic equip menu is currently open.
+        /// </summary>
         bool RelicMenuOpen();
+        /// <summary>
+        /// Checks if it is currently possible for the player to access the menu.
+        /// </summary>
         bool CanMenu();
+        /// <summary>
+        /// Sets an address value to zero.
+        /// </summary>
         void ClearByte(long address);
+        /// <summary>
+        /// Checks if the game is in Alucard mode.
+        /// </summary>
         bool InAlucardMode();
+        /// <summary>
+        /// Checks if the menu si currently open.
+        /// </summary>
         bool IsInMenu();
+        /// <summary>
+        /// Overwrites a string in the game.
+        /// </summary>
         void OverwriteString(long address, string text);
+        /// <summary>
+        /// Reads the start menu string, where the  Randomizer preset is stored.
+        /// </summary>
         string ReadPresetName();
+        /// <summary>
+        /// Reads the start menu string, where the  Randomizer seed is stored.
+        /// </summary>
         string ReadSeedName();
+        /// <summary>
+        /// Enables all the bosses in the game, even if they have been defeated.
+        /// </summary>
         void RespawnBosses();
     }
 }

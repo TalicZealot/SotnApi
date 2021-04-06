@@ -68,10 +68,136 @@
         <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashDecel">
             <summary> Alucard backdash deceleration rate. </summary>
         </member>
+        <member name="T:SotnApi.Interfaces.IGameApi">
+            <returns>
+            Controls
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Status">
+            <returns>
+            The current Status of the game.
+            </returns>
+            <example>
+            MainMenu
+            </example>
+            <example>
+            InGame
+            </example>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.CurrentMainMenuCategory">
+            <returns>
+            Returns the currently selected category in the menu.
+            </returns>
+        </member>
         <member name="P:SotnApi.Interfaces.IGameApi.CurrentCharacter">
             <returns>
             The current character, but prologue Richter still counts as Alucard.
             </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Area">
+            <returns>
+            Index for the current area or subarea.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Room">
+            <returns>
+            Room for the current room or subroom.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.SecondCastle">
+            <returns>
+            True if the player is in the second castle. 
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Zone">
+            <returns>
+            Zone Byte1.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Zone2">
+            <returns>
+            Zone Byte2.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.IsLoading">
+            <returns>
+            True of the game is in the process of loading a new area.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.InTransition">
+            <returns>
+            True of the game is in the process of loading a new screen.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.EquipMenuOpen">
+            <summary>
+            Checks if the item equip menu is currently open.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.RelicMenuOpen">
+            <summary>
+            Checks if the relic equip menu is currently open.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.CanMenu">
+            <summary>
+            Checks if it is currently possible for the player to access the menu.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.ClearByte(System.Int64)">
+            <summary>
+            Sets an address value to zero.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.InAlucardMode">
+            <summary>
+            Checks if the game is in Alucard mode.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.IsInMenu">
+            <summary>
+            Checks if the menu si currently open.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.OverwriteString(System.Int64,System.String)">
+            <summary>
+            Overwrites a string in the game.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.ReadPresetName">
+            <summary>
+            Reads the start menu string, where the  Randomizer preset is stored.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.ReadSeedName">
+            <summary>
+            Reads the start menu string, where the  Randomizer seed is stored.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.RespawnBosses">
+            <summary>
+            Enables all the bosses in the game, even if they have been defeated.
+            </summary>
+        </member>
+        <member name="T:SotnApi.Interfaces.IRenderingApi">
+            <summary>
+            Manipulates VRAM elements.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IRenderingApi.ColorMapRoom(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Colors a room on the map as a 3x3 square with borders.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IRenderingApi.ColorMapLocation(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Colors a location on the map as a 2x2 square.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IRenderingApi.RoomIsRendered(System.UInt32,System.UInt32)">
+            <summary>
+            Checks if a room on the minimap is rendered.
+            </summary>
         </member>
         <member name="T:SotnApi.Models.Actor">
             <summary>

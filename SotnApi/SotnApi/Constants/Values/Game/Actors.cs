@@ -16,7 +16,7 @@
 		public static int PaletteOffset = 0x16;
 		public static int ColorMode = 0x18;
 		public static int ItemIndexOffset = 0x30;
-		public static int HitboxTypeOffset = 0x3A;
+		public static int EnemyNameIndex = 0x3A;
 		public static int HitboxAutoToggleOffset = 0x3C;
 		public static int HpOffset = 0x3E;
 		public static int DamageOffset = 0x40;

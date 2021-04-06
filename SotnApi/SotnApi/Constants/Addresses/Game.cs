@@ -51,6 +51,6 @@ namespace SotnApi.Constants.Addresses
         public static long ActorsStart = 0x07650C;
         public static long VramMapStart = 0x08AE80;
         public static long SeedStart = 0x1A78B4;
-        public static long PresetStart = 0x1A78E1;
+        public static long PresetStart = 0x1A78D4;
     }
 }
