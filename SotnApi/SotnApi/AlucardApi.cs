@@ -1,9 +1,9 @@
-﻿using System;
-using BizHawk.Client.Common;
+﻿using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses.Alucard;
 using SotnApi.Constants.Values.Alucard;
 using SotnApi.Constants.Values.Alucard.Enums;
 using SotnApi.Interfaces;
+using System;
 using Effects = SotnApi.Constants.Addresses.Alucard.Effects;
 
 namespace SotnApi

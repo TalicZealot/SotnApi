@@ -144,9 +144,14 @@
             Checks if it is currently possible for the player to access the menu.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IGameApi.ClearByte(System.Int64)">
+        <member name="M:SotnApi.Interfaces.IGameApi.SetRoomToUnvisited(System.Int64)">
             <summary>
-            Sets an address value to zero.
+            Sets a room on the map to unvisited. Alucard can discover it again.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.SetRoomToVisited(System.Int64)">
+            <summary>
+            Sets a room on the map to visited. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.InAlucardMode">

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using BizHawk.Client.Common;
+﻿using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Interfaces;
+using System;
+using System.Text.RegularExpressions;
 
 namespace SotnApi
 {
@@ -142,8 +142,7 @@ namespace SotnApi
         {
             bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
             bool isAlucard = this.CurrentCharacter == Character.Alucard;
-            uint area = memAPI.ReadByte(Game.Area);
-            bool notInPrologue = area != Various.Prologue && area > 0;
+            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone ;
             return (inGame && isAlucard && notInPrologue);
         }
 
@@ -170,9 +169,16 @@ namespace SotnApi
             }
         }
 
-        public void ClearByte(long address)
+        public void SetRoomToUnvisited(long address)
         {
+            if (address < 0x06BBDC || address > 0x06C30B) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
             memAPI.WriteByte(address, 0);
+        }
+
+        public void SetRoomToVisited(long address)
+        {
+            if (address < 0x06BBDC || address > 0x06C30B) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
+            memAPI.WriteByte(address, 0xFF);
         }
 
         public string ReadSeedName()
@@ -183,7 +189,7 @@ namespace SotnApi
         public string ReadPresetName()
         {
             string preset = ReadString(Game.PresetStart).Trim();
-            string pattern = @" ([a-z.]{4,10}) ";
+            string pattern = @" ([a-z.]{4,10})( ){0,1}";
             Match match = Regex.Match(preset, pattern, RegexOptions.IgnoreCase);
             return match.Value.Trim();
         }

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using BizHawk.Client.Common;
+﻿using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
 using SotnApi.Models;
+using System;
+using System.Collections.Generic;
 
 namespace SotnApi
 {
@@ -21,16 +21,17 @@ namespace SotnApi
         public long FindEnemy(int minHp, int maxHp)
         {
             if (minHp < 0) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp can't be negative"); }
-            if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp),"maxHp must be greater than 0"); }
+            if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
             long start = Game.ActorsStart;
             for (int i = 0; i < Actors.Count; i++)
             {
                 long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
                 long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
-                long hp = memAPI.ReadByte(start + Actors.HpOffset);
+                long hp = memAPI.ReadU16(start + Actors.HpOffset);
+                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
 
-                if (hitboxWidth > 2 && hitboxHeight > 2 && hp > minHp && hp <= maxHp)
+                if (hitboxWidth > 2 && hitboxHeight > 2 && hp > minHp && hp <= maxHp && damage > 0)
                 {
                     return start;
                 }

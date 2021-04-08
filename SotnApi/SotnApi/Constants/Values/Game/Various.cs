@@ -5,10 +5,11 @@ namespace SotnApi.Constants.Values.Game
     public static class Various
     {
         public static long RowOffset = 0x800;
-        public static uint Prologue = 0x20;
-		public static uint LibraryWarped = 0x78;
+        public static uint PrologueArea = 0x20;
+        public static uint PrologueZone = 0x21;
+        public static uint LibraryWarped = 0x78;
 
-		public static Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
+        public static Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},
             {0x44, '.'},
             {0x46, ':'},
@@ -31,36 +32,36 @@ namespace SotnApi.Constants.Values.Game
             {0x7c, '-'}
         };
 
-		public static string[] BossNames =
-		{
-			"Slogra",
-			"Gaibon",
-			"Doppleganger10",
-			"Minotaur",
-			"Werewolf",
-			"LesserDemon",
-			"Karasuman",
-			"Hippogryph",
-			"Olrox",
-			"Succubus",
-			"ScyllaWorm",
-			"Scylla",
-			"Cerberus",
-			"Granfaloon",
-			"Richter",
-			"DarkwingBat",
-			"Creature",
-			"Doppleganger40",
-			"Death",
-			"Galamoth",
-			"Medusa",
-			"Akmodan",
-			"Trevor",
-			"Sypha",
-			"Grant",
-			"Beelzebub",
-			"Shaft",
-			"Dracula"
-		};
-	}
+        public static string[] BossNames =
+        {
+            "Slogra",
+            "Gaibon",
+            "Doppleganger10",
+            "Minotaur",
+            "Werewolf",
+            "LesserDemon",
+            "Karasuman",
+            "Hippogryph",
+            "Olrox",
+            "Succubus",
+            "ScyllaWorm",
+            "Scylla",
+            "Cerberus",
+            "Granfaloon",
+            "Richter",
+            "DarkwingBat",
+            "Creature",
+            "Doppleganger40",
+            "Death",
+            "Galamoth",
+            "Medusa",
+            "Akmodan",
+            "Trevor",
+            "Sypha",
+            "Grant",
+            "Beelzebub",
+            "Shaft",
+            "Dracula"
+        };
+    }
 }

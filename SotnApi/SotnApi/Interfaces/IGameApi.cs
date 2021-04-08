@@ -67,9 +67,13 @@ namespace SotnApi.Interfaces
         /// </summary>
         bool CanMenu();
         /// <summary>
-        /// Sets an address value to zero.
+        /// Sets a room on the map to unvisited. Alucard can discover it again.
         /// </summary>
-        void ClearByte(long address);
+        void SetRoomToUnvisited(long address);
+        /// <summary>
+        /// Sets a room on the map to visited. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
+        /// </summary>
+        void SetRoomToVisited(long address);
         /// <summary>
         /// Checks if the game is in Alucard mode.
         /// </summary>

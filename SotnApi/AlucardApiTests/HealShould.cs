@@ -2,7 +2,6 @@
 using NSubstitute;
 using SotnApi;
 using SotnApi.Interfaces;
-using System;
 using Xunit;
 
 namespace AlucardApiTests

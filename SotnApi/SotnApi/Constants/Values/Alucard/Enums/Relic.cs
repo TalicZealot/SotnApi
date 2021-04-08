@@ -9,7 +9,7 @@
         SoulOfWolf,
         PowerOfWolf,
         SkillOfWolf,
-        FormOfMist, 
+        FormOfMist,
         PowerOfMist,
         GasCloud,
         CubeOfZoe,

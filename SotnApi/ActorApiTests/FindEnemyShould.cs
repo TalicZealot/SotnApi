@@ -1,8 +1,8 @@
 ﻿using BizHawk.Client.Common;
-using SotnApi.Constants.Values.Game;
-using SotnApi.Constants.Addresses;
 using NSubstitute;
 using SotnApi;
+using SotnApi.Constants.Addresses;
+using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
 using System;
 using Xunit;

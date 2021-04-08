@@ -1,12 +1,9 @@
 ﻿using BizHawk.Client.Common;
-using SotnApi.Constants.Values.Game;
-using SotnApi.Constants.Addresses;
 using NSubstitute;
 using SotnApi;
 using SotnApi.Interfaces;
-using System;
-using Xunit;
 using SotnApi.Models;
+using Xunit;
 
 namespace ActorApiTests
 {
