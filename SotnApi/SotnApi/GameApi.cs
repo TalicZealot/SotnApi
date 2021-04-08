@@ -143,6 +143,10 @@ namespace SotnApi
             bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
             bool isAlucard = this.CurrentCharacter == Character.Alucard;
             bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone ;
+            if (this.Area == Various.PrologueArea && this.Zone != Various.PrologueZone && this.SecondCastle)
+            {
+                notInPrologue = true;
+            }
             return (inGame && isAlucard && notInPrologue);
         }
 
