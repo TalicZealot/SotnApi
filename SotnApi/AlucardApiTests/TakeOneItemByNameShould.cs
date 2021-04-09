@@ -1,13 +1,14 @@
 ﻿using BizHawk.Client.Common;
 using NSubstitute;
 using SotnApi;
+using SotnApi.Constants.Values.Alucard;
 using SotnApi.Interfaces;
 using System;
 using Xunit;
 
 namespace AlucardApiTests
 {
-    public class GrantItemByNameShould
+    public class TakeOneItemByNameShould
     {
         [Fact]
         public void ThrowArgumentNullException_WhenNameIsNull()
@@ -16,7 +17,7 @@ namespace AlucardApiTests
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             IAlucardApi classUnderTest = new AlucardApi(mockedMemAPI);
             //Act&Assert
-            Assert.Throws<ArgumentNullException>(() => classUnderTest.GrantItemByName(null));
+            Assert.Throws<ArgumentNullException>(() => classUnderTest.TakeOneItemByName(null));
         }
 
         [Fact]
@@ -27,7 +28,7 @@ namespace AlucardApiTests
             IAlucardApi classUnderTest = new AlucardApi(mockedMemAPI);
             string message = "Invalid item name!";
             //Act
-            var exception = Assert.Throws<ArgumentException>(() => classUnderTest.GrantItemByName("invalid item"));
+            var exception = Assert.Throws<ArgumentException>(() => classUnderTest.TakeOneItemByName("invalid item"));
             //Act&Assert
             Assert.Equal(message, exception.Message);
         }
@@ -42,7 +43,7 @@ namespace AlucardApiTests
                 .ReturnsForAnyArgs<uint>(1);
             IAlucardApi classUnderTest = new AlucardApi(mockedMemAPI);
             //Act
-            classUnderTest.GrantItemByName("empty hand");
+            classUnderTest.TakeOneItemByName(Equipment.Items[0]);
             //Assert
             mockedMemAPI.Received(1).ReadByte(Arg.Any<long>());
         }
@@ -54,12 +55,12 @@ namespace AlucardApiTests
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             mockedMemAPI
                 .ReadByte(Arg.Any<long>())
-                .ReturnsForAnyArgs<uint>(0);
+                .ReturnsForAnyArgs<uint>(1);
             IAlucardApi classUnderTest = new AlucardApi(mockedMemAPI);
             //Act
-            classUnderTest.GrantItemByName("empty hand");
+            classUnderTest.TakeOneItemByName(Equipment.Items[0]);
             //Assert
-            mockedMemAPI.Received(1).WriteByte(Arg.Any<long>(), 1);
+            mockedMemAPI.Received(1).WriteByte(Arg.Any<long>(), 0);
         }
     }
 }

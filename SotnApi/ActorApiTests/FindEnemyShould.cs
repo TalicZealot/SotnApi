@@ -46,7 +46,8 @@ namespace ActorApiTests
             //Act
             classUnderTest.FindEnemy(1, 1);
             //Assert
-            mockedMemAPI.Received(3 * Actors.Count).ReadByte(Arg.Any<long>());
+            mockedMemAPI.Received(2 * Actors.Count).ReadByte(Arg.Any<long>());
+            mockedMemAPI.Received(2 * Actors.Count).ReadU16(Arg.Any<long>());
         }
 
         [Fact]
@@ -65,6 +66,9 @@ namespace ActorApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
+            mockedMemAPI
+                .ReadU16(Arg.Any<long>())
+                .ReturnsForAnyArgs<uint>(3);
             mockedMemAPI
                 .ReadByte(Arg.Any<long>())
                 .ReturnsForAnyArgs<uint>(3);

@@ -52,5 +52,7 @@ namespace SotnApi.Constants.Addresses
         public static long VramMapStart = 0x08AE80;
         public static long SeedStart = 0x1A78B4;
         public static long PresetStart = 0x1A78D4;
+        public static long MapStart = 0x06BBDC;
+        public static long MapEnd = 0x06C30B;
     }
 }

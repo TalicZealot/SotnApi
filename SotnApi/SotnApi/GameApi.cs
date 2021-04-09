@@ -175,13 +175,13 @@ namespace SotnApi
 
         public void SetRoomToUnvisited(long address)
         {
-            if (address < 0x06BBDC || address > 0x06C30B) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
+            if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
             memAPI.WriteByte(address, 0);
         }
 
         public void SetRoomToVisited(long address)
         {
-            if (address < 0x06BBDC || address > 0x06C30B) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
+            if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
             memAPI.WriteByte(address, 0xFF);
         }
 
