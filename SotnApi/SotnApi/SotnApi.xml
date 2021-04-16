@@ -154,6 +154,11 @@
             Sets a room on the map to visited. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
             </summary>
         </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.SetRoomValue(System.Int64,System.Byte)">
+            <summary>
+            Sets the value for a room on the map. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
+            </summary>
+        </member>
         <member name="M:SotnApi.Interfaces.IGameApi.InAlucardMode">
             <summary>
             Checks if the game is in Alucard mode.

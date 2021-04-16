@@ -185,6 +185,12 @@ namespace SotnApi
             memAPI.WriteByte(address, 0xFF);
         }
 
+        public void SetRoomValue(long address, byte value)
+        {
+            if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
+            memAPI.WriteByte(address, value);
+        }
+
         public string ReadSeedName()
         {
             return ReadString(Game.SeedStart);

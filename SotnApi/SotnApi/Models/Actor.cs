@@ -82,7 +82,6 @@ namespace SotnApi.Models
                 for (int i = 0; i < 2; i++)
                 {
                     Value[Actors.HpOffset + i] = valueBytes[i];
-                    Console.WriteLine($"valuebyte {i}: {valueBytes[i]}");
                 }
             }
         }
@@ -99,7 +98,6 @@ namespace SotnApi.Models
                 for (int i = 0; i < 2; i++)
                 {
                     Value[Actors.DamageOffset + i] = valueBytes[i];
-                    Console.WriteLine($"valuebyte {i}: {valueBytes[i]}");
                 }
             }
         }

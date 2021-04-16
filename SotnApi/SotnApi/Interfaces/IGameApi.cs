@@ -75,6 +75,10 @@ namespace SotnApi.Interfaces
         /// </summary>
         void SetRoomToVisited(long address);
         /// <summary>
+        /// Sets the value for a room on the map. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
+        /// </summary>
+        void SetRoomValue(long address, byte value);
+        /// <summary>
         /// Checks if the game is in Alucard mode.
         /// </summary>
         bool InAlucardMode();
