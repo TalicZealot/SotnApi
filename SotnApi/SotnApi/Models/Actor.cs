@@ -30,7 +30,7 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.XposOffset];
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.XposOffset);
             }
             set
             {
@@ -46,7 +46,7 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.YposOffset];
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.YposOffset);
             }
             set
             {
@@ -74,7 +74,7 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.HpOffset];
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.HpOffset);
             }
             set
             {
@@ -90,7 +90,7 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.DamageOffset];
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.DamageOffset);
             }
             set
             {

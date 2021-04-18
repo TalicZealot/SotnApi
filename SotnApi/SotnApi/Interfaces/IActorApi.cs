@@ -14,7 +14,7 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// The address where the enemy entity starts. Or 0 if the enemy was not found.
         /// </returns>
-        long FindEnemy(int minHp, int maxHp);
+        long FindEnemy(int minHp, int maxHp, int[]? bannedHpValues = null);
         /// <returns>
         /// Byte range of the enemy entity.
         /// </returns>

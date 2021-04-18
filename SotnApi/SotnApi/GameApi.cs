@@ -150,6 +150,19 @@ namespace SotnApi
             return (inGame && isAlucard && notInPrologue);
         }
 
+        public bool InPrologue()
+        {
+            bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
+            bool isAlucard = this.CurrentCharacter == Character.Alucard;
+            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone;
+            if (this.Area == Various.PrologueArea && this.Zone != Various.PrologueZone && this.SecondCastle)
+            {
+                notInPrologue = true;
+            }
+
+            return (inGame && isAlucard && !notInPrologue);
+        }
+
         public void OverwriteString(long address, string text)
         {
             if (text == null) throw new ArgumentNullException(nameof(text));

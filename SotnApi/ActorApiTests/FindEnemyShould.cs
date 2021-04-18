@@ -12,14 +12,14 @@ namespace ActorApiTests
     public class FindEnemyShould
     {
         [Fact]
-        public void ThrowArgumentOutOfRangeException_WhenMinHpIsNegative()
+        public void ThrowArgumentOutOfRangeException_WhenMinHpIsLowerThanOne()
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             IActorApi classUnderTest = new ActorApi(mockedMemAPI);
-            string message = "minHp can't be negative\r\nParameter name: minHp";
+            string message = "minHp must be greater than 0\r\nParameter name: minHp";
             //Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.FindEnemy(-1, 1));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.FindEnemy(0, 1));
             //Assert
             Assert.Equal(message, exception.Message);
         }

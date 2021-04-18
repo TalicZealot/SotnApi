@@ -18,9 +18,9 @@ namespace SotnApi
             this.memAPI = memAPI;
         }
 
-        public long FindEnemy(int minHp, int maxHp)
+        public long FindEnemy(int minHp, int maxHp, int[]? bannedHpValues = null)
         {
-            if (minHp < 0) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp can't be negative"); }
+            if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
             long start = Game.ActorsStart;
@@ -30,8 +30,21 @@ namespace SotnApi
                 long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
                 long hp = memAPI.ReadU16(start + Actors.HpOffset);
                 long damage = memAPI.ReadU16(start + Actors.DamageOffset);
+                bool notBanned = true;
 
-                if (hitboxWidth > 2 && hitboxHeight > 2 && hp > minHp && hp <= maxHp && damage > 0)
+                if (bannedHpValues is not null)
+                {
+                    foreach (int bannedHp in bannedHpValues)
+                    {
+                        if (hp == bannedHp)
+                        {
+                            notBanned = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (hitboxWidth > 1 && hitboxHeight > 1 && hp >= minHp && hp <= maxHp && damage > 0 && notBanned)
                 {
                     return start;
                 }

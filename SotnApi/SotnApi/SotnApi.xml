@@ -20,7 +20,7 @@
             Spawns, finds and edits actor entities in memory.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.FindEnemy(System.Int32,System.Int32)">
+        <member name="M:SotnApi.Interfaces.IActorApi.FindEnemy(System.Int32,System.Int32,System.Int32[])">
             <summary>
             Scans memory for an enemy that matches the hp range specified.
             </summary>
@@ -162,6 +162,11 @@
         <member name="M:SotnApi.Interfaces.IGameApi.InAlucardMode">
             <summary>
             Checks if the game is in Alucard mode.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.InPrologue">
+            <summary>
+            Checks if the game is the Prologue.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.IsInMenu">

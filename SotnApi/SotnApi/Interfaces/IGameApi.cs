@@ -83,6 +83,10 @@ namespace SotnApi.Interfaces
         /// </summary>
         bool InAlucardMode();
         /// <summary>
+        /// Checks if the game is the Prologue.
+        /// </summary>
+        bool InPrologue();
+        /// <summary>
         /// Checks if the menu si currently open.
         /// </summary>
         bool IsInMenu();
