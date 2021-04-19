@@ -884,6 +884,30 @@ namespace SotnApi
             }
         }
 
+        public uint State
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.State);
+            }
+            set
+            {
+                memAPI.WriteByte(Stats.State, value);
+            }
+        }
+
+        public uint Action
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.Action);
+            }
+            set
+            {
+                memAPI.WriteByte(Stats.Action, value);
+            }
+        }
+
         public uint DarkMetamorphasisTimer
         {
             get

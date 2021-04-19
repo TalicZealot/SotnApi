@@ -22,5 +22,7 @@
         public static long Rooms = 0x03C760;
         public static long WarpsFirstCastle = 0x03BEBC;
         public static long WarpsSecondCastle = 0x03BEBD;
+        public static long State = 0x073404;
+        public static long Action = 0x073406;
     }
 }

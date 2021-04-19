@@ -126,7 +126,7 @@ namespace SotnApi.Constants.Values.Alucard
             "Marsil",
             "Dark Blade",
             "Heaven sword",
-            "Fist of Tuklas",
+            "Fist of Tulkas",
             "Gurthang",
             "Mourneblade",
             "Alucard sword",

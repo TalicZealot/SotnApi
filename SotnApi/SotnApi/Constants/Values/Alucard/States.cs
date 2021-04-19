@@ -13,6 +13,9 @@
         public static uint UntransformWolf = 0x19;
         public static uint Hellfire = 0x22;
         public static uint What = 0x30;
-        public static uint Human = 0;
+        public static uint Standing = 0x0;
+        public static uint Walking = 0x1;
+        public static uint Crouching = 0x2;
+        public static uint Aerial = 0x4;
     }
 }

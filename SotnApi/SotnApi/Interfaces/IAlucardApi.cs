@@ -72,6 +72,8 @@ namespace SotnApi.Interfaces
         uint Accessory1 { get; set; }
         uint Accessory2 { get; set; }
         Subweapon Subweapon { get; set; }
+        uint State { get; set; }
+        uint Action { get; set; }
         uint DarkMetamorphasisTimer { get; set; }
         uint AttackPotionTimer { get; set; }
         uint DefencePotionTimer { get; set; }
