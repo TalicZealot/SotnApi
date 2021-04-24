@@ -15,6 +15,7 @@ namespace SotnApi.Interfaces
         uint Int { get; set; }
         uint Lck { get; set; }
         uint Gold { get; set; }
+        uint Level { get; set; }
         uint Experiecne { get; set; }
         uint Rooms { get; set; }
         uint WarpsFirstCastle { get; set; }

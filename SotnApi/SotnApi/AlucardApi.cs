@@ -150,6 +150,18 @@ namespace SotnApi
             }
         }
 
+        public uint Level
+        {
+            get
+            {
+                return memAPI.ReadU32(Stats.Level);
+            }
+            set
+            {
+                memAPI.WriteU32(Stats.Level, value);
+            }
+        }
+
         public uint Experiecne
         {
             get
