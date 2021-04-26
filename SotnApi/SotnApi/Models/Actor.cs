@@ -126,6 +126,30 @@ namespace SotnApi.Models
             }
         }
 
+        public ushort Palette
+        {
+            get
+            {
+                return Value[Actors.PaletteOffset];
+            }
+            set
+            {
+                Value[Actors.PaletteOffset] = (byte)value;
+            }
+        }
+
+        public ushort ColorMode
+        {
+            get
+            {
+                return Value[Actors.ColorMode];
+            }
+            set
+            {
+                Value[Actors.ColorMode] = (byte)value;
+            }
+        }
+
         public ushort HitboxWidth
         {
             get

@@ -72,8 +72,10 @@ namespace SotnApi
             {
                 long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
                 long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
+                long hp = memAPI.ReadU16(start + Actors.HpOffset);
+                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
 
-                if (hitboxWidth == 0 && hitboxHeight == 0)
+                if (hitboxWidth == 0 && hitboxHeight == 0 && hp == 0 && damage == 0)
                 {
                     return start;
                 }

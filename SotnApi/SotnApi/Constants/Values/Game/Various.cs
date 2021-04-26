@@ -7,6 +7,7 @@ namespace SotnApi.Constants.Values.Game
         public static long RowOffset = 0x800;
         public static uint PrologueArea = 0x20;
         public static uint PrologueZone = 0x21;
+        public static uint LoadingZone = 0x32;
         public static uint LibraryWarped = 0x78;
 
         public static Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
