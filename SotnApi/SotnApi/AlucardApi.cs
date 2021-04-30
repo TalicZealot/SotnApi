@@ -920,6 +920,25 @@ namespace SotnApi
             }
         }
 
+        public bool FacingLeft
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.Facing) > 0;
+            }
+            set
+            {
+                if (value)
+                {
+                    memAPI.WriteByte(Stats.Facing, 1);
+                }
+                else
+                {
+                    memAPI.WriteByte(Stats.Facing, 0);
+                }
+            }
+        }
+
         public uint DarkMetamorphasisTimer
         {
             get

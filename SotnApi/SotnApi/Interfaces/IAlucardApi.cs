@@ -75,6 +75,7 @@ namespace SotnApi.Interfaces
         Subweapon Subweapon { get; set; }
         uint State { get; set; }
         uint Action { get; set; }
+        bool FacingLeft { get; set; }
         uint DarkMetamorphasisTimer { get; set; }
         uint AttackPotionTimer { get; set; }
         uint DefencePotionTimer { get; set; }

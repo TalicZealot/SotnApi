@@ -20,7 +20,7 @@
         ResistDark,
         Potion,
         HighPotion,
-        Elexir,
-        ManaPrism
+        Elixir,
+        Mannarism
     }
 }

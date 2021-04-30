@@ -217,7 +217,7 @@ namespace SotnApi
         public string ReadPresetName()
         {
             string preset = ReadString(Game.PresetStart).Trim();
-            string pattern = @" ([a-z.]{4,10})( ){0,1}";
+            string pattern = @" ([a-z.]{2,10})( ){0,1}";
             Match match = Regex.Match(preset, pattern, RegexOptions.IgnoreCase);
             return match.Value.Trim();
         }
