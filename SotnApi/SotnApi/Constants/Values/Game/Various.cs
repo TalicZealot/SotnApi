@@ -5,6 +5,9 @@ namespace SotnApi.Constants.Values.Game
     public static class Various
     {
         public static long RowOffset = 0x800;
+        public static uint MarbleGalleryArea = 0x28;
+        public static uint MarbleGalleryDoorToCavernsRoom = 0x1C;
+        public static uint MarbleGalleryBlueDoorRoom = 0x74;
         public static uint PrologueArea = 0x20;
         public static uint PrologueZone = 0x21;
         public static uint LoadingZone = 0x32;

@@ -21,6 +21,6 @@
         Potion,
         HighPotion,
         Elixir,
-        Mannarism
+        Mannaprism
     }
 }
