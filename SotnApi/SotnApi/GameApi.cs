@@ -59,6 +59,22 @@ namespace SotnApi
             }
         }
 
+        public uint MapXPos
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.MapXPos);
+            }
+        }
+
+        public uint MapYPos
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.MapYPos);
+            }
+        }
+
         public uint Zone
         {
             get
@@ -142,7 +158,7 @@ namespace SotnApi
         {
             bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
             bool isAlucard = this.CurrentCharacter == Character.Alucard;
-            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone ;
+            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone;
             if (this.Area == Various.PrologueArea && this.Zone != Various.PrologueZone && this.SecondCastle)
             {
                 notInPrologue = true;
@@ -152,9 +168,12 @@ namespace SotnApi
 
         public bool InPrologue()
         {
+            uint currentMapXPos = MapXPos;
+            uint currentMapYPos = MapYPos;
+
             bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
             bool isAlucard = this.CurrentCharacter == Character.Alucard;
-            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone && this.SecondCastle;
+            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone;// && this.SecondCastle;
 
             if (this.Area == Various.PrologueArea && this.Zone != Various.PrologueZone && this.SecondCastle)
             {
@@ -165,7 +184,9 @@ namespace SotnApi
                 notInPrologue = true;
             }
 
-            return (inGame && isAlucard && !notInPrologue);
+            bool prologueMapLocation = (currentMapXPos == 0 && currentMapYPos == 2) || (currentMapXPos == 0 && currentMapYPos == 0) || (currentMapXPos == 1 && currentMapYPos == 1);
+
+            return (inGame && isAlucard && !notInPrologue && prologueMapLocation);
         }
 
         public void OverwriteString(long address, string text)

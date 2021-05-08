@@ -38,6 +38,8 @@ namespace SotnApi.Constants.Addresses
         public static long RelicMenuOpen = 0x1FFF6A;
         public static long SecondCastle = 0x1E5458;
         public static long SettingsMenuOpen = 0x03D04E;
+        public static long MapXPos = 0x0730B0;
+        public static long MapYPos = 0x0730B4;
         public static long Room = 0x1375BC;
         public static long Area = 0x1375BD;
         public static long Zone = 0x138458;

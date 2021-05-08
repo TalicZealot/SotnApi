@@ -38,6 +38,14 @@ namespace SotnApi.Interfaces
         /// </returns>
         bool SecondCastle { get; }
         /// <returns>
+        /// X coordinate for the current highlighted room on the map.
+        /// </returns>
+        uint MapXPos { get; }
+        /// <returns>
+        /// Y coordinate for the current highlighted room on the map.
+        /// </returns>
+        uint MapYPos { get; }
+        /// <returns>
         /// Zone Byte1.
         /// </returns>
         uint Zone { get; }

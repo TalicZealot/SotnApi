@@ -109,6 +109,16 @@
             True if the player is in the second castle. 
             </returns>
         </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.MapXPos">
+            <returns>
+            X coordinate for the current highlighted room on the map.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.MapYPos">
+            <returns>
+            Y coordinate for the current highlighted room on the map.
+            </returns>
+        </member>
         <member name="P:SotnApi.Interfaces.IGameApi.Zone">
             <returns>
             Zone Byte1.
