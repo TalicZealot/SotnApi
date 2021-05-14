@@ -230,7 +230,7 @@ namespace SotnApi.Constants.Values.Alucard
             "Crystal cloak",
             "Royal cloak",
             "Blood cloak",
-            "Jopseph's cloak",
+            "Joseph's cloak",
             "Twilight cloak",
             "----accessory",
             "Moonstone",
