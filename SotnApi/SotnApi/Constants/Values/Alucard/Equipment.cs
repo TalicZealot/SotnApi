@@ -95,7 +95,7 @@ namespace SotnApi.Constants.Values.Alucard
             "Gladius",
             "Scimitar",
             "Cutlass",
-            "Sager",
+            "Saber",
             "Falchion",
             "Broadsword",
             "Bekatowa",

@@ -53,6 +53,18 @@
         <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingHorizontalFractSpeed">
             <summary> Alucard jumping horizontal fractional speed. </summary>
         </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingAttackLeftHorizontalWholeSpeed">
+            <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingAttackLeftHorizontalFractSpeed">
+            <summary> Alucard jumping horizontal fractional speed. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingAttackRightHorizontalWholeSpeed">
+            <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingAttackRightHorizontalFractSpeed">
+            <summary> Alucard jumping horizontal fractional speed. </summary>
+        </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.FallingHorizontalWholeSpeed">
             <summary> Alucard falling horizontal speed in pixels per frame. </summary>
         </member>

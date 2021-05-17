@@ -7,6 +7,10 @@
         public static long WalkingFract = 0x112B85;
         public static long JumpingHorizontalWhole = 0x112CDC;
         public static long JumpingHorizontalFract = 0x112CE5;
+        public static long JumpingAttackLeftHorizontalWhole = 0x112F64;
+        public static long JumpingAttackLeftHorizontalFract = 0x112F69;
+        public static long JumpingAttackRightHorizontalWhole = 0x112F84;
+        public static long JumpingAttackRightHorizontalFract = 0x112F89;
         public static long FallingHorizontalWhole = 0x112D8C;
         public static long FallingHorizontalFract = 0x112D95;
         public static long BatHorizontalRightWhole = 0x1170B8;

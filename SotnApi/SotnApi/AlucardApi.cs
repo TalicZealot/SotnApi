@@ -740,6 +740,54 @@ namespace SotnApi
             }
         }
 
+        public uint JumpingAttackLeftHorizontalWholeSpeed
+        {
+            get
+            {
+                return memAPI.ReadByte(Speeds.JumpingAttackLeftHorizontalWhole);
+            }
+            set
+            {
+                memAPI.WriteByte(Speeds.JumpingAttackLeftHorizontalWhole, value);
+            }
+        }
+
+        public uint JumpingAttackLeftHorizontalFractSpeed
+        {
+            get
+            {
+                return memAPI.ReadByte(Speeds.JumpingAttackLeftHorizontalFract);
+            }
+            set
+            {
+                memAPI.WriteByte(Speeds.JumpingAttackLeftHorizontalFract, value);
+            }
+        }
+
+        public uint JumpingAttackRightHorizontalWholeSpeed
+        {
+            get
+            {
+                return memAPI.ReadByte(Speeds.JumpingAttackRightHorizontalWhole);
+            }
+            set
+            {
+                memAPI.WriteByte(Speeds.JumpingAttackRightHorizontalWhole, value);
+            }
+        }
+
+        public uint JumpingAttackRightHorizontalFractSpeed
+        {
+            get
+            {
+                return memAPI.ReadByte(Speeds.JumpingAttackRightHorizontalFract);
+            }
+            set
+            {
+                memAPI.WriteByte(Speeds.JumpingAttackRightHorizontalFract, value);
+            }
+        }
+
         public uint FallingHorizontalWholeSpeed
         {
             get

@@ -55,6 +55,15 @@ namespace SotnApi.Interfaces
         uint JumpingHorizontalWholeSpeed { get; set; }
         /// <summary> Alucard jumping horizontal fractional speed. </summary>
         uint JumpingHorizontalFractSpeed { get; set; }
+        /// <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
+        uint JumpingAttackLeftHorizontalWholeSpeed { get; set; }
+        /// <summary> Alucard jumping horizontal fractional speed. </summary>
+        uint JumpingAttackLeftHorizontalFractSpeed { get; set; }
+        /// <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
+        uint JumpingAttackRightHorizontalWholeSpeed { get; set; }
+        /// <summary> Alucard jumping horizontal fractional speed. </summary>
+        uint JumpingAttackRightHorizontalFractSpeed { get; set; }
+
         /// <summary> Alucard falling horizontal speed in pixels per frame. </summary>
         uint FallingHorizontalWholeSpeed { get; set; }
         /// <summary> Alucard falling horizontal fractional speed. </summary>
