@@ -968,6 +968,22 @@ namespace SotnApi
             }
         }
 
+        public uint MapX
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.MapX);
+            }
+        }
+
+        public uint MapY
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.MapY);
+            }
+        }
+
         public bool FacingLeft
         {
             get

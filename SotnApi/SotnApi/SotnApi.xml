@@ -80,6 +80,39 @@
         <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashDecel">
             <summary> Alucard backdash deceleration rate. </summary>
         </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.RightHand">
+            <summary> Index of the currently equipped item in the Right Hand slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.LeftHand">
+            <summary> Index of the currently equipped item in the Left Hand slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.Armor">
+            <summary> Index of the currently equipped item in the Armor slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.Helm">
+            <summary> Index of the currently equipped item in the Helm slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.Cloak">
+            <summary> Index of the currently equipped item in the Cloak slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.Accessory1">
+            <summary> Index of the currently equipped item in the first Accessory slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.Accessory2">
+            <summary> Index of the currently equipped item in the second Accessory slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.Subweapon">
+            <summary> Index of the held subweapon.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.MapX">
+            <summary>Horizontal position of the blinking indicator on the map.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.MapY">
+            <summary>Vertical position of the blinking indicator on the map.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.FacingLeft">
+            <returns> True if Alucard is facing left.</returns>
+        </member>
         <member name="T:SotnApi.Interfaces.IGameApi">
             <returns>
             Controls

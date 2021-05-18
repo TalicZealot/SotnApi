@@ -63,7 +63,6 @@ namespace SotnApi.Interfaces
         uint JumpingAttackRightHorizontalWholeSpeed { get; set; }
         /// <summary> Alucard jumping horizontal fractional speed. </summary>
         uint JumpingAttackRightHorizontalFractSpeed { get; set; }
-
         /// <summary> Alucard falling horizontal speed in pixels per frame. </summary>
         uint FallingHorizontalWholeSpeed { get; set; }
         /// <summary> Alucard falling horizontal fractional speed. </summary>
@@ -74,16 +73,29 @@ namespace SotnApi.Interfaces
         sbyte WolfDashTopLeftSpeed { get; set; }
         /// <summary> Alucard backdash deceleration rate. </summary>
         uint BackdashDecel { get; set; }
+        /// <summary> Index of the currently equipped item in the Right Hand slot.</summary>
         uint RightHand { get; set; }
+        /// <summary> Index of the currently equipped item in the Left Hand slot.</summary>
         uint LeftHand { get; set; }
+        /// <summary> Index of the currently equipped item in the Armor slot.</summary>
         uint Armor { get; set; }
+        /// <summary> Index of the currently equipped item in the Helm slot.</summary>
         uint Helm { get; set; }
+        /// <summary> Index of the currently equipped item in the Cloak slot.</summary>
         uint Cloak { get; set; }
+        /// <summary> Index of the currently equipped item in the first Accessory slot.</summary>
         uint Accessory1 { get; set; }
+        /// <summary> Index of the currently equipped item in the second Accessory slot.</summary>
         uint Accessory2 { get; set; }
+        /// <summary> Index of the held subweapon.</summary>
         Subweapon Subweapon { get; set; }
         uint State { get; set; }
         uint Action { get; set; }
+        /// <summary>Horizontal position of the blinking indicator on the map.</summary>
+        uint MapX { get; }
+        /// <summary>Vertical position of the blinking indicator on the map.</summary>
+        uint MapY { get; }
+        /// <returns> True if Alucard is facing left.</returns>
         bool FacingLeft { get; set; }
         uint DarkMetamorphasisTimer { get; set; }
         uint AttackPotionTimer { get; set; }
