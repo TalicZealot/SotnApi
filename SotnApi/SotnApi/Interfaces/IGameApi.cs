@@ -95,6 +95,10 @@ namespace SotnApi.Interfaces
         /// </summary>
         bool InPrologue();
         /// <summary>
+        /// Checks if the player is in a save room.
+        /// </summary>
+        bool CanSave();
+        /// <summary>
         /// Checks if the menu si currently open.
         /// </summary>
         bool IsInMenu();

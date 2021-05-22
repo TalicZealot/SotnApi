@@ -12,6 +12,7 @@ namespace SotnApi.Constants.Values.Game
         public static uint PrologueZone = 0x21;
         public static uint LoadingZone = 0x32;
         public static uint LibraryWarped = 0x78;
+        public static uint CanSave = 0x20;
 
         public static Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},

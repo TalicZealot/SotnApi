@@ -972,7 +972,7 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.MapX);
+                return memAPI.ReadByte(Stats.MapX) + memAPI.ReadByte(Stats.MapOffsetX);
             }
         }
 
@@ -980,7 +980,7 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Stats.MapY);
+                return memAPI.ReadByte(Stats.MapY) + memAPI.ReadByte(Stats.MapOffsetY);
             }
         }
 

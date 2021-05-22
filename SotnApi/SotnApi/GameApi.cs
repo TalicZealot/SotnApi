@@ -189,6 +189,11 @@ namespace SotnApi
             return (inGame && isAlucard && !notInPrologue && prologueMapLocation);
         }
 
+        public bool CanSave()
+        {
+            return (memAPI.ReadByte(Game.CanSave) & Various.CanSave) == Various.CanSave;
+        }
+
         public void OverwriteString(long address, string text)
         {
             if (text == null) throw new ArgumentNullException(nameof(text));

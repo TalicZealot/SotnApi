@@ -224,6 +224,11 @@
             Checks if the game is the Prologue.
             </summary>
         </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.CanSave">
+            <summary>
+            Checks if the player is in a save room.
+            </summary>
+        </member>
         <member name="M:SotnApi.Interfaces.IGameApi.IsInMenu">
             <summary>
             Checks if the menu si currently open.
