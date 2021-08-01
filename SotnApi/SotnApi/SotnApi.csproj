@@ -12,10 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
     <Reference Include="BizHawk.Emulation.Common">
       <HintPath>..\BizHawk\dll\BizHawk.Emulation.Common.dll</HintPath>

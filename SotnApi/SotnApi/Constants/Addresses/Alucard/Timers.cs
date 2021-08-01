@@ -5,7 +5,8 @@
         public static long Stun = 0x072EFD;
         public static long Poison = 0x072F01;
         public static long Curse = 0x072F03;
-        public static long VisualEffect = 0x072F05;
+        public static long VisualEffectTimer = 0x072F05;
+        public static long VisualEffectPalette = 0x072F60;
         public static long Shine = 0x072F09;
         public static long DarkMetamorphasis = 0x072F17;
         public static long Invincibility = 0x072F1B;

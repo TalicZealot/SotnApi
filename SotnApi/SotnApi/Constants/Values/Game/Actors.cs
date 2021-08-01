@@ -11,10 +11,11 @@
         public static int XposOffset = 0x02;
         public static int YposOffset = 0x06;
         public static int SpeedFractOffset = 0x08;
-        public static int SpeedWholeOffset = 0x08;
+        public static int SpeedWholeOffset = 0x09;
         public static int FacingOffset = 0x14;
         public static int PaletteOffset = 0x16;
-        public static int ColorMode = 0x18;
+        public static int ColorModeOffset = 0x18;
+        public static int SpriteOffset = 0x28;
         public static int ItemIndexOffset = 0x30;
         public static int EnemyNameIndex = 0x3A;
         public static int HitboxAutoToggleOffset = 0x3C;

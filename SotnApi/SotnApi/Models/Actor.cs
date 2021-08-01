@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace SotnApi.Models
 {
     /// <summary>
-    /// A live entity object rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
+    /// An entity object that can be rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
     /// </summary>
     public class Actor
     {
@@ -142,11 +142,26 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.ColorMode];
+                return Value[Actors.ColorModeOffset];
             }
             set
             {
-                Value[Actors.ColorMode] = (byte)value;
+                Value[Actors.ColorModeOffset] = (byte)value;
+            }
+        }
+        public ushort Sprite
+        {
+            get
+            {
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.SpriteOffset);
+            }
+            set
+            {
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < 2; i++)
+                {
+                    Value[Actors.SpriteOffset + i] = valueBytes[i];
+                }
             }
         }
 
