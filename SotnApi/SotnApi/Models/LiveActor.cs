@@ -69,6 +69,18 @@ namespace SotnApi.Models
             }
         }
 
+        public uint Def
+        {
+            get
+            {
+                return memAPI.ReadByte(Address + Actors.DefOffset);
+            }
+            set
+            {
+                memAPI.WriteByte(Address + Actors.DefOffset, value);
+            }
+        }
+
         public uint Damage
         {
             get

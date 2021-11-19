@@ -14,6 +14,7 @@
         public static long Con = 0x097BBC;
         public static long Int = 0x097BC0;
         public static long Lck = 0x097BC4;
+        public static long Def = 0x097C24;
         public static long StrBonus = 0x097BC8;
         public static long ConBonus = 0x097BCC;
         public static long IntBonus = 0x097BD0;
@@ -22,6 +23,8 @@
         public static long Rooms = 0x03C760;
         public static long WarpsFirstCastle = 0x03BEBC;
         public static long WarpsSecondCastle = 0x03BEBD;
+        public static long ScreenX = 0x072F9C;
+        public static long ScreenY = 0x072F9E;
         public static long MapX = 0x0730B0;
         public static long MapY = 0x0730B4;
         public static long MapOffsetX = 0x0973F1;

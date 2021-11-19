@@ -14,6 +14,7 @@ namespace SotnApi.Interfaces
         uint Con { get; set; }
         uint Int { get; set; }
         uint Lck { get; set; }
+        uint Def { get; }
         uint Gold { get; set; }
         uint Level { get; set; }
         uint Experiecne { get; set; }
@@ -91,6 +92,10 @@ namespace SotnApi.Interfaces
         Subweapon Subweapon { get; set; }
         uint State { get; set; }
         uint Action { get; set; }
+        /// <summary>Horizontal coordinate of Alucard on the screen.</summary>
+        uint ScreenX { get; }
+        /// <summary>Vertical coordinate of Alucard on the screen.</summary>
+        uint ScreenY { get; }
         /// <summary>Horizontal position of the blinking indicator on the map.</summary>
         uint MapX { get; }
         /// <summary>Vertical position of the blinking indicator on the map.</summary>

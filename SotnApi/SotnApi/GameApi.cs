@@ -4,6 +4,7 @@ using SotnApi.Constants.Values.Game;
 using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace SotnApi
@@ -152,6 +153,17 @@ namespace SotnApi
             {
                 memAPI.WriteS32(boss.Value, 0);
             }
+        }
+
+        public void RespawnItems()
+        {
+            List<byte> bytes = new();
+            for (int i = 0; i < Various.MapItemsCollectedSize; i++)
+            {
+                bytes.Add(0x00);
+            }
+
+            memAPI.WriteByteRange(Game.MapItemsCollectedStart, bytes);
         }
 
         public bool InAlucardMode()

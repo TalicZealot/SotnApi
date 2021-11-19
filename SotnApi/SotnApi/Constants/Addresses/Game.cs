@@ -57,5 +57,7 @@ namespace SotnApi.Constants.Addresses
         public static long MapStart = 0x06BBDC;
         public static long MapEnd = 0x06C30B;
         public static long CanSave = 0x03C708;
+
+        public static long MapItemsCollectedStart = 0x03BEE0;
     }
 }

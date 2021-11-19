@@ -118,5 +118,9 @@ namespace SotnApi.Interfaces
         /// Enables all the bosses in the game, even if they have been defeated.
         /// </summary>
         void RespawnBosses();
+        /// <summary>
+        /// Respawns items on the map that have been previously collected.
+        /// </summary>
+        void RespawnItems();
     }
 }

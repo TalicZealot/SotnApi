@@ -86,6 +86,22 @@ namespace SotnApi.Models
             }
         }
 
+        public ushort Def
+        {
+            get
+            {
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.DefOffset);
+            }
+            set
+            {
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < 2; i++)
+                {
+                    Value[Actors.DefOffset + i] = valueBytes[i];
+                }
+            }
+        }
+
         public ushort Damage
         {
             get
@@ -149,6 +165,7 @@ namespace SotnApi.Models
                 Value[Actors.ColorModeOffset] = (byte)value;
             }
         }
+        //AI id
         public ushort Sprite
         {
             get

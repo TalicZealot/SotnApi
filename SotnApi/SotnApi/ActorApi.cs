@@ -26,18 +26,14 @@ namespace SotnApi
             long start = Game.ActorsStart;
             for (int i = 0; i < Actors.Count; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
-                long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
-                long hp = memAPI.ReadU16(start + Actors.HpOffset);
-                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
-                long sprite = memAPI.ReadU16(start + Actors.SpriteOffset);
+                LiveActor actor = GetLiveActor(start);
                 bool notBanned = true;
 
                 if (bannedHpValues is not null)
                 {
                     foreach (int bannedHp in bannedHpValues)
                     {
-                        if (hp == bannedHp)
+                        if (actor.Hp == bannedHp)
                         {
                             notBanned = false;
                             break;
@@ -45,7 +41,7 @@ namespace SotnApi
                     }
                 }
 
-                if (hitboxWidth > 1 && hitboxHeight > 1 && hp >= minHp && hp <= maxHp && damage > 0 && notBanned)
+                if (actor.HitboxHeight > 1 && actor.HitboxWidth > 1 && actor.Hp >= minHp && actor.Hp <= maxHp && actor.Damage > 0 && notBanned)
                 {
                     return start;
                 }
@@ -63,23 +59,20 @@ namespace SotnApi
             long start = Game.ActorsStart;
             for (int i = 0; i < Actors.Count; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
-                long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
-                long hp = memAPI.ReadU16(start + Actors.HpOffset);
-                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
-                long sprite = memAPI.ReadU16(start + Actors.SpriteOffset);
+                LiveActor actor = GetLiveActor(start);
                 bool notBanned = true;
 
                 foreach (var bannedActor in bannedActors)
                 {
-                    if (hp <= bannedActor.Hp && sprite == bannedActor.Sprite && damage == bannedActor.Damage)
+                    if (((bannedActor.Damage > 0 && actor.Damage == bannedActor.Damage) || bannedActor.Damage == 0) &&
+                        actor.Sprite == bannedActor.Sprite)
                     {
                         notBanned = false;
                         break;
                     }
                 }
 
-                if (hitboxWidth > 1 && hitboxHeight > 1 && hp >= minHp && hp <= maxHp && damage > 0 && notBanned)
+                if (actor.HitboxWidth > 1 && actor.HitboxHeight > 1 && actor.Hp >= minHp && actor.Hp <= maxHp && actor.Damage > 0 && notBanned)
                 {
                     return start;
                 }
@@ -96,16 +89,16 @@ namespace SotnApi
             long start = Game.ActorsStart;
             for (int i = 0; i < Actors.Count; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
-                long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
-                long hp = memAPI.ReadU16(start + Actors.HpOffset);
-                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
-                long sprite = memAPI.ReadU16(start + Actors.SpriteOffset);
+                LiveActor currentActor = GetLiveActor(start);
                 bool match = false;
 
                 foreach (var actor in actors)
                 {
-                    if (hitboxWidth > 1 && hitboxHeight > 1 && hp == actor.Hp && damage == actor.Damage && sprite == actor.Sprite)
+                    if (((actor.HitboxWidth > 0 && currentActor.HitboxWidth == actor.HitboxWidth) || currentActor.HitboxWidth > 1) &&
+                        ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
+                        ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
+                        ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
+                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.Sprite == actor.Sprite)
                     {
                         match = true;
                         break;
@@ -147,6 +140,33 @@ namespace SotnApi
             return ActorAddresses;
         }
 
+        public List<long> GetAllActors(List<SearchableActor> actors)
+        {
+            List<long> ActorAddresses = new();
+            long start = Game.ActorsStart;
+            for (int i = 0; i < Actors.Count; i++)
+            {
+                LiveActor currentActor = GetLiveActor(start);
+
+                foreach (var actor in actors)
+                {
+                    if (((actor.HitboxWidth > 0 && currentActor.HitboxWidth == actor.HitboxWidth) || currentActor.HitboxWidth > 1) &&
+                        ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
+                        ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
+                        ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
+                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.Sprite == actor.Sprite)
+                    {
+                        ActorAddresses.Add(start);
+                        break;
+                    }
+                }
+
+                start += Actors.Offset;
+            }
+
+            return ActorAddresses;
+        }
+
         public List<byte> GetActor(long address)
         {
             return memAPI.ReadByteRange(address, Actors.Size);
@@ -168,13 +188,18 @@ namespace SotnApi
             long start = Game.ActorsStart;
             for (int i = 0; i < Actors.Count; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
-                long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
-                long hp = memAPI.ReadU16(start + Actors.HpOffset);
-                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
-                long sprite = memAPI.ReadU16(start + Actors.SpriteOffset);
+                LiveActor actor = GetLiveActor(start);
+                bool reserved = false;
 
-                if (hitboxWidth == 0 && hitboxHeight == 0 && hp == 0 && damage == 0 && sprite == 0)
+                foreach (var slot in Actors.ReservedSlots)
+                {
+                    if (start == slot)
+                    {
+                        reserved = true;
+                    }
+                }
+
+                if (actor.HitboxWidth == 0 && actor.HitboxHeight == 0 && actor.Hp == 0 && actor.Damage == 0 && actor.Sprite == 0 && !reserved)
                 {
                     return start;
                 }

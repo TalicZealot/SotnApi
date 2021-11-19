@@ -12,5 +12,7 @@
         public static long Invincibility = 0x072F1B;
         public static long AttackPotion = 0x13982D;
         public static long DefencePotion = 0x139829;
+        public static long KnockbackInvincibility = 0x13B5E8;
+        public static long PotionInvincibility = 0x072F1C;
     }
 }

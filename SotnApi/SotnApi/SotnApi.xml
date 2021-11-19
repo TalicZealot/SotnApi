@@ -58,6 +58,14 @@
             A list of addresses where the enemy entities start.
             </returns>
         </member>
+        <member name="M:SotnApi.Interfaces.IActorApi.GetAllActors(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+            <summary>
+            Scans memory for all active actors, that match the example actors.
+            </summary>
+            <returns>
+            A list of addresses where the enemy entities start.
+            </returns>
+        </member>
         <member name="M:SotnApi.Interfaces.IActorApi.GetActor(System.Int64)">
             <returns>
             Byte range of the enemy entity.
@@ -138,6 +146,12 @@
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.Subweapon">
             <summary> Index of the held subweapon.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.ScreenX">
+            <summary>Horizontal coordinate of Alucard on the screen.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.ScreenY">
+            <summary>Vertical coordinate of Alucard on the screen.</summary>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.MapX">
             <summary>Horizontal position of the blinking indicator on the map.</summary>
@@ -287,6 +301,11 @@
         <member name="M:SotnApi.Interfaces.IGameApi.RespawnBosses">
             <summary>
             Enables all the bosses in the game, even if they have been defeated.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.RespawnItems">
+            <summary>
+            Respawns items on the map that have been previously collected.
             </summary>
         </member>
         <member name="T:SotnApi.Interfaces.IRenderingApi">

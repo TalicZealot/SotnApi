@@ -138,6 +138,14 @@ namespace SotnApi
             }
         }
 
+        public uint Def
+        {
+            get
+            {
+                return memAPI.ReadU32(Stats.Def);
+            }
+        }
+
         public uint Gold
         {
             get
@@ -965,6 +973,22 @@ namespace SotnApi
             set
             {
                 memAPI.WriteByte(Stats.Action, value);
+            }
+        }
+
+        public uint ScreenX
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.ScreenX);
+            }
+        }
+
+        public uint ScreenY
+        {
+            get
+            {
+                return memAPI.ReadByte(Stats.ScreenY);
             }
         }
 

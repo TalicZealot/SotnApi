@@ -42,6 +42,13 @@ namespace SotnApi.Interfaces
         /// A list of addresses where the enemy entities start.
         /// </returns>
         List<long> GetAllActors();
+        /// <summary>
+        /// Scans memory for all active actors, that match the example actors.
+        /// </summary>
+        /// <returns>
+        /// A list of addresses where the enemy entities start.
+        /// </returns>
+        public List<long> GetAllActors(List<SearchableActor> actors);
         /// <returns>
         /// Byte range of the enemy entity.
         /// </returns>
