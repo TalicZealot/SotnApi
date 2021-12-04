@@ -33,6 +33,10 @@ namespace SotnApi.Interfaces
         /// Room for the current room or subroom.
         /// </returns>
         uint Room { get; }
+        /// <summary>
+        /// Gets or sets underwater physics state.
+        /// </summary>
+        bool UnderwaterPhysicsEnabled { get; set; }
         /// <returns>
         /// True if the player is in the second castle. 
         /// </returns>
@@ -53,6 +57,10 @@ namespace SotnApi.Interfaces
         /// Zone Byte2.
         /// </returns>
         uint Zone2 { get; }
+        /// <returns>
+        /// True of the map is open.
+        /// </returns>
+        bool MapOpen { get; }
         /// <returns>
         /// True of the game is in the process of loading a new area.
         /// </returns>

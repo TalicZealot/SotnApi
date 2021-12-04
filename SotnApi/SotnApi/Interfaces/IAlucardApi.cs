@@ -90,6 +90,10 @@ namespace SotnApi.Interfaces
         uint Accessory2 { get; set; }
         /// <summary> Index of the held subweapon.</summary>
         Subweapon Subweapon { get; set; }
+        /// <summary> Real-time horizontal speed in pixels per frame. </summary>
+        public int CurrentHorizontalSpeedWhole { get; set; }
+        /// <summary> Real-time horizontal fractional speed.</summary>
+        public int CurrentHorizontalSpeedFractional { get; set; }
         uint State { get; set; }
         uint Action { get; set; }
         /// <summary>Horizontal coordinate of Alucard on the screen.</summary>
@@ -108,18 +112,38 @@ namespace SotnApi.Interfaces
         uint InvincibilityTimer { get; set; }
         uint ShineTimer { get; set; }
         uint CurseTimer { get; set; }
-
+        uint PoisonTimer { get; set; }
+        /// <summary>
+        /// Reduces the count of all owned items to 0.
+        /// </summary>
         void ClearInventory();
+        /// <returns>The item at the cursor position in the equip submenu.</returns>
         string GetSelectedItemName();
+        /// <returns>The relic at the cursor position in the relics submenu.</returns>
         Relic GetSelectedRelic();
+        /// <summary>
+        /// Increases the count of held items of the type by one.
+        /// </summary>
+        /// <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         void GrantItemByName(string name);
+        /// <summary>
+        /// Reduces the count of held items of the type by one.
+        /// </summary>
+        /// <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         void TakeOneItemByName(string name);
+        /// <summary>
+        /// Grants relic and turns it on it if is nto a familiar card.
+        /// </summary>
         void GrantRelic(Relic name);
+        /// <summary>
+        /// Takes relic away.
+        /// </summary>
         void TakeRelic(Relic name);
         void GrantFirstCastleWarp(Warp warp);
         void GrantSecondCastleWarp(Warp warp);
         bool HasItemInInventory(string name);
         bool HasRelic(Relic name);
+        bool IsInvincible();
         void Heal(uint ammount);
         void ActivateStopwatch();
         void ActivatePotion(Potion potion);

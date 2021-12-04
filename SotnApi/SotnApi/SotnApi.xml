@@ -147,6 +147,12 @@
         <member name="P:SotnApi.Interfaces.IAlucardApi.Subweapon">
             <summary> Index of the held subweapon.</summary>
         </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.CurrentHorizontalSpeedWhole">
+            <summary> Real-time horizontal speed in pixels per frame. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.CurrentHorizontalSpeedFractional">
+            <summary> Real-time horizontal fractional speed.</summary>
+        </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.ScreenX">
             <summary>Horizontal coordinate of Alucard on the screen.</summary>
         </member>
@@ -161,6 +167,39 @@
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.FacingLeft">
             <returns> True if Alucard is facing left.</returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.ClearInventory">
+            <summary>
+            Reduces the count of all owned items to 0.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GetSelectedItemName">
+            <returns>The item at the cursor position in the equip submenu.</returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GetSelectedRelic">
+            <returns>The relic at the cursor position in the relics submenu.</returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GrantItemByName(System.String)">
+            <summary>
+            Increases the count of held items of the type by one.
+            </summary>
+            <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.TakeOneItemByName(System.String)">
+            <summary>
+            Reduces the count of held items of the type by one.
+            </summary>
+            <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GrantRelic(SotnApi.Constants.Values.Alucard.Enums.Relic)">
+            <summary>
+            Grants relic and turns it on it if is nto a familiar card.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.TakeRelic(SotnApi.Constants.Values.Alucard.Enums.Relic)">
+            <summary>
+            Takes relic away.
+            </summary>
         </member>
         <member name="T:SotnApi.Interfaces.IGameApi">
             <returns>
@@ -198,6 +237,11 @@
             Room for the current room or subroom.
             </returns>
         </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.UnderwaterPhysicsEnabled">
+            <summary>
+            Gets or sets underwater physics state.
+            </summary>
+        </member>
         <member name="P:SotnApi.Interfaces.IGameApi.SecondCastle">
             <returns>
             True if the player is in the second castle. 
@@ -221,6 +265,11 @@
         <member name="P:SotnApi.Interfaces.IGameApi.Zone2">
             <returns>
             Zone Byte2.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.MapOpen">
+            <returns>
+            True of the map is open.
             </returns>
         </member>
         <member name="P:SotnApi.Interfaces.IGameApi.IsLoading">

@@ -23,12 +23,14 @@
         public static long Rooms = 0x03C760;
         public static long WarpsFirstCastle = 0x03BEBC;
         public static long WarpsSecondCastle = 0x03BEBD;
+        public static long MapOffsetX = 0x0973F1;
+        public static long MapOffsetY = 0x0973F5;
         public static long ScreenX = 0x072F9C;
         public static long ScreenY = 0x072F9E;
         public static long MapX = 0x0730B0;
         public static long MapY = 0x0730B4;
-        public static long MapOffsetX = 0x0973F1;
-        public static long MapOffsetY = 0x0973F5;
+        public static long CurrentHorizontalSpeedWhole = 0x0733E1;
+        public static long CurrentHorizontalSpeedFractional = 0x0733E1;
         public static long Facing = 0x0733EC;
         public static long State = 0x073404;
         public static long Action = 0x073406;

@@ -952,6 +952,29 @@ namespace SotnApi
             }
         }
 
+        public int CurrentHorizontalSpeedWhole
+        {
+            get
+            {
+                return (int)memAPI.ReadByte(Stats.CurrentHorizontalSpeedWhole);
+            }
+            set
+            {
+                memAPI.WriteByte(Stats.CurrentHorizontalSpeedWhole, (uint)value);
+            }
+        }
+        public int CurrentHorizontalSpeedFractional
+        {
+            get
+            {
+                return (int)memAPI.ReadByte(Stats.CurrentHorizontalSpeedFractional);
+            }
+            set
+            {
+                memAPI.WriteByte(Stats.CurrentHorizontalSpeedFractional, (uint)value);
+            }
+        }
+
         public uint State
         {
             get
@@ -1091,11 +1114,23 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Timers.Curse);
+                return memAPI.ReadU16(Timers.Curse);
             }
             set
             {
-                memAPI.WriteByte(Timers.Curse, value);
+                memAPI.WriteU16(Timers.Curse, value);
+            }
+        }
+
+        public uint PoisonTimer
+        {
+            get
+            {
+                return memAPI.ReadU16(Timers.Poison);
+            }
+            set
+            {
+                memAPI.WriteU16(Timers.Poison, value);
             }
         }
 
@@ -1208,6 +1243,11 @@ namespace SotnApi
                 return;
             }
             memAPI.WriteByte(Inventory.HandQuantityStart + item, itemCount - 1);
+        }
+
+        public bool IsInvincible()
+        {
+            return memAPI.ReadByte(Timers.Invincibility) > 0 || memAPI.ReadByte(Timers.KnockbackInvincibility) > 0 || memAPI.ReadByte(Timers.PotionInvincibility) > 0;
         }
 
         public void Heal(uint amount)

@@ -108,6 +108,26 @@ namespace SotnApi
             }
         }
 
+        public bool UnderwaterPhysicsEnabled
+        {
+            get
+            {
+                return memAPI.ReadU16(Game.UnderwaterPhysics) > 0;
+            }
+            set
+            {
+                memAPI.WriteU16(Game.UnderwaterPhysics, value ? (uint)0x0090 : (uint)0x0000);
+            }
+        }
+
+        public bool MapOpen
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.MapOpen) > 0;
+            }
+        }
+
         public bool IsLoading
         {
             get

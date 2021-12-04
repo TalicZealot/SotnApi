@@ -1,7 +1,6 @@
 ﻿using BizHawk.Client.Common;
 using SotnApi.Constants.Values.Game;
 using System;
-using System.Collections.Generic;
 
 namespace SotnApi.Models
 {
