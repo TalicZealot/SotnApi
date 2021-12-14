@@ -144,6 +144,8 @@ namespace SotnApi.Interfaces
         bool HasItemInInventory(string name);
         bool HasRelic(Relic name);
         bool IsInvincible();
+        bool HasControl();
+        bool HasHitbox();
         void Heal(uint ammount);
         void ActivateStopwatch();
         void ActivatePotion(Potion potion);

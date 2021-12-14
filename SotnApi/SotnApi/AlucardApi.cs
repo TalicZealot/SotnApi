@@ -2,6 +2,7 @@
 using SotnApi.Constants.Addresses.Alucard;
 using SotnApi.Constants.Values.Alucard;
 using SotnApi.Constants.Values.Alucard.Enums;
+using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
 using System;
 using Effects = SotnApi.Constants.Addresses.Alucard.Effects;
@@ -1248,6 +1249,17 @@ namespace SotnApi
         public bool IsInvincible()
         {
             return memAPI.ReadByte(Timers.Invincibility) > 0 || memAPI.ReadByte(Timers.KnockbackInvincibility) > 0 || memAPI.ReadByte(Timers.PotionInvincibility) > 0;
+        }
+
+        public bool HasControl()
+        {
+
+            return memAPI.ReadByte(Stats.HasControl) == 0;
+        }
+
+        public bool HasHitbox()
+        {
+            return memAPI.ReadByte(Actor.Address + Actors.HitboxWidthOffset) > 0 && memAPI.ReadByte(Actor.Address + Actors.HitboxHeightOffset) > 0;
         }
 
         public void Heal(uint amount)
