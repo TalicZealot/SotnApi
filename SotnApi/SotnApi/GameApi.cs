@@ -144,6 +144,14 @@ namespace SotnApi
             }
         }
 
+        public uint MusicTrack
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.Music);
+            }
+        }
+
         public bool EquipMenuOpen()
         {
             return memAPI.ReadByte(Game.EquipMenuOpen) > 0 && CurrentMainMenuCategory == MainMenuCategory.Equip;

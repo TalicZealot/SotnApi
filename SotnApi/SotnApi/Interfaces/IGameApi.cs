@@ -70,6 +70,11 @@ namespace SotnApi.Interfaces
         /// </returns>
         bool InTransition { get; }
 
+        /// <returns>
+        /// Index of the current music track. Would need to be frozen to get set.
+        /// </returns>
+        uint MusicTrack { get; }
+
         /// <summary>
         /// Checks if the item equip menu is currently open.
         /// </summary>

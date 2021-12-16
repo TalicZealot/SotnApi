@@ -69,5 +69,6 @@ namespace SotnApi.Constants.Values.Game
             "Shaft",
             "Dracula"
         };
+
     }
 }

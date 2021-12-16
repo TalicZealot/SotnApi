@@ -27,6 +27,48 @@ namespace SotnApi.Constants.Addresses
             { "Succubus", 0x03CA4C },
             { "Creature", 0x03CA68 }
         };
+        public static Dictionary<string, uint> MusicTracks = new Dictionary<string, uint>
+        {
+            { "Lost Painting", 0x00 },
+            { "Cursed Sanctuary", 0x03 },
+            { "Requiem for the Gods", 0x05 },
+            { "Rainbow Cemetary", 0x07 },
+            { "Wood Carving Partita", 0x09 },
+            { "Crystal Teardrops", 0x0B },
+            { "Marble Galery", 0x0D },
+            { "Dracula Castle", 0x0F },
+            { "The Tragic Prince", 0x11 },
+            { "Tower of Evil Mist", 0x13 },
+            { "Doorway of Spirits", 0x15 },
+            { "Dance of Pearls", 0x17 },
+            { "Abandoned Pit", 0x19 },
+            { "Heavenly Doorway", 0x1B },
+            { "Festival of Servants", 0x1D },
+            { "Dance of Illusions", 0x1F },
+            { "Prologue", 0x21 },
+            { "Wandering Ghosts", 0x23 },
+            { "Doorway to the Abyss", 0x25 },
+            { "Metamorphosis", 0x27 },
+            { "Metamorphosis 2", 0x29 },
+            { "Ambient Wind", 0x2A },
+            { "Dance of Gold", 0x2E },
+            { "Enchanted Banquet", 0x30 },
+            { "Prayer", 0x32 },
+            { "Death's Ballad", 0x34 },
+            { "Blood Relations", 0x36 },
+            { "Finale Toccata", 0x38 },
+            { "Black Banquet", 0x3A },
+            { "I am the Wind", 0x3C },
+            { "Silence", 0x3D },
+            { "Resting Place", 0x3E },
+            { "Nocturne", 0x3F },
+            { "Moonlight Nocturne", 0x40 },
+            { "Die monster", 0x58 },
+            { "What is a man", 0x5D },
+            { "Muted", 0x8C },
+            { "Wait I beg of you", 0x92 },
+            { "Thank you", 0xAD }
+        };
 
         public static long Status = 0x03C734;
         public static long Transition = 0x03C9A4;
@@ -59,5 +101,6 @@ namespace SotnApi.Constants.Addresses
         public static long CanSave = 0x03C708;
         public static long MapItemsCollectedStart = 0x03BEE0;
         public static long UnderwaterPhysics = 0x097448;
+        public static long Music = 0x138458;
     }
 }
