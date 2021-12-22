@@ -10,5 +10,10 @@
         public static long WingsmashSpriteGlow = 0x116BA4;
         public static long WingsmashEffect = 0x116BA6;
         public static long WingsmashDuration = 0x116BDC;
+        public static long BombActivateor = 0x074090;
+        public static long BombDamageInterval = 0x07409D;
+        public static long BombDamage = 0x074094;
+        public static long BombDamagesNeutral = 0x0740BE;
+        public static long BombEffect = 0x07407A;
     }
 }
