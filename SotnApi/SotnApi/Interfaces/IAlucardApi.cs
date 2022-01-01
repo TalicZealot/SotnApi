@@ -88,6 +88,17 @@ namespace SotnApi.Interfaces
         uint Accessory1 { get; set; }
         /// <summary> Index of the currently equipped item in the second Accessory slot.</summary>
         uint Accessory2 { get; set; }
+        /// <summary>Slot of the cursor in the hand equip menu.</summary>
+        uint HandCursor { get; set; }
+        /// <summary>Slot of the cursor in the helm equip menu.</summary>
+        uint HelmCursor { get; set; }
+        /// <summary>Slot of the cursor in the armor equip menu.</summary>
+        uint ArmorCursor { get; set; }
+        /// <summary>Slot of the cursor in the cloak equip menu.</summary>
+        uint CloakCursor { get; set; }
+        /// <summary>Slot of the cursor in the accessory equip menu.</summary>
+        uint AccessoryCursor { get; set; }
+
         /// <summary> Index of the held subweapon.</summary>
         Subweapon Subweapon { get; set; }
         /// <summary> Real-time horizontal speed in pixels per frame. </summary>

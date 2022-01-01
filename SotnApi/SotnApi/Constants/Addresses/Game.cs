@@ -92,7 +92,8 @@ namespace SotnApi.Constants.Addresses
         public static long LibraryCard = 0x1FFC99;
         public static long TeleportToLevelEntrance = 0x03C9A4;
         public static long State = 0x073404;
-        public static long ActorsStart = 0x0762d8;
+        public static long FriendlyActorsStart = 0x073F98;
+        public static long EnemyActorsStart = 0x0762d8;
         public static long VramMapStart = 0x08AE80;
         public static long SeedStart = 0x1A78B4;
         public static long PresetStart = 0x1A78D4;

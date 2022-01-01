@@ -4,7 +4,7 @@
         <name>SotnApi</name>
     </assembly>
     <members>
-        <member name="M:SotnApi.ActorApi.FindAvailableActorSlot">
+        <member name="M:SotnApi.ActorApi.FindAvailableActorSlot(System.Boolean)">
             <summary>
             Scans memory for an empty actor slot.
             </summary>
@@ -76,7 +76,7 @@
             A LiveActor instance that can be used to edit the in-game entity.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.SpawnActor(SotnApi.Models.Actor)">
+        <member name="M:SotnApi.Interfaces.IActorApi.SpawnActor(SotnApi.Models.Actor,System.Boolean)">
             <summary>
             Copies the actor data to memory. Spawning it in-game.
             </summary>
@@ -143,6 +143,21 @@
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.Accessory2">
             <summary> Index of the currently equipped item in the second Accessory slot.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.HandCursor">
+            <summary>Slot of the cursor in the hand equip menu.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.HelmCursor">
+            <summary>Slot of the cursor in the helm equip menu.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.ArmorCursor">
+            <summary>Slot of the cursor in the armor equip menu.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.CloakCursor">
+            <summary>Slot of the cursor in the cloak equip menu.</summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.AccessoryCursor">
+            <summary>Slot of the cursor in the accessory equip menu.</summary>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.Subweapon">
             <summary> Index of the held subweapon.</summary>

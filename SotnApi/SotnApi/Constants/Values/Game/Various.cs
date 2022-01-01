@@ -27,7 +27,7 @@ namespace SotnApi.Constants.Values.Game
             {0x4f, '^'},
             {0x51, '_'},
             {0x60, '~'},
-            {0x66, '\\'},
+            {0x66, '\''},
             {0x69, '('},
             {0x6a, ')'},
             {0x6d, '['},

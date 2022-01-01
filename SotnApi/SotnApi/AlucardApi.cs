@@ -30,7 +30,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.CurrentHP, value);
             }
         }
-
         public uint MaxtHp
         {
             get
@@ -42,7 +41,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.MaxHP, value);
             }
         }
-
         public uint CurrentMp
         {
             get
@@ -54,7 +52,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.CurrentMana, value);
             }
         }
-
         public uint MaxtMp
         {
             get
@@ -66,7 +63,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.MaxMana, value);
             }
         }
-
         public uint CurrentHearts
         {
             get
@@ -78,7 +74,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.CurrentHearts, value);
             }
         }
-
         public uint MaxtHearts
         {
             get
@@ -90,7 +85,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.MaxHearts, value);
             }
         }
-
         public uint Str
         {
             get
@@ -102,7 +96,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Str, value);
             }
         }
-
         public uint Con
         {
             get
@@ -114,7 +107,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Con, value);
             }
         }
-
         public uint Int
         {
             get
@@ -126,7 +118,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Int, value);
             }
         }
-
         public uint Lck
         {
             get
@@ -138,7 +129,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Lck, value);
             }
         }
-
         public uint Def
         {
             get
@@ -146,7 +136,6 @@ namespace SotnApi
                 return memAPI.ReadU32(Stats.Def);
             }
         }
-
         public uint Gold
         {
             get
@@ -158,7 +147,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Gold, value);
             }
         }
-
         public uint Level
         {
             get
@@ -170,7 +158,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Level, value);
             }
         }
-
         public uint Experiecne
         {
             get
@@ -182,7 +169,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Experience, value);
             }
         }
-
         public uint Rooms
         {
             get
@@ -194,7 +180,6 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Rooms, value);
             }
         }
-
         public uint WarpsFirstCastle
         {
             get
@@ -206,7 +191,6 @@ namespace SotnApi
                 memAPI.WriteByte(Stats.WarpsFirstCastle, value);
             }
         }
-
         public uint WarpsSecondCastle
         {
             get
@@ -218,7 +202,6 @@ namespace SotnApi
                 memAPI.WriteByte(Stats.WarpsSecondCastle, value);
             }
         }
-
         public bool WarpEntrance
         {
             get
@@ -247,7 +230,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpMines
         {
             get
@@ -276,7 +258,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpOuterWall
         {
             get
@@ -305,7 +286,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpKeep
         {
             get
@@ -334,7 +314,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpOlrox
         {
             get
@@ -363,7 +342,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpInvertedEntrance
         {
             get
@@ -392,7 +370,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpInvertedMines
         {
             get
@@ -421,7 +398,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpInvertedOuterWall
         {
             get
@@ -450,7 +426,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpInvertedKeep
         {
             get
@@ -479,7 +454,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool WarpInvertedOlrox
         {
             get
@@ -508,7 +482,6 @@ namespace SotnApi
                 }
             }
         }
-
         public bool OuterWallElevator
         {
             get
@@ -520,7 +493,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.OuterWallElevator, value ? 1u : 0u);
             }
         }
-
         public bool EntranceToMarble
         {
             get
@@ -532,7 +504,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.EntranceToMarble, value ? 1u : 0u);
             }
         }
-
         public bool AlchemyElevator
         {
             get
@@ -544,7 +515,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.AlchemyElevator, value ? 1u : 0u);
             }
         }
-
         public bool ChapelStatue
         {
             get
@@ -556,7 +526,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.ChapelStatue, value ? 1u : 0u);
             }
         }
-
         public bool ColosseumElevator
         {
             get
@@ -568,7 +537,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.ColosseumElevator, value ? 1u : 0u);
             }
         }
-
         public bool ColosseumToChapel
         {
             get
@@ -580,7 +548,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.ColosseumToChapel, value ? 1u : 0u);
             }
         }
-
         public bool MarbleBlueDoor
         {
             get
@@ -592,7 +559,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.MarbleBlueDoor, value ? 1u : 0u);
             }
         }
-
         public bool CavernsSwitchAndBridge
         {
             get
@@ -604,7 +570,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.CavernsSwitchAndBridge, value ? 3u : 0u);
             }
         }
-
         public bool EntranceToCaverns
         {
             get
@@ -616,7 +581,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.EntranceToCaverns, value ? 1u : 0u);
             }
         }
-
         public bool EntranceWarp
         {
             get
@@ -628,7 +592,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.EntranceWarp, value ? 1u : 0u);
             }
         }
-
         public bool FirstClockRoomDoor
         {
             get
@@ -640,7 +603,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.FirstClockRoomDoor, value ? 1u : 0u);
             }
         }
-
         public bool SecondClockRoomDoor
         {
             get
@@ -652,7 +614,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.SecondClockRoomDoor, value ? 1u : 0u);
             }
         }
-
         public bool FirstDemonButton
         {
             get
@@ -664,7 +625,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.FirstDemonButton, value ? 1u : 0u);
             }
         }
-
         public bool SecondDemonButton
         {
             get
@@ -676,7 +636,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.SecondDemonButton, value ? 1u : 0u);
             }
         }
-
         public bool KeepStairs
         {
             get
@@ -688,7 +647,6 @@ namespace SotnApi
                 memAPI.WriteByte(Shortcuts.KeepStairs, value ? 1u : 0u);
             }
         }
-
         public uint WingsmashHorizontalSpeed
         {
             get
@@ -700,7 +658,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WingsmashHorizontal, value);
             }
         }
-
         public uint WalkingWholeSpeed
         {
             get
@@ -712,7 +669,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WalkingWhole, value);
             }
         }
-
         public uint WalkingFractSpeed
         {
             get
@@ -724,7 +680,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WalkingFract, value);
             }
         }
-
         public uint JumpingHorizontalWholeSpeed
         {
             get
@@ -736,7 +691,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.JumpingHorizontalWhole, value);
             }
         }
-
         public uint JumpingHorizontalFractSpeed
         {
             get
@@ -748,7 +702,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.JumpingHorizontalFract, value);
             }
         }
-
         public uint JumpingAttackLeftHorizontalWholeSpeed
         {
             get
@@ -760,7 +713,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.JumpingAttackLeftHorizontalWhole, value);
             }
         }
-
         public uint JumpingAttackLeftHorizontalFractSpeed
         {
             get
@@ -772,7 +724,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.JumpingAttackLeftHorizontalFract, value);
             }
         }
-
         public uint JumpingAttackRightHorizontalWholeSpeed
         {
             get
@@ -784,7 +735,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.JumpingAttackRightHorizontalWhole, value);
             }
         }
-
         public uint JumpingAttackRightHorizontalFractSpeed
         {
             get
@@ -796,7 +746,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.JumpingAttackRightHorizontalFract, value);
             }
         }
-
         public uint FallingHorizontalWholeSpeed
         {
             get
@@ -808,7 +757,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.FallingHorizontalWhole, value);
             }
         }
-
         public uint FallingHorizontalFractSpeed
         {
             get
@@ -820,7 +768,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.FallingHorizontalFract, value);
             }
         }
-
         public sbyte WolfDashTopRightSpeed
         {
             get
@@ -832,7 +779,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WolfDashTopRight, (uint)value);
             }
         }
-
         public sbyte WolfDashTopLeftSpeed
         {
             get
@@ -844,7 +790,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WolfDashTopLeft, (uint)value);
             }
         }
-
         public uint BackdashDecel
         {
             get
@@ -856,7 +801,6 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.BackdashDecel, value);
             }
         }
-
         public uint RightHand
         {
             get
@@ -868,7 +812,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.RightHandSlot, value);
             }
         }
-
         public uint LeftHand
         {
             get
@@ -880,7 +823,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.LeftHandSlot, value);
             }
         }
-
         public uint Armor
         {
             get
@@ -892,7 +834,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.ArmorSlot, value);
             }
         }
-
         public uint Helm
         {
             get
@@ -904,7 +845,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.HelmSlot, value);
             }
         }
-
         public uint Cloak
         {
             get
@@ -916,7 +856,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.CloakSlot, value);
             }
         }
-
         public uint Accessory1
         {
             get
@@ -928,7 +867,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.AccessorySlot1, value);
             }
         }
-
         public uint Accessory2
         {
             get
@@ -940,7 +878,61 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.AccessorySlot2, value);
             }
         }
-
+        public uint HandCursor
+        {
+            get
+            {
+                return memAPI.ReadByte(Inventory.HandCursor);
+            }
+            set
+            {
+                memAPI.WriteByte(Inventory.HandCursor, value);
+            }
+        }
+        public uint HelmCursor
+        {
+            get
+            {
+                return memAPI.ReadByte(Inventory.HelmCursor);
+            }
+            set
+            {
+                memAPI.WriteByte(Inventory.HelmCursor, value);
+            }
+        }
+        public uint ArmorCursor
+        {
+            get
+            {
+                return memAPI.ReadByte(Inventory.ArmorCursor);
+            }
+            set
+            {
+                memAPI.WriteByte(Inventory.ArmorCursor, value);
+            }
+        }
+        public uint CloakCursor
+        {
+            get
+            {
+                return memAPI.ReadByte(Inventory.CloakCursor);
+            }
+            set
+            {
+                memAPI.WriteByte(Inventory.CloakCursor, value);
+            }
+        }
+        public uint AccessoryCursor
+        {
+            get
+            {
+                return memAPI.ReadByte(Inventory.AccessoryCursor);
+            }
+            set
+            {
+                memAPI.WriteByte(Inventory.AccessoryCursor, value);
+            }
+        }
         public Subweapon Subweapon
         {
             get
@@ -952,7 +944,6 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.Subweapon, (uint)value);
             }
         }
-
         public int CurrentHorizontalSpeedWhole
         {
             get
@@ -975,7 +966,6 @@ namespace SotnApi
                 memAPI.WriteByte(Stats.CurrentHorizontalSpeedFractional, (uint)value);
             }
         }
-
         public uint State
         {
             get
@@ -987,7 +977,6 @@ namespace SotnApi
                 memAPI.WriteByte(Stats.State, value);
             }
         }
-
         public uint Action
         {
             get
@@ -999,7 +988,6 @@ namespace SotnApi
                 memAPI.WriteByte(Stats.Action, value);
             }
         }
-
         public uint ScreenX
         {
             get
@@ -1007,7 +995,6 @@ namespace SotnApi
                 return memAPI.ReadByte(Stats.ScreenX);
             }
         }
-
         public uint ScreenY
         {
             get
@@ -1015,7 +1002,6 @@ namespace SotnApi
                 return memAPI.ReadByte(Stats.ScreenY);
             }
         }
-
         public uint MapX
         {
             get
@@ -1023,7 +1009,6 @@ namespace SotnApi
                 return memAPI.ReadByte(Stats.MapX) + memAPI.ReadByte(Stats.MapOffsetX);
             }
         }
-
         public uint MapY
         {
             get
@@ -1031,7 +1016,6 @@ namespace SotnApi
                 return memAPI.ReadByte(Stats.MapY) + memAPI.ReadByte(Stats.MapOffsetY);
             }
         }
-
         public bool FacingLeft
         {
             get
@@ -1050,7 +1034,6 @@ namespace SotnApi
                 }
             }
         }
-
         public uint DarkMetamorphasisTimer
         {
             get
@@ -1062,7 +1045,6 @@ namespace SotnApi
                 memAPI.WriteByte(Timers.DarkMetamorphasis, value);
             }
         }
-
         public uint AttackPotionTimer
         {
             get
@@ -1074,7 +1056,6 @@ namespace SotnApi
                 memAPI.WriteByte(Timers.AttackPotion, value);
             }
         }
-
         public uint DefencePotionTimer
         {
             get
@@ -1086,7 +1067,6 @@ namespace SotnApi
                 memAPI.WriteByte(Timers.DefencePotion, value);
             }
         }
-
         public uint InvincibilityTimer
         {
             get
@@ -1098,7 +1078,6 @@ namespace SotnApi
                 memAPI.WriteByte(Timers.Invincibility, value);
             }
         }
-
         public uint ShineTimer
         {
             get
@@ -1110,7 +1089,6 @@ namespace SotnApi
                 memAPI.WriteByte(Timers.Shine, value);
             }
         }
-
         public uint CurseTimer
         {
             get
@@ -1122,7 +1100,6 @@ namespace SotnApi
                 memAPI.WriteU16(Timers.Curse, value);
             }
         }
-
         public uint PoisonTimer
         {
             get

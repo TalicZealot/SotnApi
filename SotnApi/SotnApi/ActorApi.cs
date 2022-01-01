@@ -23,8 +23,8 @@ namespace SotnApi
             if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
-            long start = Game.ActorsStart;
-            for (int i = 0; i < Actors.Count; i++)
+            long start = Game.EnemyActorsStart;
+            for (int i = 0; i < Actors.EnemiesCount; i++)
             {
                 LiveActor actor = GetLiveActor(start);
                 bool notBanned = true;
@@ -56,8 +56,8 @@ namespace SotnApi
             if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
-            long start = Game.ActorsStart;
-            for (int i = 0; i < Actors.Count; i++)
+            long start = Game.EnemyActorsStart;
+            for (int i = 0; i < Actors.EnemiesCount; i++)
             {
                 LiveActor actor = GetLiveActor(start);
                 bool notBanned = true;
@@ -86,8 +86,8 @@ namespace SotnApi
         {
             if (actors.Count < 1) { throw new ArgumentOutOfRangeException(nameof(actors), "actors count must be greater than 0"); }
 
-            long start = Game.ActorsStart;
-            for (int i = 0; i < Actors.Count; i++)
+            long start = Game.EnemyActorsStart;
+            for (int i = 0; i < Actors.EnemiesCount; i++)
             {
                 LiveActor currentActor = GetLiveActor(start);
                 bool match = false;
@@ -121,8 +121,8 @@ namespace SotnApi
         public List<long> GetAllActors()
         {
             List<long> ActorAddresses = new();
-            long start = Game.ActorsStart;
-            for (int i = 0; i < Actors.Count; i++)
+            long start = Game.EnemyActorsStart;
+            for (int i = 0; i < Actors.EnemiesCount; i++)
             {
                 long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
                 long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
@@ -143,8 +143,8 @@ namespace SotnApi
         public List<long> GetAllActors(List<SearchableActor> actors)
         {
             List<long> ActorAddresses = new();
-            long start = Game.ActorsStart;
-            for (int i = 0; i < Actors.Count; i++)
+            long start = Game.EnemyActorsStart;
+            for (int i = 0; i < Actors.EnemiesCount; i++)
             {
                 LiveActor currentActor = GetLiveActor(start);
 
@@ -183,10 +183,11 @@ namespace SotnApi
         /// <returns>
         /// The address where the slot starts. Or 0 if a free slot was not found.
         /// </returns>
-        private long FindAvailableActorSlot()
+        private long FindAvailableActorSlot(bool enemy = true)
         {
-            long start = Game.ActorsStart;
-            for (int i = 0; i < Actors.Count; i++)
+            long start = enemy ? Game.EnemyActorsStart : Game.FriendlyActorsStart;
+            int count = enemy ? Actors.EnemiesCount : Actors.FriendActorsCount;
+            for (int i = 0; i < count; i++)
             {
                 LiveActor actor = GetLiveActor(start);
                 bool reserved = false;
@@ -209,9 +210,9 @@ namespace SotnApi
             return 0;
         }
 
-        public void SpawnActor(Actor actor)
+        public void SpawnActor(Actor actor, bool enemy = true)
         {
-            long slot = FindAvailableActorSlot();
+            long slot = FindAvailableActorSlot(enemy);
 
             if (slot > 0)
             {

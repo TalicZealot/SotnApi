@@ -46,8 +46,8 @@ namespace ActorApiTests
             //Act
             classUnderTest.FindEnemy(1, 1);
             //Assert
-            mockedMemAPI.Received(2 * Actors.Count).ReadByte(Arg.Any<long>());
-            mockedMemAPI.Received(2 * Actors.Count).ReadU16(Arg.Any<long>());
+            mockedMemAPI.Received(2 * Actors.EnemiesCount).ReadByte(Arg.Any<long>());
+            mockedMemAPI.Received(2 * Actors.EnemiesCount).ReadU16(Arg.Any<long>());
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace ActorApiTests
             //Act
             long enemy = classUnderTest.FindEnemy(1, 1000);
             //Assert
-            Assert.Equal(Game.ActorsStart, enemy);
+            Assert.Equal(Game.EnemyActorsStart, enemy);
         }
     }
 }

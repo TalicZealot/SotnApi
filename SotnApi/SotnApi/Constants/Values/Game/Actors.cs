@@ -2,7 +2,8 @@
 {
     public static class Actors
     {
-        public static int Count = 131;
+        public static int EnemiesCount = 131;
+        public static int FriendActorsCount = 6;
         public static int Size = 146;
         public static int Poison = 0x81;
         public static int Curse = 1;
