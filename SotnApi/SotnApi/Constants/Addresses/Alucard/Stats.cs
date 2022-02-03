@@ -35,5 +35,6 @@
         public static long Facing = 0x0733EC;
         public static long State = 0x073404;
         public static long Action = 0x073406;
+        public static long ContactDamage = 0x073418;
     }
 }

@@ -108,6 +108,10 @@ namespace SotnApi.Interfaces
         /// </summary>
         bool InPrologue();
         /// <summary>
+        /// Checks if the player is in a warp room.
+        /// </summary>
+        bool CanWarp();
+        /// <summary>
         /// Checks if the player is in a save room.
         /// </summary>
         bool CanSave();

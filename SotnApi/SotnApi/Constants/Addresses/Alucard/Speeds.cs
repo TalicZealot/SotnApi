@@ -20,5 +20,9 @@
         public static long WolfDashTopRight = 0x12D6D0;
         public static long WolfDashTopLeft = 0x12D73C;
         public static long BackdashDecel = 0x11213D;
+
+        public static long AxeJumpVerticalMoving = 0x17AD34;
+        public static long AxeJumpVerticalStationary = 0x17AA6C;
+        public static long AxeJumpHorizontal = 0x17AF61;
     }
 }

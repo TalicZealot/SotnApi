@@ -2,6 +2,7 @@
 {
     public class SearchableActor
     {
+        public string Name { get; set; }
         public int Xpos { get; set; }
         public int Ypos { get; set; }
         public int Hp { get; set; }

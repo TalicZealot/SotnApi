@@ -80,6 +80,9 @@
             <summary>
             Copies the actor data to memory. Spawning it in-game.
             </summary>
+            <returns>
+            The address, where the actor was spawned.
+            </returns>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.WingsmashHorizontalSpeed">
             <summary> Wing Smash speed in pixels per frame. </summary>
@@ -182,6 +185,9 @@
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.FacingLeft">
             <returns> True if Alucard is facing left.</returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.ContactDamage">
+            <summary>Damage dealt to enemies when Alucard touches them.</summary>
         </member>
         <member name="M:SotnApi.Interfaces.IAlucardApi.ClearInventory">
             <summary>
@@ -340,6 +346,11 @@
         <member name="M:SotnApi.Interfaces.IGameApi.InPrologue">
             <summary>
             Checks if the game is the Prologue.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.CanWarp">
+            <summary>
+            Checks if the player is in a warp room.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.CanSave">

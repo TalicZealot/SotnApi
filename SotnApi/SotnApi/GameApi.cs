@@ -234,6 +234,11 @@ namespace SotnApi
             return (memAPI.ReadByte(Game.CanSave) & Various.CanSave) == Various.CanSave;
         }
 
+        public bool CanWarp()
+        {
+            return (memAPI.ReadByte(Game.CanWarp) & Various.CanWarp) == Various.CanWarp;
+        }
+
         public void OverwriteString(long address, string text)
         {
             if (text == null) throw new ArgumentNullException(nameof(text));

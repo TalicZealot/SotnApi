@@ -60,6 +60,9 @@ namespace SotnApi.Interfaces
         /// <summary>
         /// Copies the actor data to memory. Spawning it in-game.
         /// </summary>
-        void SpawnActor(Actor actor, bool enemy = true);
+        /// <returns>
+        /// The address, where the actor was spawned.
+        /// </returns>
+        long SpawnActor(Actor actor, bool enemy = true);
     }
 }

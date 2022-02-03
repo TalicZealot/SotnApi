@@ -58,6 +58,54 @@ namespace SotnApi.Models
             }
         }
 
+        public ushort SpeedHorizontalFract
+        {
+            get
+            {
+                return Value[Actors.SpeedFractOffset];
+            }
+            set
+            {
+                Value[Actors.SpeedFractOffset] = (byte)value;
+            }
+        }
+
+        public ushort SpeedHorizontal
+        {
+            get
+            {
+                return Value[Actors.SpeedWholeOffset];
+            }
+            set
+            {
+                Value[Actors.SpeedWholeOffset] = (byte)value;
+            }
+        }
+
+        public ushort SpeedVerticalFract
+        {
+            get
+            {
+                return Value[Actors.SpeedVerticalFractOffset];
+            }
+            set
+            {
+                Value[Actors.SpeedVerticalFractOffset] = (byte)value;
+            }
+        }
+
+        public ushort SpeedVertical
+        {
+            get
+            {
+                return Value[Actors.SpeedVerticalWholeOffset];
+            }
+            set
+            {
+                Value[Actors.SpeedVerticalWholeOffset] = (byte)value;
+            }
+        }
+
         public ushort AutoToggle
         {
             get

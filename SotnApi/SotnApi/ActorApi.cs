@@ -210,7 +210,7 @@ namespace SotnApi
             return 0;
         }
 
-        public void SpawnActor(Actor actor, bool enemy = true)
+        public long SpawnActor(Actor actor, bool enemy = true)
         {
             long slot = FindAvailableActorSlot(enemy);
 
@@ -218,6 +218,8 @@ namespace SotnApi
             {
                 memAPI.WriteByteRange(slot, actor.Value);
             }
+
+            return slot;
         }
     }
 }

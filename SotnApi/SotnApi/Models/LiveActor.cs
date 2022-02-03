@@ -44,6 +44,58 @@ namespace SotnApi.Models
             }
         }
 
+        public uint SpeedHorizontalFract
+        {
+            get
+            {
+                return memAPI.ReadByte(Address + Actors.SpeedFractOffset);
+            }
+            set
+            {
+                memAPI.WriteByte(Address + Actors.SpeedFractOffset, value);
+            }
+        }
+
+        public int SpeedHorizontal
+        {
+            get
+            {
+                return (int)(sbyte)memAPI.ReadByte(Address + Actors.SpeedWholeOffset);
+            }
+            set
+            {
+                memAPI.WriteByte(Address + Actors.SpeedWholeOffset, (byte)(sbyte)value);
+            }
+        }
+
+        public uint SpeedVerticalFract
+        {
+            get
+            {
+                return memAPI.ReadByte(Address + Actors.SpeedVerticalFractOffset);
+            }
+            set
+            {
+                memAPI.WriteByte(Address + Actors.SpeedVerticalFractOffset, value);
+            }
+        }
+
+        public int SpeedVertical
+        {
+            get
+            {
+                return (int)(sbyte)memAPI.ReadByte(Address + Actors.SpeedVerticalWholeOffset);
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    memAPI.WriteByte(Address + Actors.SpeedVerticalNegativeOffset, 0xFF);
+                }
+                memAPI.WriteByte(Address + Actors.SpeedVerticalWholeOffset, (byte)(sbyte)value);
+            }
+        }
+
         public uint AutoToggle
         {
             get

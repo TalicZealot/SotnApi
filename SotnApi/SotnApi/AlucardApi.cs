@@ -1111,6 +1111,17 @@ namespace SotnApi
                 memAPI.WriteU16(Timers.Poison, value);
             }
         }
+        public uint ContactDamage
+        {
+            get
+            {
+                return memAPI.ReadU16(Stats.ContactDamage);
+            }
+            set
+            {
+                memAPI.WriteU16(Stats.ContactDamage, value);
+            }
+        }
 
         public string GetSelectedItemName()
         {
@@ -1225,7 +1236,7 @@ namespace SotnApi
 
         public bool IsInvincible()
         {
-            return memAPI.ReadByte(Timers.Invincibility) > 0 || memAPI.ReadByte(Timers.KnockbackInvincibility) > 0 || memAPI.ReadByte(Timers.PotionInvincibility) > 0;
+            return memAPI.ReadByte(Timers.Invincibility) > 0 || memAPI.ReadByte(Timers.KnockbackInvincibility) > 0 || memAPI.ReadByte(Timers.PotionInvincibility) > 0 || memAPI.ReadByte(Timers.FreezeInvincibility) > 0;
         }
 
         public bool HasControl()

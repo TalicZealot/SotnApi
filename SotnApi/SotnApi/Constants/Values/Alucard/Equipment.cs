@@ -170,7 +170,7 @@ namespace SotnApi.Constants.Values.Alucard
             "Elixir",
             "Manna prism",
             "Vorpal blade",
-            "Crissaegirm",
+            "Crissaegrim",
             "Yasatsuna",
             "Library card",
             "Alucart shield",

@@ -124,6 +124,8 @@ namespace SotnApi.Interfaces
         uint ShineTimer { get; set; }
         uint CurseTimer { get; set; }
         uint PoisonTimer { get; set; }
+        /// <summary>Damage dealt to enemies when Alucard touches them.</summary>
+        uint ContactDamage { get; set; }
         /// <summary>
         /// Reduces the count of all owned items to 0.
         /// </summary>
