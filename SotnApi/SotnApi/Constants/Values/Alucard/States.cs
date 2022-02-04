@@ -11,6 +11,7 @@
         public static uint UntransformMist = 0xE;
         public static uint Wolf = 0x18;
         public static uint UntransformWolf = 0x19;
+        public static uint DarkMetamorphosis = 0x20;
         public static uint Hellfire = 0x22;
         public static uint What = 0x30;
         public static uint Standing = 0x0;

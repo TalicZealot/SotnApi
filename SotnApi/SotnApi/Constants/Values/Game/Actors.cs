@@ -8,6 +8,7 @@
         public static int Poison = 0x81;
         public static int Curse = 1;
         public static int Stone = 2;
+        public static int LockedOn = 2;
         public static int Slam = 0x25;
         public static int Offset = 0xBC;
         public static int XposOffset = 0x02;
@@ -21,6 +22,7 @@
         public static int PaletteOffset = 0x16;
         public static int ColorModeOffset = 0x18;
         public static int SpriteOffset = 0x28;
+        public static int LockOnOffset = 0x2C;
         public static int ItemIndexOffset = 0x30; //RelicIndex
         public static int EnemyNameIndex = 0x3A;
         public static int HitboxAutoToggleOffset = 0x3C;
@@ -30,6 +32,7 @@
         public static int DamageTypeBOffset = 0x43;
         public static int HitboxWidthOffset = 0x46;
         public static int HitboxHeightOffset = 0x47;
+        public static int InvincibilityFramesOffset = 0x49;
         public static int DefOffset = 0x3A;
         public static long[] ReservedSlots =
         {

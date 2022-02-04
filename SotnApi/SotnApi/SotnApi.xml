@@ -42,7 +42,7 @@
             The address where the enemy entity starts. Or 0 if the enemy was not found.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.FindActorFrom(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+        <member name="M:SotnApi.Interfaces.IActorApi.FindActorFrom(System.Collections.Generic.List{SotnApi.Models.SearchableActor},System.Boolean)">
             <summary>
             Scans memory for an enemy from a list of accepted actor property values.
             </summary>

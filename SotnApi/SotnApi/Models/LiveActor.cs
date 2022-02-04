@@ -191,6 +191,7 @@ namespace SotnApi.Models
                 memAPI.WriteByte(Address + Actors.ColorModeOffset, value);
             }
         }
+
         public uint Sprite
         {
             get
@@ -200,6 +201,18 @@ namespace SotnApi.Models
             set
             {
                 memAPI.WriteU16(Address + Actors.SpriteOffset, value);
+            }
+        }
+
+        public uint LockOn
+        {
+            get
+            {
+                return memAPI.ReadU16(Address + Actors.LockOnOffset);
+            }
+            set
+            {
+                memAPI.WriteU16(Address + Actors.LockOnOffset, value);
             }
         }
 
@@ -224,6 +237,18 @@ namespace SotnApi.Models
             set
             {
                 memAPI.WriteByte(Address + Actors.HitboxHeightOffset, value);
+            }
+        }
+
+        public uint InvincibilityFrames
+        {
+            get
+            {
+                return memAPI.ReadByte(Address + Actors.InvincibilityFramesOffset);
+            }
+            set
+            {
+                memAPI.WriteByte(Address + Actors.InvincibilityFramesOffset, value);
             }
         }
     }

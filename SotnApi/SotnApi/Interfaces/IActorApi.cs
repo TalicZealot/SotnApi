@@ -34,7 +34,7 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// The address where the enemy entity starts. Or 0 if the enemy was not found.
         /// </returns>
-        long FindActorFrom(List<SearchableActor> actors);
+        long FindActorFrom(List<SearchableActor> actors, bool enemy = true);
         /// <summary>
         /// Scans memory for all active actors.
         /// </summary>

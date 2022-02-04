@@ -82,12 +82,14 @@ namespace SotnApi
             return 0;
         }
 
-        public long FindActorFrom(List<SearchableActor> actors)
+        public long FindActorFrom(List<SearchableActor> actors, bool enemy = true)
         {
             if (actors.Count < 1) { throw new ArgumentOutOfRangeException(nameof(actors), "actors count must be greater than 0"); }
 
-            long start = Game.EnemyActorsStart;
-            for (int i = 0; i < Actors.EnemiesCount; i++)
+            long start = enemy ? Game.EnemyActorsStart : Game.FriendlyActorsStart;
+            int count = enemy ? Actors.EnemiesCount : Actors.FriendActorsCount;
+
+            for (int i = 0; i < count; i++)
             {
                 LiveActor currentActor = GetLiveActor(start);
                 bool match = false;
@@ -98,7 +100,9 @@ namespace SotnApi
                         ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
                         ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
                         ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
-                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.Sprite == actor.Sprite)
+                        ((actor.Damage > 0 && currentActor.Damage == actor.Damage) || actor.Damage == 0) &&
+                        ((actor.Hp > 0 && currentActor.Hp == actor.Hp) || actor.Hp == 0) &&
+                        currentActor.Sprite == actor.Sprite)
                     {
                         match = true;
                         break;
