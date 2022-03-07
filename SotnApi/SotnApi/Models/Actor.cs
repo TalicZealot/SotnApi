@@ -62,11 +62,15 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.SpeedFractOffset];
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.SpeedFractOffset);
             }
             set
             {
-                Value[Actors.SpeedFractOffset] = (byte)value;
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < 2; i++)
+                {
+                    Value[Actors.SpeedFractOffset + i] = valueBytes[i];
+                }
             }
         }
 
@@ -74,11 +78,15 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.SpeedWholeOffset];
+                return BitConverter.ToUInt16(Value.ToArray(), Actors.SpeedWholeOffset);
             }
             set
             {
-                Value[Actors.SpeedWholeOffset] = (byte)value;
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < 2; i++)
+                {
+                    Value[Actors.SpeedWholeOffset + i] = valueBytes[i];
+                }
             }
         }
 

@@ -258,6 +258,26 @@
             Room for the current room or subroom.
             </returns>
         </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Hours">
+            <returns>
+            Hours of in-game time.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Minutes">
+            <returns>
+            Minutes of in-game time.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Seconds">
+            <returns>
+            Seconds of in-game time.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.Frames">
+            <returns>
+            Frames of in-game time.
+            </returns>
+        </member>
         <member name="P:SotnApi.Interfaces.IGameApi.UnderwaterPhysicsEnabled">
             <summary>
             Gets or sets underwater physics state.
@@ -268,19 +288,14 @@
             True if the player is in the second castle. 
             </returns>
         </member>
-        <member name="P:SotnApi.Interfaces.IGameApi.MapXPos">
+        <member name="P:SotnApi.Interfaces.IGameApi.RoomX">
             <returns>
             X coordinate for the current highlighted room on the map.
             </returns>
         </member>
-        <member name="P:SotnApi.Interfaces.IGameApi.MapYPos">
+        <member name="P:SotnApi.Interfaces.IGameApi.RoomY">
             <returns>
             Y coordinate for the current highlighted room on the map.
-            </returns>
-        </member>
-        <member name="P:SotnApi.Interfaces.IGameApi.Zone">
-            <returns>
-            Zone Byte1.
             </returns>
         </member>
         <member name="P:SotnApi.Interfaces.IGameApi.Zone2">
@@ -337,6 +352,11 @@
             <summary>
             Sets the value for a room on the map. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
             </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.GetTimeAttack(System.String)">
+            <returns>
+            The value of the time attack for the provided activity.
+            </returns>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.InAlucardMode">
             <summary>

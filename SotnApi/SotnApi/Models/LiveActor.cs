@@ -48,11 +48,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.SpeedFractOffset);
+                return memAPI.ReadU16(Address + Actors.SpeedFractOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.SpeedFractOffset, value);
+                memAPI.WriteU16(Address + Actors.SpeedFractOffset, value);
             }
         }
 
@@ -60,11 +60,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return (int)(sbyte)memAPI.ReadByte(Address + Actors.SpeedWholeOffset);
+                return (int)memAPI.ReadS16(Address + Actors.SpeedWholeOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.SpeedWholeOffset, (byte)(sbyte)value);
+                memAPI.WriteS16(Address + Actors.SpeedWholeOffset, value);
             }
         }
 
@@ -108,15 +108,15 @@ namespace SotnApi.Models
             }
         }
 
-        public uint Hp
+        public int Hp
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.HpOffset);
+                return memAPI.ReadS16(Address + Actors.HpOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.HpOffset, value);
+                memAPI.WriteS16(Address + Actors.HpOffset, value);
             }
         }
 

@@ -33,6 +33,22 @@ namespace SotnApi.Interfaces
         /// Room for the current room or subroom.
         /// </returns>
         uint Room { get; }
+        /// <returns>
+        /// Hours of in-game time.
+        /// </returns>
+        uint Hours { get; }
+        /// <returns>
+        /// Minutes of in-game time.
+        /// </returns>
+        uint Minutes { get; }
+        /// <returns>
+        /// Seconds of in-game time.
+        /// </returns>
+        uint Seconds { get; }
+        /// <returns>
+        /// Frames of in-game time.
+        /// </returns>
+        uint Frames { get; }
         /// <summary>
         /// Gets or sets underwater physics state.
         /// </summary>
@@ -44,15 +60,11 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// X coordinate for the current highlighted room on the map.
         /// </returns>
-        uint MapXPos { get; }
+        uint RoomX { get; }
         /// <returns>
         /// Y coordinate for the current highlighted room on the map.
         /// </returns>
-        uint MapYPos { get; }
-        /// <returns>
-        /// Zone Byte1.
-        /// </returns>
-        uint Zone { get; }
+        uint RoomY { get; }
         /// <returns>
         /// Zone Byte2.
         /// </returns>
@@ -99,6 +111,10 @@ namespace SotnApi.Interfaces
         /// Sets the value for a room on the map. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
         /// </summary>
         void SetRoomValue(long address, byte value);
+        /// <returns>
+        /// The value of the time attack for the provided activity.
+        /// </returns>
+        uint GetTimeAttack(string name);
         /// <summary>
         /// Checks if the game is in Alucard mode.
         /// </summary>

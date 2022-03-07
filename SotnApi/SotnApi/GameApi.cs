@@ -1,5 +1,6 @@
 ﻿using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
+using SotnApi.Constants.Addresses.Alucard;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Interfaces;
@@ -60,7 +61,7 @@ namespace SotnApi
             }
         }
 
-        public uint MapXPos
+        public uint RoomX
         {
             get
             {
@@ -68,19 +69,11 @@ namespace SotnApi
             }
         }
 
-        public uint MapYPos
+        public uint RoomY
         {
             get
             {
                 return memAPI.ReadByte(Game.MapYPos);
-            }
-        }
-
-        public uint Zone
-        {
-            get
-            {
-                return memAPI.ReadByte(Game.Zone);
             }
         }
 
@@ -105,6 +98,38 @@ namespace SotnApi
             get
             {
                 return memAPI.ReadByte(Game.Room);
+            }
+        }
+
+        public uint Hours
+        {
+            get
+            {
+                return memAPI.ReadU16(Game.Hours);
+            }
+        }
+
+        public uint Minutes
+        {
+            get
+            {
+                return memAPI.ReadU16(Game.Minutes);
+            }
+        }
+
+        public uint Seconds
+        {
+            get
+            {
+                return memAPI.ReadU16(Game.Seconds);
+            }
+        }
+
+        public uint Frames
+        {
+            get
+            {
+                return memAPI.ReadU16(Game.Frames);
             }
         }
 
@@ -194,12 +219,25 @@ namespace SotnApi
             memAPI.WriteByteRange(Game.MapItemsCollectedStart, bytes);
         }
 
+        public uint GetTimeAttack(string name)
+        {
+            if (TimeAttack.Times.ContainsKey(name.ToLower().Trim()))
+            {
+                return memAPI.ReadU32(TimeAttack.Times[name]);
+            }
+            return 0;
+        }
+
         public bool InAlucardMode()
         {
+            uint currentRoomXPos = RoomX;
+            uint currentRoomYPos = RoomY;
+
             bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
             bool isAlucard = this.CurrentCharacter == Character.Alucard;
-            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone;
-            if (this.Area == Various.PrologueArea && this.Zone != Various.PrologueZone && this.SecondCastle)
+            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0;
+            bool prologueMapLocation = (currentRoomXPos >= 0 && currentRoomXPos <= 1) && (currentRoomYPos >= 0 && currentRoomYPos <= 2);
+            if (this.Area == Various.PrologueArea && this.SecondCastle)
             {
                 notInPrologue = true;
             }
@@ -208,25 +246,27 @@ namespace SotnApi
 
         public bool InPrologue()
         {
-            uint currentMapXPos = MapXPos;
-            uint currentMapYPos = MapYPos;
-
+            uint currentRoomXPos = RoomX;
+            uint currentRoomYPos = RoomY;
+            uint maxHp = memAPI.ReadU32(Stats.MaxHP);
+            uint timeAttackPrologue = GetTimeAttack("draculaprologue");
             bool inGame = this.Status == SotnApi.Constants.Values.Game.Status.InGame;
             bool isAlucard = this.CurrentCharacter == Character.Alucard;
-            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0 && this.Zone != Various.PrologueZone;// && this.SecondCastle;
 
-            if (this.Area == Various.PrologueArea && this.Zone != Various.PrologueZone && this.SecondCastle)
+            bool notInPrologue = this.Area != Various.PrologueArea && this.Area > 0;
+
+            if (this.Area == Various.PrologueArea && this.SecondCastle)
             {
                 notInPrologue = true;
             }
-            if (this.Area == 0 && this.Zone == Various.LoadingZone && !this.SecondCastle)
+            if (this.Area == 0 && !this.SecondCastle)
             {
                 notInPrologue = true;
             }
 
-            bool prologueMapLocation = (currentMapXPos == 0 && currentMapYPos == 2) || (currentMapXPos == 0 && currentMapYPos == 0) || (currentMapXPos == 1 && currentMapYPos == 1);
+            bool prologueMapLocation = (currentRoomXPos >= 0 && currentRoomXPos <= 1) && (currentRoomYPos >= 0 && currentRoomYPos <= 2);
 
-            return (inGame && isAlucard && !notInPrologue && prologueMapLocation);
+            return (inGame && isAlucard && prologueMapLocation && timeAttackPrologue == 0 && maxHp == 50 && !notInPrologue);
         }
 
         public bool CanSave()
@@ -244,7 +284,6 @@ namespace SotnApi
             if (text == null) throw new ArgumentNullException(nameof(text));
             if (text == String.Empty) throw new ArgumentException("Text cannot be empty!");
 
-            string transformedText = text.ToUpper();
             for (int i = 0; i < MaxStringLenght; i++)
             {
                 if (memAPI.ReadByte(address + i) == 255)

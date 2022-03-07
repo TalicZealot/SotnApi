@@ -84,9 +84,11 @@ namespace SotnApi.Constants.Addresses
         public static long MapYPos = 0x0730B4;
         public static long Room = 0x1375BC;
         public static long Area = 0x1375BD;
-        public static long Zone = 0x138458;
         public static long Zone2 = 0x0974A0;
         public static long Hours = 0x097C30;
+        public static long Minutes = 0x097C34;
+        public static long Seconds = 0x097C38;
+        public static long Frames = 0x097C3C;
         public static long Character = 0x03C9A0;
         public static long Prologue = 0x20;
         public static long LibraryCard = 0x1FFC99;
@@ -104,5 +106,6 @@ namespace SotnApi.Constants.Addresses
         public static long MapItemsCollectedStart = 0x03BEE0;
         public static long UnderwaterPhysics = 0x097448;
         public static long Music = 0x138458;
+        public static long TeleportDestination = 0x097C98;
     }
 }

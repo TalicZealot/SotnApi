@@ -11,8 +11,11 @@
         public static int LockedOn = 2;
         public static int Slam = 0x25;
         public static int Offset = 0xBC;
+
         public static int XposOffset = 0x02;
         public static int YposOffset = 0x06;
+        public static int AccelerationX = 0x08;
+        public static int AccelerationY = 0x0C;
         public static int SpeedFractOffset = 0x09;
         public static int SpeedWholeOffset = 0xA;
         public static int SpeedVerticalFractOffset = 0xD;
@@ -25,6 +28,7 @@
         public static int LockOnOffset = 0x2C;
         public static int ItemIndexOffset = 0x30; //RelicIndex
         public static int EnemyNameIndex = 0x3A;
+        public static int DefOffset = 0x3A;
         public static int HitboxAutoToggleOffset = 0x3C;
         public static int HpOffset = 0x3E;
         public static int DamageOffset = 0x40;
@@ -33,7 +37,11 @@
         public static int HitboxWidthOffset = 0x46;
         public static int HitboxHeightOffset = 0x47;
         public static int InvincibilityFramesOffset = 0x49;
-        public static int DefOffset = 0x3A;
+        public static int AnimationFrameIndexOffset = 0x50;
+        public static int AnimationFrameDurationOffset = 0x52;
+        public static int AnimationSetOffset = 0x54;
+        public static int AnimationFrameOffset = 0x58;
+
         public static long[] ReservedSlots =
         {
             0x076e98,
@@ -45,6 +53,7 @@
             0x0786d4,
             0x0765c8,
             0x07a958,
+            0x076450
         };
     }
 }
