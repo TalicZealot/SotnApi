@@ -145,9 +145,9 @@ namespace SotnApi.Interfaces
         /// <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         void TakeOneItemByName(string name);
         /// <summary>
-        /// Grants relic and turns it on it if is nto a familiar card.
+        /// Grants relic and turns it on it if is not a familiar card. Allow spawn will make the normal relics still spawn where they were supposed to.
         /// </summary>
-        void GrantRelic(Relic name);
+        void GrantRelic(Relic name, bool allowSpawn = false);
         /// <summary>
         /// Takes relic away.
         /// </summary>

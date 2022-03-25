@@ -8,25 +8,25 @@ using System.Collections.Generic;
 
 namespace SotnApi
 {
-    public class ActorApi : IActorApi
+    public class EntityApi : IEntityApi
     {
         private readonly IMemoryApi memAPI;
 
-        public ActorApi(IMemoryApi? memAPI)
+        public EntityApi(IMemoryApi? memAPI)
         {
             if (memAPI == null) { throw new ArgumentNullException("Memory API is null"); }
             this.memAPI = memAPI;
         }
 
-        public long FindEnemy(int minHp, int maxHp, int[]? bannedHpValues = null)
+        public long FindEnemyEntity(int minHp, int maxHp, int[]? bannedHpValues = null)
         {
             if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
-            long start = Game.EnemyActorsStart;
-            for (int i = 0; i < Actors.EnemiesCount; i++)
+            long start = Game.EnemyEntitiesStart;
+            for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                LiveActor actor = GetLiveActor(start);
+                LiveEntity actor = GetLiveEntity(start);
                 bool notBanned = true;
 
                 if (bannedHpValues is not null)
@@ -45,21 +45,21 @@ namespace SotnApi
                 {
                     return start;
                 }
-                start += Actors.Offset;
+                start += Entities.Offset;
             }
 
             return 0;
         }
 
-        public long FindEnemy(int minHp, int maxHp, List<SearchableActor> bannedActors)
+        public long FindEnemyEntity(int minHp, int maxHp, List<SearchableActor> bannedActors)
         {
             if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
-            long start = Game.EnemyActorsStart;
-            for (int i = 0; i < Actors.EnemiesCount; i++)
+            long start = Game.EnemyEntitiesStart;
+            for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                LiveActor actor = GetLiveActor(start);
+                LiveEntity actor = GetLiveEntity(start);
                 bool notBanned = true;
 
                 foreach (var bannedActor in bannedActors)
@@ -76,22 +76,22 @@ namespace SotnApi
                 {
                     return start;
                 }
-                start += Actors.Offset;
+                start += Entities.Offset;
             }
 
             return 0;
         }
 
-        public long FindActorFrom(List<SearchableActor> actors, bool enemy = true)
+        public long FindEntityFrom(List<SearchableActor> actors, bool enemy = true)
         {
             if (actors.Count < 1) { throw new ArgumentOutOfRangeException(nameof(actors), "actors count must be greater than 0"); }
 
-            long start = enemy ? Game.EnemyActorsStart : Game.FriendlyActorsStart;
-            int count = enemy ? Actors.EnemiesCount : Actors.FriendActorsCount;
+            long start = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
+            int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
 
             for (int i = 0; i < count; i++)
             {
-                LiveActor currentActor = GetLiveActor(start);
+                LiveEntity currentActor = GetLiveEntity(start);
                 bool match = false;
 
                 foreach (var actor in actors)
@@ -115,7 +115,7 @@ namespace SotnApi
                 }
                 else
                 {
-                    start += Actors.Offset;
+                    start += Entities.Offset;
                 }
             }
 
@@ -125,20 +125,20 @@ namespace SotnApi
         public List<long> GetAllActors()
         {
             List<long> ActorAddresses = new();
-            long start = Game.EnemyActorsStart;
-            for (int i = 0; i < Actors.EnemiesCount; i++)
+            long start = Game.EnemyEntitiesStart;
+            for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Actors.HitboxWidthOffset);
-                long hitboxHeight = memAPI.ReadByte(start + Actors.HitboxHeightOffset);
-                long hp = memAPI.ReadU16(start + Actors.HpOffset);
-                long damage = memAPI.ReadU16(start + Actors.DamageOffset);
+                long hitboxWidth = memAPI.ReadByte(start + Entities.HitboxWidthOffset);
+                long hitboxHeight = memAPI.ReadByte(start + Entities.HitboxHeightOffset);
+                long hp = memAPI.ReadU16(start + Entities.HpOffset);
+                long damage = memAPI.ReadU16(start + Entities.DamageOffset);
                 long sprite = memAPI.ReadU16(start + 22);
 
                 if (hitboxWidth > 0 || hitboxHeight > 0 || hp > 0 || damage > 0 || sprite > 0)
                 {
                     ActorAddresses.Add(start);
                 }
-                start += Actors.Offset;
+                start += Entities.Offset;
             }
 
             return ActorAddresses;
@@ -147,10 +147,10 @@ namespace SotnApi
         public List<long> GetAllActors(List<SearchableActor> actors)
         {
             List<long> ActorAddresses = new();
-            long start = Game.EnemyActorsStart;
-            for (int i = 0; i < Actors.EnemiesCount; i++)
+            long start = Game.EnemyEntitiesStart;
+            for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                LiveActor currentActor = GetLiveActor(start);
+                LiveEntity currentActor = GetLiveEntity(start);
 
                 foreach (var actor in actors)
                 {
@@ -165,20 +165,20 @@ namespace SotnApi
                     }
                 }
 
-                start += Actors.Offset;
+                start += Entities.Offset;
             }
 
             return ActorAddresses;
         }
 
-        public List<byte> GetActor(long address)
+        public List<byte> GetEntity(long address)
         {
-            return memAPI.ReadByteRange(address, Actors.Size);
+            return memAPI.ReadByteRange(address, Entities.Size);
         }
 
-        public LiveActor GetLiveActor(long address)
+        public LiveEntity GetLiveEntity(long address)
         {
-            return new LiveActor(address, memAPI);
+            return new LiveEntity(address, memAPI);
         }
 
         /// <summary>
@@ -187,16 +187,16 @@ namespace SotnApi
         /// <returns>
         /// The address where the slot starts. Or 0 if a free slot was not found.
         /// </returns>
-        private long FindAvailableActorSlot(bool enemy = true)
+        private long FindAvailableEntitySlot(bool enemy = true)
         {
-            long start = enemy ? Game.EnemyActorsStart : Game.FriendlyActorsStart;
-            int count = enemy ? Actors.EnemiesCount : Actors.FriendActorsCount;
+            long start = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
+            int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
             for (int i = 0; i < count; i++)
             {
-                LiveActor actor = GetLiveActor(start);
+                LiveEntity entity = GetLiveEntity(start);
                 bool reserved = false;
 
-                foreach (var slot in Actors.ReservedSlots)
+                foreach (var slot in Entities.ReservedSlots)
                 {
                     if (start == slot)
                     {
@@ -204,19 +204,19 @@ namespace SotnApi
                     }
                 }
 
-                if (actor.HitboxWidth == 0 && actor.HitboxHeight == 0 && actor.Hp == 0 && actor.Damage == 0 && actor.Sprite == 0 && !reserved)
+                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.Sprite == 0 && !reserved)
                 {
                     return start;
                 }
-                start += Actors.Offset;
+                start += Entities.Offset;
             }
 
             return 0;
         }
 
-        public long SpawnActor(Actor actor, bool enemy = true)
+        public long SpawnEntity(Entity actor, bool enemy = true)
         {
-            long slot = FindAvailableActorSlot(enemy);
+            long slot = FindAvailableEntitySlot(enemy);
 
             if (slot > 0)
             {

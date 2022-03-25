@@ -14,10 +14,10 @@ namespace ActorApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IActorApi classUnderTest = new ActorApi(mockedMemAPI);
-            Actor blankActor = new Actor();
+            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
+            Entity blankActor = new Entity();
             //Act
-            classUnderTest.SpawnActor(blankActor);
+            classUnderTest.SpawnEntity(blankActor);
             //Assert
             mockedMemAPI.Received(1).WriteByteRange(Arg.Any<long>(), blankActor.Value);
         }

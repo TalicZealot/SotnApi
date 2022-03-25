@@ -9,7 +9,7 @@ namespace ActorApiTests
         [Fact]
         public void ThrowArgumentNullException_WhenMemApiIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new ActorApi(null));
+            Assert.Throws<ArgumentNullException>(() => new EntityApi(null));
         }
     }
 }

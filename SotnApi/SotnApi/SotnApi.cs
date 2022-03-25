@@ -8,14 +8,14 @@ namespace SotnApi.Main
     {
         private readonly IGameApi gameApi;
         private readonly IAlucardApi alucardApi;
-        private readonly IActorApi actorApi;
+        private readonly IEntityApi entityApi;
         private readonly IRenderingApi renderingApi;
         public SotnApi(IMemoryApi? memAPI)
         {
             if (memAPI == null) { throw new ArgumentNullException(nameof(memAPI)); }
             gameApi = new GameApi(memAPI);
             alucardApi = new AlucardApi(memAPI);
-            actorApi = new ActorApi(memAPI);
+            entityApi = new EntityApi(memAPI);
             renderingApi = new RenderingApi(memAPI);
         }
 
@@ -33,11 +33,11 @@ namespace SotnApi.Main
                 return this.alucardApi;
             }
         }
-        public IActorApi ActorApi
+        public IEntityApi EntityApi
         {
             get
             {
-                return this.actorApi;
+                return this.entityApi;
             }
         }
         public IRenderingApi RenderingApi

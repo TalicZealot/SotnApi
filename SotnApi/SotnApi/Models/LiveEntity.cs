@@ -7,11 +7,11 @@ namespace SotnApi.Models
     /// <summary>
     /// A live entity object rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
     /// </summary>
-    public class LiveActor
+    public class LiveEntity
     {
         private readonly IMemoryApi memAPI;
 
-        public LiveActor(long address, IMemoryApi? memAPI)
+        public LiveEntity(long address, IMemoryApi? memAPI)
         {
             Address = address;
             if (memAPI == null) { throw new ArgumentNullException("Memory API is null"); }
@@ -24,11 +24,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.XposOffset);
+                return memAPI.ReadU16(Address + Entities.XposOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.XposOffset, value);
+                memAPI.WriteU16(Address + Entities.XposOffset, value);
             }
         }
 
@@ -36,11 +36,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.YposOffset);
+                return memAPI.ReadU16(Address + Entities.YposOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.YposOffset, value);
+                memAPI.WriteU16(Address + Entities.YposOffset, value);
             }
         }
 
@@ -48,11 +48,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.SpeedFractOffset);
+                return memAPI.ReadU16(Address + Entities.SpeedFractOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.SpeedFractOffset, value);
+                memAPI.WriteU16(Address + Entities.SpeedFractOffset, value);
             }
         }
 
@@ -60,11 +60,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return (int)memAPI.ReadS16(Address + Actors.SpeedWholeOffset);
+                return (int)memAPI.ReadS16(Address + Entities.SpeedWholeOffset);
             }
             set
             {
-                memAPI.WriteS16(Address + Actors.SpeedWholeOffset, value);
+                memAPI.WriteS16(Address + Entities.SpeedWholeOffset, value);
             }
         }
 
@@ -72,11 +72,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.SpeedVerticalFractOffset);
+                return memAPI.ReadByte(Address + Entities.SpeedVerticalFractOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.SpeedVerticalFractOffset, value);
+                memAPI.WriteByte(Address + Entities.SpeedVerticalFractOffset, value);
             }
         }
 
@@ -84,15 +84,15 @@ namespace SotnApi.Models
         {
             get
             {
-                return (int)(sbyte)memAPI.ReadByte(Address + Actors.SpeedVerticalWholeOffset);
+                return (int)(sbyte)memAPI.ReadByte(Address + Entities.SpeedVerticalWholeOffset);
             }
             set
             {
                 if (value < 0)
                 {
-                    memAPI.WriteByte(Address + Actors.SpeedVerticalNegativeOffset, 0xFF);
+                    memAPI.WriteByte(Address + Entities.SpeedVerticalNegativeOffset, 0xFF);
                 }
-                memAPI.WriteByte(Address + Actors.SpeedVerticalWholeOffset, (byte)(sbyte)value);
+                memAPI.WriteByte(Address + Entities.SpeedVerticalWholeOffset, (byte)(sbyte)value);
             }
         }
 
@@ -100,11 +100,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.HitboxAutoToggleOffset);
+                return memAPI.ReadByte(Address + Entities.HitboxAutoToggleOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.HitboxAutoToggleOffset, value);
+                memAPI.WriteByte(Address + Entities.HitboxAutoToggleOffset, value);
             }
         }
 
@@ -112,11 +112,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadS16(Address + Actors.HpOffset);
+                return memAPI.ReadS16(Address + Entities.HpOffset);
             }
             set
             {
-                memAPI.WriteS16(Address + Actors.HpOffset, value);
+                memAPI.WriteS16(Address + Entities.HpOffset, value);
             }
         }
 
@@ -124,11 +124,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.DefOffset);
+                return memAPI.ReadByte(Address + Entities.DefOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.DefOffset, value);
+                memAPI.WriteByte(Address + Entities.DefOffset, value);
             }
         }
 
@@ -136,11 +136,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.DamageOffset);
+                return memAPI.ReadU16(Address + Entities.DamageOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.DamageOffset, value);
+                memAPI.WriteU16(Address + Entities.DamageOffset, value);
             }
         }
 
@@ -148,11 +148,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.DamageTypeAOffset);
+                return memAPI.ReadByte(Address + Entities.DamageTypeAOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.DamageTypeAOffset, value);
+                memAPI.WriteByte(Address + Entities.DamageTypeAOffset, value);
             }
         }
 
@@ -160,11 +160,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.DamageTypeBOffset);
+                return memAPI.ReadByte(Address + Entities.DamageTypeBOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.DamageTypeBOffset, value);
+                memAPI.WriteByte(Address + Entities.DamageTypeBOffset, value);
             }
         }
 
@@ -172,11 +172,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.PaletteOffset);
+                return memAPI.ReadByte(Address + Entities.PaletteOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.PaletteOffset, value);
+                memAPI.WriteByte(Address + Entities.PaletteOffset, value);
             }
         }
 
@@ -184,11 +184,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.ColorModeOffset);
+                return memAPI.ReadByte(Address + Entities.ColorModeOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.ColorModeOffset, value);
+                memAPI.WriteByte(Address + Entities.ColorModeOffset, value);
             }
         }
 
@@ -196,11 +196,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.SpriteOffset);
+                return memAPI.ReadU16(Address + Entities.SpriteOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.SpriteOffset, value);
+                memAPI.WriteU16(Address + Entities.SpriteOffset, value);
             }
         }
 
@@ -208,11 +208,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadU16(Address + Actors.LockOnOffset);
+                return memAPI.ReadU16(Address + Entities.LockOnOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Actors.LockOnOffset, value);
+                memAPI.WriteU16(Address + Entities.LockOnOffset, value);
             }
         }
 
@@ -220,11 +220,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.HitboxWidthOffset);
+                return memAPI.ReadByte(Address + Entities.HitboxWidthOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.HitboxWidthOffset, value);
+                memAPI.WriteByte(Address + Entities.HitboxWidthOffset, value);
             }
         }
 
@@ -232,11 +232,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.HitboxHeightOffset);
+                return memAPI.ReadByte(Address + Entities.HitboxHeightOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.HitboxHeightOffset, value);
+                memAPI.WriteByte(Address + Entities.HitboxHeightOffset, value);
             }
         }
 
@@ -244,11 +244,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return memAPI.ReadByte(Address + Actors.InvincibilityFramesOffset);
+                return memAPI.ReadByte(Address + Entities.InvincibilityFramesOffset);
             }
             set
             {
-                memAPI.WriteByte(Address + Actors.InvincibilityFramesOffset, value);
+                memAPI.WriteByte(Address + Entities.InvincibilityFramesOffset, value);
             }
         }
     }

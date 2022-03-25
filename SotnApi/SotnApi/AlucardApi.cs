@@ -1180,9 +1180,16 @@ namespace SotnApi
             memAPI.WriteByte(Relics.AllRelics[name.ToString()], 0);
         }
 
-        public void GrantRelic(Relic name)
+        public void GrantRelic(Relic name, bool allowSpawn = false)
         {
-            uint value = name.ToString().Contains("Card") ? 1u : 3u;
+            uint relicOn = 3;
+            uint relicOff = 1;
+            if (allowSpawn)
+            {
+                relicOn = 6;
+                relicOff = 5;
+            }
+            uint value = name.ToString().Contains("Card") ? relicOff : relicOn;
             memAPI.WriteByte(Relics.AllRelics[name.ToString()], value);
         }
 
@@ -1247,7 +1254,7 @@ namespace SotnApi
 
         public bool HasHitbox()
         {
-            return memAPI.ReadByte(Actor.Address + Actors.HitboxWidthOffset) > 0 && memAPI.ReadByte(Actor.Address + Actors.HitboxHeightOffset) > 0;
+            return memAPI.ReadByte(Entity.Address + Entities.HitboxWidthOffset) > 0 && memAPI.ReadByte(Entity.Address + Entities.HitboxHeightOffset) > 0;
         }
 
         public void Heal(uint amount)

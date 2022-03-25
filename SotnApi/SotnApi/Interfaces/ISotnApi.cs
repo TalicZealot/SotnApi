@@ -4,7 +4,7 @@
     {
         IGameApi GameApi { get; }
         IAlucardApi AlucardApi { get; }
-        IActorApi ActorApi { get; }
+        IEntityApi EntityApi { get; }
         IRenderingApi RenderingApi { get; }
     }
 }

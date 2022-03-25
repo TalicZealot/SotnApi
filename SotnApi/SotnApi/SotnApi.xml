@@ -4,84 +4,15 @@
         <name>SotnApi</name>
     </assembly>
     <members>
-        <member name="M:SotnApi.ActorApi.FindAvailableActorSlot(System.Boolean)">
+        <member name="T:SotnApi.Constants.Values.Game.Enums.Character">
+            <summary>Prologue Richter still counts as Alucard</summary>
+        </member>
+        <member name="M:SotnApi.EntityApi.FindAvailableEntitySlot(System.Boolean)">
             <summary>
             Scans memory for an empty actor slot.
             </summary>
             <returns>
             The address where the slot starts. Or 0 if a free slot was not found.
-            </returns>
-        </member>
-        <member name="T:SotnApi.Constants.Values.Game.Enums.Character">
-            <summary>Prologue Richter still counts as Alucard</summary>
-        </member>
-        <member name="T:SotnApi.Interfaces.IActorApi">
-            <summary>
-            Spawns, finds and edits actor entities in memory.
-            </summary>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.FindEnemy(System.Int32,System.Int32,System.Int32[])">
-            <summary>
-            Scans memory for an enemy that matches the hp range specified.
-            </summary>
-            <param name="bannedHpValues">Exclude actors with these hp values.</param>
-            <param name="minHp">Minimum allowed actor hp.</param>
-            <param name="maxHp">Maximum allowed actor hp.</param>
-            <returns>
-            The address where the enemy entity starts. Or 0 if the enemy was not found.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.FindEnemy(System.Int32,System.Int32,System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
-            <summary>
-            Scans memory for an enemy that matches the hp range specified.
-            </summary>
-            <param name="bannedActors">Exclude actors with these values.</param>
-            <param name="minHp">Minimum allowed actor hp.</param>
-            <param name="maxHp">Maximum allowed actor hp.</param>
-            <returns>
-            The address where the enemy entity starts. Or 0 if the enemy was not found.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.FindActorFrom(System.Collections.Generic.List{SotnApi.Models.SearchableActor},System.Boolean)">
-            <summary>
-            Scans memory for an enemy from a list of accepted actor property values.
-            </summary>
-            <returns>
-            The address where the enemy entity starts. Or 0 if the enemy was not found.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.GetAllActors">
-            <summary>
-            Scans memory for all active actors.
-            </summary>
-            <returns>
-            A list of addresses where the enemy entities start.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.GetAllActors(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
-            <summary>
-            Scans memory for all active actors, that match the example actors.
-            </summary>
-            <returns>
-            A list of addresses where the enemy entities start.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.GetActor(System.Int64)">
-            <returns>
-            Byte range of the enemy entity.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.GetLiveActor(System.Int64)">
-            <returns>
-            A LiveActor instance that can be used to edit the in-game entity.
-            </returns>
-        </member>
-        <member name="M:SotnApi.Interfaces.IActorApi.SpawnActor(SotnApi.Models.Actor,System.Boolean)">
-            <summary>
-            Copies the actor data to memory. Spawning it in-game.
-            </summary>
-            <returns>
-            The address, where the actor was spawned.
             </returns>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.WingsmashHorizontalSpeed">
@@ -212,15 +143,84 @@
             </summary>
             <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         </member>
-        <member name="M:SotnApi.Interfaces.IAlucardApi.GrantRelic(SotnApi.Constants.Values.Alucard.Enums.Relic)">
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GrantRelic(SotnApi.Constants.Values.Alucard.Enums.Relic,System.Boolean)">
             <summary>
-            Grants relic and turns it on it if is nto a familiar card.
+            Grants relic and turns it on it if is not a familiar card. Allow spawn will make the normal relics still spawn where they were supposed to.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IAlucardApi.TakeRelic(SotnApi.Constants.Values.Alucard.Enums.Relic)">
             <summary>
             Takes relic away.
             </summary>
+        </member>
+        <member name="T:SotnApi.Interfaces.IEntityApi">
+            <summary>
+            Spawns, finds and edits actor entities in memory.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEnemyEntity(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            Scans memory for an enemy that matches the hp range specified.
+            </summary>
+            <param name="bannedHpValues">Exclude actors with these hp values.</param>
+            <param name="minHp">Minimum allowed actor hp.</param>
+            <param name="maxHp">Maximum allowed actor hp.</param>
+            <returns>
+            The address where the enemy entity starts. Or 0 if the enemy was not found.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEnemyEntity(System.Int32,System.Int32,System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+            <summary>
+            Scans memory for an enemy that matches the hp range specified.
+            </summary>
+            <param name="bannedActors">Exclude actors with these values.</param>
+            <param name="minHp">Minimum allowed actor hp.</param>
+            <param name="maxHp">Maximum allowed actor hp.</param>
+            <returns>
+            The address where the enemy entity starts. Or 0 if the enemy was not found.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEntityFrom(System.Collections.Generic.List{SotnApi.Models.SearchableActor},System.Boolean)">
+            <summary>
+            Scans memory for an enemy from a list of accepted actor property values.
+            </summary>
+            <returns>
+            The address where the enemy entity starts. Or 0 if the enemy was not found.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllActors">
+            <summary>
+            Scans memory for all active actors.
+            </summary>
+            <returns>
+            A list of addresses where the enemy entities start.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllActors(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+            <summary>
+            Scans memory for all active actors, that match the example actors.
+            </summary>
+            <returns>
+            A list of addresses where the enemy entities start.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetEntity(System.Int64)">
+            <returns>
+            Byte range of the enemy entity.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetLiveEntity(System.Int64)">
+            <returns>
+            A LiveActor instance that can be used to edit the in-game entity.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.SpawnEntity(SotnApi.Models.Entity,System.Boolean)">
+            <summary>
+            Copies the actor data to memory. Spawning it in-game.
+            </summary>
+            <returns>
+            The address, where the actor was spawned.
+            </returns>
         </member>
         <member name="T:SotnApi.Interfaces.IGameApi">
             <returns>
@@ -428,12 +428,12 @@
             Checks if a room on the minimap is rendered.
             </summary>
         </member>
-        <member name="T:SotnApi.Models.Actor">
+        <member name="T:SotnApi.Models.Entity">
             <summary>
             An entity object that can be rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
             </summary>
         </member>
-        <member name="T:SotnApi.Models.LiveActor">
+        <member name="T:SotnApi.Models.LiveEntity">
             <summary>
             A live entity object rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
             </summary>

@@ -4,35 +4,35 @@ namespace SotnApi.Constants.Addresses
 {
     public static class TimeAttack
     {
-        public static long DraculaPrologue =  0x03CA28;
-        public static long Olrox =  0x03CA2C;
-        public static long Doppleganger10 =  0x03CA30;
-        public static long Granfaloon =  0x03CA34;
-        public static long MinotaurWerewolf =  0x03CA38;
-        public static long Scylla =  0x03CA3C;
-        public static long SlograGaibon =  0x03CA40;
-        public static long Hippogryph =  0x03CA44;
-        public static long Beelzebub =  0x03CA48;
-        public static long Succubus =  0x03CA4C;
-        public static long Karasuman =  0x03CA50;
-        public static long Trio =  0x03CA54;
-        public static long Death =  0x03CA58;
-        public static long Cerberus =  0x03CA5C;
-        public static long SaveRichter =  0x03CA60;
-        public static long Medusa =  0x03CA64;
-        public static long Creature =  0x03CA68;
-        public static long LesserDemon =  0x03CA6C;
-        public static long Doppleganger40 =  0x03CA70;
-        public static long Akmodan =  0x03CA74;
-        public static long DarkwingBat =  0x03CA78;
-        public static long Galamoth =  0x03CA7C;
-        public static long FinalSave =  0x03CA80;
-        public static long MeetingDeath =  0x03CA84;
-        public static long GetHolyGlasses =  0x03CA88;
-        public static long MeetLibrarian =  0x03CA8C;
-        public static long MeetMaria = 0x03CA90;
+        public const long DraculaPrologue =  0x03CA28;
+        public const long Olrox =  0x03CA2C;
+        public const long Doppleganger10 =  0x03CA30;
+        public const long Granfaloon =  0x03CA34;
+        public const long MinotaurWerewolf =  0x03CA38;
+        public const long Scylla =  0x03CA3C;
+        public const long SlograGaibon =  0x03CA40;
+        public const long Hippogryph =  0x03CA44;
+        public const long Beelzebub =  0x03CA48;
+        public const long Succubus =  0x03CA4C;
+        public const long Karasuman =  0x03CA50;
+        public const long Trio =  0x03CA54;
+        public const long Death =  0x03CA58;
+        public const long Cerberus =  0x03CA5C;
+        public const long SaveRichter =  0x03CA60;
+        public const long Medusa =  0x03CA64;
+        public const long Creature =  0x03CA68;
+        public const long LesserDemon =  0x03CA6C;
+        public const long Doppleganger40 =  0x03CA70;
+        public const long Akmodan =  0x03CA74;
+        public const long DarkwingBat =  0x03CA78;
+        public const long Galamoth =  0x03CA7C;
+        public const long FinalSave =  0x03CA80;
+        public const long MeetingDeath =  0x03CA84;
+        public const long GetHolyGlasses =  0x03CA88;
+        public const long MeetLibrarian =  0x03CA8C;
+        public const long MeetMaria = 0x03CA90;
 
-        public static Dictionary<string, long> Times = new Dictionary<string, long>
+        public static readonly Dictionary<string, long> Times = new Dictionary<string, long>
         {
             {"draculaprologue", 0x03ca28 },
             {"olrox",  0x03ca2c },

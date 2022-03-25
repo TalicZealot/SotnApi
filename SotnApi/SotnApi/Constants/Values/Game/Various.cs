@@ -4,19 +4,19 @@ namespace SotnApi.Constants.Values.Game
 {
     public static class Various
     {
-        public static long RowOffset = 0x800;
-        public static uint MarbleGalleryArea = 0x28;
-        public static uint MarbleGalleryDoorToCavernsRoom = 0x1C;
-        public static uint MarbleGalleryBlueDoorRoom = 0x74;
-        public static uint PrologueArea = 0x20;
-        public static uint PrologueZone = 0x21;
-        public static uint LoadingZone = 0x32;
-        public static uint LibraryWarped = 0x78;
-        public static uint CanSave = 0x20;
-        public static uint CanWarp = 0x0E;
-        public static int MapItemsCollectedSize = 143;
+        public const long RowOffset = 0x800;
+        public const uint MarbleGalleryArea = 0x28;
+        public const uint MarbleGalleryDoorToCavernsRoom = 0x1C;
+        public const uint MarbleGalleryBlueDoorRoom = 0x74;
+        public const uint PrologueArea = 0x20;
+        public const uint PrologueZone = 0x21;
+        public const uint LoadingZone = 0x32;
+        public const uint LibraryWarped = 0x78;
+        public const uint CanSave = 0x20;
+        public const uint CanWarp = 0x0E;
+        public const int MapItemsCollectedSize = 143;
 
-        public static Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
+        public static readonly Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},
             {0x44, '.'},
             {0x46, ':'},
@@ -38,7 +38,7 @@ namespace SotnApi.Constants.Values.Game
             {0x7b, '+'},
             {0x7c, '-'}
         };
-        public static Dictionary<string, uint> MusicTracks = new Dictionary<string, uint>
+        public static readonly Dictionary<string, uint> MusicTracks = new Dictionary<string, uint>
         {
             { "lost painting", 0x01 },
             { "cursed sanctuary", 0x03 },
@@ -80,7 +80,7 @@ namespace SotnApi.Constants.Values.Game
             { "wait i beg of you", 0x92 },
             { "thank you", 0xad }
         };
-        public static string[] MusicTrackTitles =
+        public static readonly string[] MusicTrackTitles =
         {
             "Lost Painting",
             "Cursed Sanctuary",
@@ -122,7 +122,7 @@ namespace SotnApi.Constants.Values.Game
             "Wait I beg of you",
             "Thank you"
         };
-        public static uint[] MusicTrackValues =
+        public static readonly uint[] MusicTrackValues =
         {
             0x00,
             0x03,
@@ -164,8 +164,8 @@ namespace SotnApi.Constants.Values.Game
             0x92,
             0xAD
         };
-        public static uint MuteValue = 0x8C;
-        public static string[] BossNames =
+        public static readonly uint MuteValue = 0x8C;
+        public static readonly string[] BossNames =
         {
             "Slogra",
             "Gaibon",

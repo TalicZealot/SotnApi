@@ -4,7 +4,7 @@ namespace SotnApi.Constants.Addresses.Alucard
 {
     internal static class Relics
     {
-        public static Dictionary<string, long> AllRelics = new Dictionary<string, long>
+        public static readonly Dictionary<string, long> AllRelics = new Dictionary<string, long>
         {
            { "SoulOfBat", 0x97964 },
            { "FireOfBat", 0x97965 },
@@ -38,35 +38,35 @@ namespace SotnApi.Constants.Addresses.Alucard
            { "EyeOfVlad",  0x97981 }
         };
 
-        public static long SoulOfBat = 0x97964;
-        public static long FireOfBat = 0x97965;
-        public static long EchoOfBat = 0x97966;
-        public static long ForceOfEcho = 0x97967;
-        public static long SoulOfWolf = 0x97968;
-        public static long PowerOfWolf = 0x97969;
-        public static long SkillOfWolf = 0x9796A;
-        public static long FormOfMist = 0x9796B;
-        public static long PowerOfMist = 0x9796C;
-        public static long GasCloud = 0x9796D;
-        public static long CubeOfZoe = 0x9796E;
-        public static long SpiritOrb = 0x9796F;
-        public static long GravityBoots = 0x97970;
-        public static long LeapStone = 0x97971;
-        public static long HolySymbol = 0x97972;
-        public static long FaerieScroll = 0x97973;
-        public static long JewelOfOpen = 0x97974;
-        public static long MermanStatue = 0x97975;
-        public static long BatCard = 0x97976;
-        public static long GhostCard = 0x97977;
-        public static long FaerieCard = 0x97978;
-        public static long DemonCard = 0x97979;
-        public static long SwordCard = 0x9797A;
-        public static long SpriteCard = 0x9797B;
-        public static long NoseDevilCard = 0x9797C;
-        public static long HeartOfVlad = 0x9797D;
-        public static long ToothOfVlad = 0x9797E;
-        public static long RibOfVlad = 0x9797F;
-        public static long RingOfVlad = 0x97980;
-        public static long EyeOfVlad = 0x97981;
+        public const long SoulOfBat = 0x97964;
+        public const long FireOfBat = 0x97965;
+        public const long EchoOfBat = 0x97966;
+        public const long ForceOfEcho = 0x97967;
+        public const long SoulOfWolf = 0x97968;
+        public const long PowerOfWolf = 0x97969;
+        public const long SkillOfWolf = 0x9796A;
+        public const long FormOfMist = 0x9796B;
+        public const long PowerOfMist = 0x9796C;
+        public const long GasCloud = 0x9796D;
+        public const long CubeOfZoe = 0x9796E;
+        public const long SpiritOrb = 0x9796F;
+        public const long GravityBoots = 0x97970;
+        public const long LeapStone = 0x97971;
+        public const long HolySymbol = 0x97972;
+        public const long FaerieScroll = 0x97973;
+        public const long JewelOfOpen = 0x97974;
+        public const long MermanStatue = 0x97975;
+        public const long BatCard = 0x97976;
+        public const long GhostCard = 0x97977;
+        public const long FaerieCard = 0x97978;
+        public const long DemonCard = 0x97979;
+        public const long SwordCard = 0x9797A;
+        public const long SpriteCard = 0x9797B;
+        public const long NoseDevilCard = 0x9797C;
+        public const long HeartOfVlad = 0x9797D;
+        public const long ToothOfVlad = 0x9797E;
+        public const long RibOfVlad = 0x9797F;
+        public const long RingOfVlad = 0x97980;
+        public const long EyeOfVlad = 0x97981;
     }
 }

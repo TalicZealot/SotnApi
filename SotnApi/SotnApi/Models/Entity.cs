@@ -7,9 +7,9 @@ namespace SotnApi.Models
     /// <summary>
     /// An entity object that can be rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
     /// </summary>
-    public class Actor
+    public class Entity
     {
-        public Actor(List<byte>? entity = null)
+        public Entity(List<byte>? entity = null)
         {
             if (entity != null)
             {
@@ -18,7 +18,7 @@ namespace SotnApi.Models
             else
             {
                 Value = new List<byte>();
-                for (int i = 0; i <= Actors.Size; i++)
+                for (int i = 0; i <= Entities.Size; i++)
                 {
                     Value.Add(0);
                 }
@@ -30,14 +30,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.XposOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.XposOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.XposOffset + i] = valueBytes[i];
+                    Value[Entities.XposOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -46,14 +46,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.YposOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.YposOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.YposOffset + i] = valueBytes[i];
+                    Value[Entities.YposOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -62,14 +62,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.SpeedFractOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.SpeedFractOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.SpeedFractOffset + i] = valueBytes[i];
+                    Value[Entities.SpeedFractOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -78,14 +78,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.SpeedWholeOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.SpeedWholeOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.SpeedWholeOffset + i] = valueBytes[i];
+                    Value[Entities.SpeedWholeOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -94,11 +94,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.SpeedVerticalFractOffset];
+                return Value[Entities.SpeedVerticalFractOffset];
             }
             set
             {
-                Value[Actors.SpeedVerticalFractOffset] = (byte)value;
+                Value[Entities.SpeedVerticalFractOffset] = (byte)value;
             }
         }
 
@@ -106,11 +106,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.SpeedVerticalWholeOffset];
+                return Value[Entities.SpeedVerticalWholeOffset];
             }
             set
             {
-                Value[Actors.SpeedVerticalWholeOffset] = (byte)value;
+                Value[Entities.SpeedVerticalWholeOffset] = (byte)value;
             }
         }
 
@@ -118,11 +118,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.HitboxAutoToggleOffset];
+                return Value[Entities.HitboxAutoToggleOffset];
             }
             set
             {
-                Value[Actors.HitboxAutoToggleOffset] = (byte)value;
+                Value[Entities.HitboxAutoToggleOffset] = (byte)value;
             }
         }
 
@@ -130,14 +130,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.HpOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.HpOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.HpOffset + i] = valueBytes[i];
+                    Value[Entities.HpOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -146,14 +146,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.DefOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.DefOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.DefOffset + i] = valueBytes[i];
+                    Value[Entities.DefOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -162,14 +162,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.DamageOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.DamageOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.DamageOffset + i] = valueBytes[i];
+                    Value[Entities.DamageOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -178,11 +178,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.DamageTypeAOffset];
+                return Value[Entities.DamageTypeAOffset];
             }
             set
             {
-                Value[Actors.DamageTypeAOffset] = (byte)value;
+                Value[Entities.DamageTypeAOffset] = (byte)value;
             }
         }
 
@@ -190,11 +190,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.DamageTypeBOffset];
+                return Value[Entities.DamageTypeBOffset];
             }
             set
             {
-                Value[Actors.DamageTypeBOffset] = (byte)value;
+                Value[Entities.DamageTypeBOffset] = (byte)value;
             }
         }
 
@@ -202,11 +202,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.PaletteOffset];
+                return Value[Entities.PaletteOffset];
             }
             set
             {
-                Value[Actors.PaletteOffset] = (byte)value;
+                Value[Entities.PaletteOffset] = (byte)value;
             }
         }
 
@@ -214,11 +214,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.ColorModeOffset];
+                return Value[Entities.ColorModeOffset];
             }
             set
             {
-                Value[Actors.ColorModeOffset] = (byte)value;
+                Value[Entities.ColorModeOffset] = (byte)value;
             }
         }
         //AI id
@@ -226,14 +226,14 @@ namespace SotnApi.Models
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Actors.SpriteOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.SpriteOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Actors.SpriteOffset + i] = valueBytes[i];
+                    Value[Entities.SpriteOffset + i] = valueBytes[i];
                 }
             }
         }
@@ -242,11 +242,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.HitboxWidthOffset];
+                return Value[Entities.HitboxWidthOffset];
             }
             set
             {
-                Value[Actors.HitboxWidthOffset] = (byte)value;
+                Value[Entities.HitboxWidthOffset] = (byte)value;
             }
         }
 
@@ -254,11 +254,11 @@ namespace SotnApi.Models
         {
             get
             {
-                return Value[Actors.HitboxHeightOffset];
+                return Value[Entities.HitboxHeightOffset];
             }
             set
             {
-                Value[Actors.HitboxHeightOffset] = (byte)value;
+                Value[Entities.HitboxHeightOffset] = (byte)value;
             }
         }
     }

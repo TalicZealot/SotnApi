@@ -5,38 +5,36 @@ namespace SotnApi.Constants.Addresses
     public static class Strings
     {
         //Bosses
-        public static long Slogra = 0x0E07C4;
-        public static long Gaibon = 0x0E0794;
-        public static long Doppleganger40 = 0x0E0614;
-        public static long Minotaur = 0x0E087C;
-        public static long Werewolf = 0x0E0870;
-        public static long LesserDemon = 0x0E0CC0;
-        public static long Karasuman = 0x0E0730;
-        public static long Hippogryph = 0x0E06E8;
-        public static long Olrox = 0x0E0C30;
-        public static long Succubus = 0x0E0668;
-        public static long ScyllaWorm = 0x0E0700;
-        public static long Scylla = 0x0E0710;
-        public static long Cerberus = 0x0E063C;
-        public static long Granfaloon = 0x0E06F4;
-        public static long Richter = 0x0E06BC;
-        public static long DarkwingBat = 0x0E0748;
-        public static long Creature = 0x0E0624;
-        public static long Doppleganger10 = 0x0E079C;
-        public static long Death = 0x0E0648;
-        public static long Galamoth = 0x0E0888;
-        public static long Medusa = 0x0E0634;
-        public static long Akmodan = 0x0E0768;
-        public static long Trevor = 0x0E068C;
-        public static long Sypha = 0x0E0674;
-        public static long Grant = 0x0E0680;
-        public static long Beelzebub = 0x0E069C;
-        public static long Shaft = 0x0E0650;
-        public static long Dracula = 0x0E0914;
+        public const long Slogra = 0x0E07C4;
+        public const long Gaibon = 0x0E0794;
+        public const long Doppleganger40 = 0x0E0614;
+        public const long Minotaur = 0x0E087C;
+        public const long Werewolf = 0x0E0870;
+        public const long LesserDemon = 0x0E0CC0;
+        public const long Karasuman = 0x0E0730;
+        public const long Hippogryph = 0x0E06E8;
+        public const long Olrox = 0x0E0C30;
+        public const long Succubus = 0x0E0668;
+        public const long ScyllaWorm = 0x0E0700;
+        public const long Scylla = 0x0E0710;
+        public const long Cerberus = 0x0E063C;
+        public const long Granfaloon = 0x0E06F4;
+        public const long Richter = 0x0E06BC;
+        public const long DarkwingBat = 0x0E0748;
+        public const long Creature = 0x0E0624;
+        public const long Doppleganger10 = 0x0E079C;
+        public const long Death = 0x0E0648;
+        public const long Galamoth = 0x0E0888;
+        public const long Medusa = 0x0E0634;
+        public const long Akmodan = 0x0E0768;
+        public const long Trevor = 0x0E068C;
+        public const long Sypha = 0x0E0674;
+        public const long Grant = 0x0E0680;
+        public const long Beelzebub = 0x0E069C;
+        public const long Shaft = 0x0E0650;
+        public const long Dracula = 0x0E0914;
         //Enemies
-        public static long MedusaHead = 0x0E06D8;
-        public static long FleaMan = 0x0E0C78;
-        public static Dictionary<string, long> BossNameAddresses = new Dictionary<string, long>
+        public static readonly Dictionary<string, long> BossNameAddresses = new Dictionary<string, long>
         {
             {"Slogra", 0x0E07C4},
             {"Gaibon", 0x0E0794},
@@ -67,7 +65,7 @@ namespace SotnApi.Constants.Addresses
             {"Shaft", 0x0E0650},
             {"Dracula", 0x0E0914}
         };
-        public static Dictionary<string, long> EnemyNameAddresses = new Dictionary<string, long>
+        public static readonly Dictionary<string, long> EnemyNameAddresses = new Dictionary<string, long>
         {
             {"Guardian", 0xe05d8},
             {"BlueVenusWeed", 0xe05e4},

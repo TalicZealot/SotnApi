@@ -4,7 +4,7 @@ namespace SotnApi.Constants.Values.Alucard
 {
     public static class Equipment
     {
-        public static List<string> Items = new List<string>
+        public static readonly List<string> Items = new List<string>
        {
             "empty hand",
             "monster vial 1",

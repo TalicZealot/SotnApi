@@ -16,10 +16,10 @@ namespace ActorApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IActorApi classUnderTest = new ActorApi(mockedMemAPI);
+            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
             string message = "minHp must be greater than 0\r\nParameter name: minHp";
             //Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.FindEnemy(0, 1));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.FindEnemyEntity(0, 1));
             //Assert
             Assert.Equal(message, exception.Message);
         }
@@ -29,10 +29,10 @@ namespace ActorApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IActorApi classUnderTest = new ActorApi(mockedMemAPI);
+            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
             string message = "maxHp must be greater than 0\r\nParameter name: maxHp";
             //Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.FindEnemy(1, 0));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.FindEnemyEntity(1, 0));
             //Assert
             Assert.Equal(message, exception.Message);
         }
@@ -42,12 +42,12 @@ namespace ActorApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IActorApi classUnderTest = new ActorApi(mockedMemAPI);
+            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
             //Act
-            classUnderTest.FindEnemy(1, 1);
+            classUnderTest.FindEnemyEntity(1, 1);
             //Assert
-            mockedMemAPI.Received(2 * Actors.EnemiesCount).ReadByte(Arg.Any<long>());
-            mockedMemAPI.Received(2 * Actors.EnemiesCount).ReadU16(Arg.Any<long>());
+            mockedMemAPI.Received(2 * Entities.EnemyEntitiesCount).ReadByte(Arg.Any<long>());
+            mockedMemAPI.Received(2 * Entities.EnemyEntitiesCount).ReadU16(Arg.Any<long>());
         }
 
         [Fact]
@@ -55,9 +55,9 @@ namespace ActorApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IActorApi classUnderTest = new ActorApi(mockedMemAPI);
+            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
             //Act
-            long enemy = classUnderTest.FindEnemy(1, 10);
+            long enemy = classUnderTest.FindEnemyEntity(1, 10);
             //Assert
             Assert.Equal(0, enemy);
         }
@@ -72,11 +72,11 @@ namespace ActorApiTests
             mockedMemAPI
                 .ReadByte(Arg.Any<long>())
                 .ReturnsForAnyArgs<uint>(3);
-            IActorApi classUnderTest = new ActorApi(mockedMemAPI);
+            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
             //Act
-            long enemy = classUnderTest.FindEnemy(1, 1000);
+            long enemy = classUnderTest.FindEnemyEntity(1, 1000);
             //Assert
-            Assert.Equal(Game.EnemyActorsStart, enemy);
+            Assert.Equal(Game.EnemyEntitiesStart, enemy);
         }
     }
 }
