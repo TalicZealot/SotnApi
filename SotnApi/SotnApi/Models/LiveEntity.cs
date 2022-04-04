@@ -192,15 +192,15 @@ namespace SotnApi.Models
             }
         }
 
-        public uint Sprite
+        public uint AiId
         {
             get
             {
-                return memAPI.ReadU16(Address + Entities.SpriteOffset);
+                return memAPI.ReadU16(Address + Entities.AiIdOffset);
             }
             set
             {
-                memAPI.WriteU16(Address + Entities.SpriteOffset, value);
+                memAPI.WriteU16(Address + Entities.AiIdOffset, value);
             }
         }
 

@@ -222,18 +222,18 @@ namespace SotnApi.Models
             }
         }
         //AI id
-        public ushort Sprite
+        public ushort AiId
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.SpriteOffset);
+                return BitConverter.ToUInt16(Value.ToArray(), Entities.AiIdOffset);
             }
             set
             {
                 byte[] valueBytes = BitConverter.GetBytes(value);
                 for (int i = 0; i < 2; i++)
                 {
-                    Value[Entities.SpriteOffset + i] = valueBytes[i];
+                    Value[Entities.AiIdOffset + i] = valueBytes[i];
                 }
             }
         }

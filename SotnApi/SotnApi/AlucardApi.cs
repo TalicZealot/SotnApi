@@ -1078,6 +1078,39 @@ namespace SotnApi
                 memAPI.WriteByte(Timers.Invincibility, value);
             }
         }
+        public uint PotionInvincibilityTimer
+        {
+            get
+            {
+                return memAPI.ReadByte(Timers.PotionInvincibility);
+            }
+            set
+            {
+                memAPI.WriteByte(Timers.PotionInvincibility, value);
+            }
+        }
+        public uint KnockbackInvincibilityTimer
+        {
+            get
+            {
+                return memAPI.ReadByte(Timers.KnockbackInvincibility);
+            }
+            set
+            {
+                memAPI.WriteByte(Timers.KnockbackInvincibility, value);
+            }
+        }
+        public uint FreezeInvincibilityTimer
+        {
+            get
+            {
+                return memAPI.ReadByte(Timers.FreezeInvincibility);
+            }
+            set
+            {
+                memAPI.WriteByte(Timers.FreezeInvincibility, value);
+            }
+        }
         public uint ShineTimer
         {
             get
@@ -1288,8 +1321,8 @@ namespace SotnApi
         private void SortItemInventory(uint item)
         {
             int countsBase = Equipment.HandCount + 1;
-            long slotBaseAddress = 0;
-            int max = 0;
+            long slotBaseAddress;
+            int max;
             if (item <= Equipment.HandCount)
             {
                 max = Equipment.HandCount;

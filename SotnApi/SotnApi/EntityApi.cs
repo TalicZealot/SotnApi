@@ -65,7 +65,7 @@ namespace SotnApi
                 foreach (var bannedActor in bannedActors)
                 {
                     if (((bannedActor.Damage > 0 && actor.Damage == bannedActor.Damage) || bannedActor.Damage == 0) &&
-                        actor.Sprite == bannedActor.Sprite)
+                        actor.AiId == bannedActor.AiId)
                     {
                         notBanned = false;
                         break;
@@ -102,7 +102,7 @@ namespace SotnApi
                         ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
                         ((actor.Damage > 0 && currentActor.Damage == actor.Damage) || actor.Damage == 0) &&
                         ((actor.Hp > 0 && currentActor.Hp == actor.Hp) || actor.Hp == 0) &&
-                        currentActor.Sprite == actor.Sprite)
+                        currentActor.AiId == actor.AiId)
                     {
                         match = true;
                         break;
@@ -158,7 +158,7 @@ namespace SotnApi
                         ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
                         ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
                         ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
-                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.Sprite == actor.Sprite)
+                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.AiId == actor.AiId)
                     {
                         ActorAddresses.Add(start);
                         break;
@@ -204,7 +204,7 @@ namespace SotnApi
                     }
                 }
 
-                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.Sprite == 0 && !reserved)
+                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.AiId == 0 && !reserved)
                 {
                     return start;
                 }

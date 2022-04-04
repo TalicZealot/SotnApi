@@ -121,6 +121,9 @@ namespace SotnApi.Interfaces
         uint AttackPotionTimer { get; set; }
         uint DefencePotionTimer { get; set; }
         uint InvincibilityTimer { get; set; }
+        uint PotionInvincibilityTimer { get; set; }
+        uint KnockbackInvincibilityTimer { get; set; }
+        uint FreezeInvincibilityTimer { get; set; }
         uint ShineTimer { get; set; }
         uint CurseTimer { get; set; }
         uint PoisonTimer { get; set; }

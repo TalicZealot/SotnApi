@@ -24,7 +24,7 @@
         public const int FacingOffset = 0x14;
         public const int PaletteOffset = 0x16;
         public const int ColorModeOffset = 0x18;
-        public const int SpriteOffset = 0x28;
+        public const int AiIdOffset = 0x28;
         public const int LockOnOffset = 0x2C;
         public const int ItemIndexOffset = 0x30; //RelicIndex
         public const int EnemyNameIndex = 0x3A;
