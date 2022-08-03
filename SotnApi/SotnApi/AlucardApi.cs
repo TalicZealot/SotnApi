@@ -180,6 +180,17 @@ namespace SotnApi
                 memAPI.WriteU32(Stats.Rooms, value);
             }
         }
+        public uint Kills
+        {
+            get
+            {
+                return memAPI.ReadU32(Stats.Kills);
+            }
+            set
+            {
+                memAPI.WriteU32(Stats.Kills, value);
+            }
+        }
         public uint WarpsFirstCastle
         {
             get
@@ -1109,6 +1120,17 @@ namespace SotnApi
             set
             {
                 memAPI.WriteByte(Timers.FreezeInvincibility, value);
+            }
+        }
+        public uint SubweaponTimer
+        {
+            get
+            {
+                return memAPI.ReadByte(Timers.SubweaponTimer);
+            }
+            set
+            {
+                memAPI.WriteByte(Timers.SubweaponTimer, value);
             }
         }
         public uint ShineTimer

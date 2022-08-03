@@ -279,24 +279,41 @@ namespace SotnApi
             return (memAPI.ReadByte(Game.CanWarp) & Various.CanWarp) == Various.CanWarp;
         }
 
-        public void OverwriteString(long address, string text)
+        public void OverwriteString(long address, string text, bool safe)
         {
             if (text == null) throw new ArgumentNullException(nameof(text));
             if (text == String.Empty) throw new ArgumentException("Text cannot be empty!");
 
+            bool endReached = false;
+
             for (int i = 0; i < MaxStringLenght; i++)
             {
+                bool atEnd = false;
                 if (memAPI.ReadByte(address + i) == 255)
                 {
-                    return;
+                    atEnd = true;
+                    endReached = true;
+                    if (safe)
+                    {
+                        return;
+                    }
                 }
+
                 if (i < text.Length)
                 {
                     memAPI.WriteByte(address + i, (uint)text[i] - 32);
                 }
                 else
                 {
-                    memAPI.WriteByte(address + i, 0);
+                    if (endReached)
+                    {
+                        memAPI.WriteByte(address + i, 255);
+                        break;
+                    }
+                    else if (!atEnd)
+                    {
+                        memAPI.WriteByte(address + i, 0);
+                    }
                 }
             }
         }
@@ -327,7 +344,7 @@ namespace SotnApi
         public string ReadPresetName()
         {
             string preset = ReadString(Game.PresetStart).Trim();
-            string pattern = @" ([a-z.-]{2,10})( ){0,1}";
+            string pattern = @" ([a-z.-]{2,15})( ){0,1}";
             Match match = Regex.Match(preset, pattern, RegexOptions.IgnoreCase);
             return match.Value.Trim();
         }

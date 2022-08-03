@@ -383,7 +383,7 @@
             Checks if the menu si currently open.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IGameApi.OverwriteString(System.Int64,System.String)">
+        <member name="M:SotnApi.Interfaces.IGameApi.OverwriteString(System.Int64,System.String,System.Boolean)">
             <summary>
             Overwrites a string in the game.
             </summary>

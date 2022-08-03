@@ -78,6 +78,7 @@ namespace SotnApi.Constants.Addresses
             {"MedusaHead", 0xe06d8},
             {"Balloonpod", 0xe0718},
             {"Imp", 0xe0728},
+            {"AxeKnight", 0x0E0D2C},
             {"Fishhead", 0xe073c},
             {"Cloakedknight", 0xe0758},
             {"Tinman", 0xe0774},
@@ -183,6 +184,10 @@ namespace SotnApi.Constants.Addresses
             {"BloodyZombie", 0xe0d04},
             {"Skelerang", 0xe0d14},
             {"SwordLord", 0xe0d20},
+        };
+        public static readonly Dictionary<string, long> WeaponNameAddresses = new Dictionary<string, long>
+        {
+            {"Gurthang", 0x0DD998}
         };
     }
 }

@@ -46,7 +46,7 @@ namespace SotnApi.Constants.Values.Game
             { "rainbow cemetary", 0x07 },
             { "wood carving partita", 0x09 },
             { "crystal teardrops", 0x0b },
-            { "marble galery", 0x0d },
+            { "marble gallery", 0x0d },
             { "dracula castle", 0x0f },
             { "the tragic prince", 0x11 },
             { "tower of evil mist", 0x13 },

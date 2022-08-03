@@ -21,6 +21,7 @@
         public const long LckBonus = 0x097BD4;
         public const long Gold = 0x097BF0;
         public const long Rooms = 0x03C760;
+        public const long Kills = 0x097BF4;
         public const long WarpsFirstCastle = 0x03BEBC;
         public const long WarpsSecondCastle = 0x03BEBD;
         public const long MapOffsetX = 0x0973F1;

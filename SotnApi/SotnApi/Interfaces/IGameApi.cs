@@ -138,7 +138,7 @@ namespace SotnApi.Interfaces
         /// <summary>
         /// Overwrites a string in the game.
         /// </summary>
-        void OverwriteString(long address, string text);
+        void OverwriteString(long address, string text, bool safe);
         /// <summary>
         /// Reads the start menu string, where the  Randomizer preset is stored.
         /// </summary>

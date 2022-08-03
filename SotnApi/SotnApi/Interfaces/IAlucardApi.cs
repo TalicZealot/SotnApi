@@ -19,6 +19,7 @@ namespace SotnApi.Interfaces
         uint Level { get; set; }
         uint Experiecne { get; set; }
         uint Rooms { get; set; }
+        uint Kills { get; set; }
         uint WarpsFirstCastle { get; set; }
         uint WarpsSecondCastle { get; set; }
         bool WarpEntrance { get; set; }
@@ -124,6 +125,7 @@ namespace SotnApi.Interfaces
         uint PotionInvincibilityTimer { get; set; }
         uint KnockbackInvincibilityTimer { get; set; }
         uint FreezeInvincibilityTimer { get; set; }
+        uint SubweaponTimer { get; set; }
         uint ShineTimer { get; set; }
         uint CurseTimer { get; set; }
         uint PoisonTimer { get; set; }

@@ -17,7 +17,7 @@ namespace GameApiTests
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             IGameApi classUnderTest = new GameApi(mockedMemAPI);
             //Act&Assert
-            Assert.Throws<ArgumentNullException>(() => classUnderTest.OverwriteString(default, null));
+            Assert.Throws<ArgumentNullException>(() => classUnderTest.OverwriteString(default, null, true));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace GameApiTests
             IGameApi classUnderTest = new GameApi(mockedMemAPI);
             string message = "Text cannot be empty!";
             //Act
-            var exception = Assert.Throws<ArgumentException>(() => classUnderTest.OverwriteString(default, String.Empty));
+            var exception = Assert.Throws<ArgumentException>(() => classUnderTest.OverwriteString(default, String.Empty, true));
             //Assert
             Assert.Equal(message, exception.Message);
         }
@@ -40,7 +40,7 @@ namespace GameApiTests
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             IGameApi classUnderTest = new GameApi(mockedMemAPI);
             //Act
-            classUnderTest.OverwriteString(default, "some text");
+            classUnderTest.OverwriteString(default, "some text", true);
             //Assert
             mockedMemAPI.Received(MaxStringLenght).ReadByte(Arg.Any<long>());
         }
@@ -52,7 +52,7 @@ namespace GameApiTests
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             IGameApi classUnderTest = new GameApi(mockedMemAPI);
             //Act
-            classUnderTest.OverwriteString(default, "some text");
+            classUnderTest.OverwriteString(default, "some text", true);
             //Assert
             mockedMemAPI.Received(MaxStringLenght).WriteByte(Arg.Any<long>(), Arg.Any<uint>());
         }

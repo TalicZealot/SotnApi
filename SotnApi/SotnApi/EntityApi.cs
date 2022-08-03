@@ -31,9 +31,9 @@ namespace SotnApi
 
                 if (bannedHpValues is not null)
                 {
-                    foreach (int bannedHp in bannedHpValues)
+                    for (int j = 0; j < bannedHpValues.Length; j++)
                     {
-                        if (actor.Hp == bannedHp)
+                        if (actor.Hp == bannedHpValues[j])
                         {
                             notBanned = false;
                             break;
@@ -62,10 +62,10 @@ namespace SotnApi
                 LiveEntity actor = GetLiveEntity(start);
                 bool notBanned = true;
 
-                foreach (var bannedActor in bannedActors)
+                for (int j = 0; j < bannedActors.Count; j++)
                 {
-                    if (((bannedActor.Damage > 0 && actor.Damage == bannedActor.Damage) || bannedActor.Damage == 0) &&
-                        actor.AiId == bannedActor.AiId)
+                    if (((bannedActors[j].Damage > 0 && actor.Damage == bannedActors[j].Damage) || bannedActors[j].Damage == 0) &&
+                        actor.AiId == bannedActors[j].AiId)
                     {
                         notBanned = false;
                         break;
@@ -94,8 +94,9 @@ namespace SotnApi
                 LiveEntity currentActor = GetLiveEntity(start);
                 bool match = false;
 
-                foreach (var actor in actors)
+                for (int j = 0; j < actors.Count; j++)
                 {
+                    SearchableActor? actor = actors[j];
                     if (((actor.HitboxWidth > 0 && currentActor.HitboxWidth == actor.HitboxWidth) || currentActor.HitboxWidth > 1) &&
                         ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
                         ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
@@ -152,8 +153,9 @@ namespace SotnApi
             {
                 LiveEntity currentActor = GetLiveEntity(start);
 
-                foreach (var actor in actors)
+                for (int j = 0; j < actors.Count; j++)
                 {
+                    SearchableActor? actor = actors[j];
                     if (((actor.HitboxWidth > 0 && currentActor.HitboxWidth == actor.HitboxWidth) || currentActor.HitboxWidth > 1) &&
                         ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
                         ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
@@ -196,13 +198,15 @@ namespace SotnApi
                 LiveEntity entity = GetLiveEntity(start);
                 bool reserved = false;
 
-                foreach (var slot in Entities.ReservedSlots)
+                for (int j = 0; j < Entities.ReservedSlots.Length; j++)
                 {
-                    if (start == slot)
+                    if (start == Entities.ReservedSlots[j])
                     {
                         reserved = true;
                     }
                 }
+
+
 
                 if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.AiId == 0 && !reserved)
                 {

@@ -15,5 +15,6 @@
         public const long PotionInvincibility = 0x072F1C;
         public const long KnockbackInvincibility = 0x13B5E8;
         public const long FreezeInvincibility = 0x097420;
+        public const long SubweaponTimer = 0x074BD4;
     }
 }

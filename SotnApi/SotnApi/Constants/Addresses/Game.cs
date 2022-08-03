@@ -32,7 +32,7 @@ namespace SotnApi.Constants.Addresses
             { "Lost Painting", 0x00 },
             { "Cursed Sanctuary", 0x03 },
             { "Requiem for the Gods", 0x05 },
-            { "Rainbow Cemetary", 0x07 },
+            { "Rainbow Cemetery", 0x07 },
             { "Wood Carving Partita", 0x09 },
             { "Crystal Teardrops", 0x0B },
             { "Marble Galery", 0x0D },
@@ -94,8 +94,9 @@ namespace SotnApi.Constants.Addresses
         public const long LibraryCard = 0x1FFC99;
         public const long TeleportToLevelEntrance = 0x03C9A4;
         public const long State = 0x073404;
+        public const long FamiliarEntity = 0x0736C8;
         public const long FriendlyEntitiesStart = 0x073F98;
-        public const long EnemyEntitiesStart = 0x0762d8;
+        public const long EnemyEntitiesStart = 0x0762d8;//0736C8
         public const long VramMapStart = 0x08AE80;
         public const long SeedStart = 0x1A78B4;
         public const long PresetStart = 0x1A78D4;
