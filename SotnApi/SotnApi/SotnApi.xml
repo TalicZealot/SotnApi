@@ -15,6 +15,11 @@
             The address where the slot starts. Or 0 if a free slot was not found.
             </returns>
         </member>
+        <member name="M:SotnApi.GameApi.SetLibraryCardDestination(System.UInt32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Room is an index that goes in increments of 8. Setting XY outside of the room will cause a large amount of delay before gaining control.
+            </summary>
+        </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.WingsmashHorizontalSpeed">
             <summary> Wing Smash speed in pixels per frame. </summary>
         </member>
@@ -23,6 +28,9 @@
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.WalkingFractSpeed">
             <summary> Alucard walking fractional speed. </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashWholeSpeed">
+            <summary> Alucard backdash whole speed in pixels per frame.. </summary>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingHorizontalWholeSpeed">
             <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
@@ -96,10 +104,10 @@
         <member name="P:SotnApi.Interfaces.IAlucardApi.Subweapon">
             <summary> Index of the held subweapon.</summary>
         </member>
-        <member name="P:SotnApi.Interfaces.IAlucardApi.CurrentHorizontalSpeedWhole">
+        <member name="P:SotnApi.Interfaces.IAlucardApi.HorizontalVelocityWhole">
             <summary> Real-time horizontal speed in pixels per frame. </summary>
         </member>
-        <member name="P:SotnApi.Interfaces.IAlucardApi.CurrentHorizontalSpeedFractional">
+        <member name="P:SotnApi.Interfaces.IAlucardApi.HorizontalVelocityFractional">
             <summary> Real-time horizontal fractional speed.</summary>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.ScreenX">
@@ -381,6 +389,16 @@
         <member name="M:SotnApi.Interfaces.IGameApi.IsInMenu">
             <summary>
             Checks if the menu si currently open.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.SetLibraryCardDestination(System.UInt32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Changes where the Library Card teleports the user to.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.SetMovementSpeedDirection(System.Boolean)">
+            <summary>
+            Flips or resets the direction in which Alucard walks or jumps.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.OverwriteString(System.Int64,System.String,System.Boolean)">

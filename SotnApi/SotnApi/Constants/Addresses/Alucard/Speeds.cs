@@ -19,6 +19,7 @@
         public const long BatHorizontalLeftFract = 0x117109;
         public const long WolfDashTopRight = 0x12D6D0;
         public const long WolfDashTopLeft = 0x12D73C;
+        public const long BackdashWhole = 0x10FD8C;
         public const long BackdashDecel = 0x11213D;
 
         public const long AxeJumpVerticalMoving = 0x17AD34;

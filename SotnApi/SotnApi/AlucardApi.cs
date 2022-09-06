@@ -691,6 +691,17 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WalkingFract, value);
             }
         }
+        public int BackdashWholeSpeed
+        {
+            get
+            {
+                return memAPI.ReadS16(Speeds.BackdashWhole);
+            }
+            set
+            {
+                memAPI.WriteS16(Speeds.BackdashWhole, value);
+            }
+        }
         public uint JumpingHorizontalWholeSpeed
         {
             get
@@ -955,26 +966,26 @@ namespace SotnApi
                 memAPI.WriteByte(Inventory.Subweapon, (uint)value);
             }
         }
-        public int CurrentHorizontalSpeedWhole
+        public int HorizontalVelocityWhole
         {
             get
             {
-                return (int)memAPI.ReadByte(Stats.CurrentHorizontalSpeedWhole);
+                return memAPI.ReadS16(Entity.HorizontalVelocityWhole);
             }
             set
             {
-                memAPI.WriteByte(Stats.CurrentHorizontalSpeedWhole, (uint)value);
+                memAPI.WriteS16(Entity.HorizontalVelocityWhole, value);
             }
         }
-        public int CurrentHorizontalSpeedFractional
+        public uint HorizontalVelocityFractional
         {
             get
             {
-                return (int)memAPI.ReadByte(Stats.CurrentHorizontalSpeedFractional);
+                return memAPI.ReadByte(Entity.HorizontalVelocityFract);
             }
             set
             {
-                memAPI.WriteByte(Stats.CurrentHorizontalSpeedFractional, (uint)value);
+                memAPI.WriteByte(Entity.HorizontalVelocityFract, value);
             }
         }
         public uint State

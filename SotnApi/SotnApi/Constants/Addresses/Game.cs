@@ -108,5 +108,11 @@ namespace SotnApi.Constants.Addresses
         public const long UnderwaterPhysics = 0x097448;
         public const long Music = 0x138458;
         public const long TeleportDestination = 0x097C98;
+        public const long SavePalette = 0x03C4E6;
+        public const long MovementSpeedDirectionInstruction = 0x010e3a4;
+        public const long LibraryCardDestinationZone = 0x0f1724;
+        public const long LibraryCardDestinationXpos = 0x0A25E2;
+        public const long LibraryCardDestinationYpos = 0x0A25E4;
+        public const long LibraryCardDestinationRoom = 0x0A25E6; //base 8
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SotnApi.Constants.Addresses.Alucard
 {
-    internal static class Stats
+    public static class Stats
     {
         public const long Experience = 0x097BEC;
         public const long Level = 0x097BE8;
@@ -31,8 +31,6 @@
         public const long ScreenY = 0x072F9E;
         public const long MapX = 0x0730B0;
         public const long MapY = 0x0730B4;
-        public const long CurrentHorizontalSpeedWhole = 0x0733E1;
-        public const long CurrentHorizontalSpeedFractional = 0x0733E1;
         public const long Facing = 0x0733EC;
         public const long State = 0x073404;
         public const long Action = 0x073406;

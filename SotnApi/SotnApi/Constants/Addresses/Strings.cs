@@ -185,8 +185,9 @@ namespace SotnApi.Constants.Addresses
             {"Skelerang", 0xe0d14},
             {"SwordLord", 0xe0d20},
         };
-        public static readonly Dictionary<string, long> WeaponNameAddresses = new Dictionary<string, long>
+        public static readonly Dictionary<string, long> ItemNameAddresses = new Dictionary<string, long>
         {
+            {"Library card", 0x0DD200},
             {"Gurthang", 0x0DD998}
         };
     }

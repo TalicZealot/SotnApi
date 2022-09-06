@@ -11,6 +11,7 @@
         public const uint BatLeftFract = 0xC0;
         public const uint WolfDashTopRight = 0x03;
         public const uint WolfDashTopLeft = 0xFD;
+        public const int BackdashWhole = 0xFFFC;
         public const uint BackdashDecel = 0x20;
         public const uint BackdashDecelSlow = 0x30;
     }

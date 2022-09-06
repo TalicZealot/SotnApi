@@ -53,6 +53,8 @@ namespace SotnApi.Interfaces
         uint WalkingWholeSpeed { get; set; }
         /// <summary> Alucard walking fractional speed. </summary>
         uint WalkingFractSpeed { get; set; }
+        /// <summary> Alucard backdash whole speed in pixels per frame.. </summary>
+        int BackdashWholeSpeed { get; set; }
         /// <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
         uint JumpingHorizontalWholeSpeed { get; set; }
         /// <summary> Alucard jumping horizontal fractional speed. </summary>
@@ -103,9 +105,9 @@ namespace SotnApi.Interfaces
         /// <summary> Index of the held subweapon.</summary>
         Subweapon Subweapon { get; set; }
         /// <summary> Real-time horizontal speed in pixels per frame. </summary>
-        public int CurrentHorizontalSpeedWhole { get; set; }
+        public int HorizontalVelocityWhole { get; set; }
         /// <summary> Real-time horizontal fractional speed.</summary>
-        public int CurrentHorizontalSpeedFractional { get; set; }
+        public uint HorizontalVelocityFractional { get; set; }
         uint State { get; set; }
         uint Action { get; set; }
         /// <summary>Horizontal coordinate of Alucard on the screen.</summary>

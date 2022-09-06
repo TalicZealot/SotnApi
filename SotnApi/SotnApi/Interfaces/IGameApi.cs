@@ -136,6 +136,14 @@ namespace SotnApi.Interfaces
         /// </summary>
         bool IsInMenu();
         /// <summary>
+        /// Changes where the Library Card teleports the user to.
+        /// </summary>
+        void SetLibraryCardDestination(uint zone, int xpos, int ypos, uint room);
+        /// <summary>
+        /// Flips or resets the direction in which Alucard walks or jumps.
+        /// </summary>
+        void SetMovementSpeedDirection(bool flipped = false);
+        /// <summary>
         /// Overwrites a string in the game.
         /// </summary>
         void OverwriteString(long address, string text, bool safe);

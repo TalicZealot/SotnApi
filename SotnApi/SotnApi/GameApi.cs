@@ -6,6 +6,7 @@ using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace SotnApi
@@ -277,6 +278,29 @@ namespace SotnApi
         public bool CanWarp()
         {
             return (memAPI.ReadByte(Game.CanWarp) & Various.CanWarp) == Various.CanWarp;
+        }
+
+        /// <summary>
+        /// Room is an index that goes in increments of 8. Setting XY outside of the room will cause a large amount of delay before gaining control.
+        /// </summary>
+        public void SetLibraryCardDestination(uint zone, int xpos, int ypos, uint room)
+        {
+            memAPI.WriteByte(Game.LibraryCardDestinationZone, zone);
+            memAPI.WriteS16(Game.LibraryCardDestinationXpos, xpos);
+            memAPI.WriteS16(Game.LibraryCardDestinationYpos, ypos);
+            memAPI.WriteU16(Game.LibraryCardDestinationRoom, room);
+        }
+
+        public void SetMovementSpeedDirection(bool flipped = false)
+        {
+            if (flipped)
+            {
+                memAPI.WriteS32(Constants.Addresses.Game.MovementSpeedDirectionInstruction, Constants.Values.Game.Various.FlippedMovementSpeedDirectionInstruction);
+            }
+            else
+            {
+                memAPI.WriteS32(Constants.Addresses.Game.MovementSpeedDirectionInstruction, Constants.Values.Game.Various.DefaultMovementSpeedDirectionInstruction);
+            }
         }
 
         public void OverwriteString(long address, string text, bool safe)
