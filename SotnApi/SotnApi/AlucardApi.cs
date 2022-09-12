@@ -9,7 +9,7 @@ using Effects = SotnApi.Constants.Addresses.Alucard.Effects;
 
 namespace SotnApi
 {
-    public class AlucardApi : IAlucardApi
+    public sealed class AlucardApi : IAlucardApi
     {
         private readonly IMemoryApi memAPI;
 

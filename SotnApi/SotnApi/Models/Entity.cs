@@ -7,7 +7,7 @@ namespace SotnApi.Models
     /// <summary>
     /// An entity object that can be rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
     /// </summary>
-    public class Entity
+    public sealed class Entity
     {
         public Entity(List<byte>? entity = null)
         {

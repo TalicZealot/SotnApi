@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace SotnApi
 {
-    public class GameApi : IGameApi
+    public sealed class GameApi : IGameApi
     {
         private const int MaxStringLenght = 31;
         private readonly IMemoryApi memAPI;

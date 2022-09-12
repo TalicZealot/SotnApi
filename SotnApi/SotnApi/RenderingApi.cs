@@ -6,7 +6,7 @@ using System;
 
 namespace SotnApi
 {
-    public class RenderingApi : IRenderingApi
+    public sealed class RenderingApi : IRenderingApi
     {
         private const int MaximumMapRows = 255;
         private const int MaximumMapCols = 255;

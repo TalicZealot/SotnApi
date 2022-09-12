@@ -4,7 +4,7 @@ using System;
 
 namespace SotnApi.Main
 {
-    public class SotnApi : ISotnApi
+    public sealed class SotnApi : ISotnApi
     {
         private readonly IGameApi gameApi;
         private readonly IAlucardApi alucardApi;

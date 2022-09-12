@@ -7,7 +7,7 @@ namespace SotnApi.Models
     /// <summary>
     /// A live entity object rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
     /// </summary>
-    public class LiveEntity
+    public sealed class LiveEntity
     {
         private readonly IMemoryApi memAPI;
 

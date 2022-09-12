@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace SotnApi
 {
-    public class EntityApi : IEntityApi
+    public sealed class EntityApi : IEntityApi
     {
         private readonly IMemoryApi memAPI;
 

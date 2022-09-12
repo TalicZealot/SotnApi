@@ -1,6 +1,6 @@
 ﻿namespace SotnApi.Models
 {
-    public class SearchableActor
+    public sealed class SearchableActor
     {
         public string Name { get; set; }
         public int Xpos { get; set; }
