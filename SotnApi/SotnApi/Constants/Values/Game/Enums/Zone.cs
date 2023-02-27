@@ -30,6 +30,7 @@
         MinotaurWerewolf = 0x1C,
         Granfaloon = 0x1D,
         Olrox = 0x1E,
+        Prologue = 0x1F,
         BlackMarbleGallery = 0x20,
         ReverseOuterWall = 0x21,
         ForbiddenLibrary = 0x22,

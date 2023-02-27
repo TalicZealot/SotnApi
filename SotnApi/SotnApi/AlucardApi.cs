@@ -1177,6 +1177,18 @@ namespace SotnApi
                 memAPI.WriteU16(Timers.Poison, value);
             }
         }
+        public uint StunTimer
+        {
+            get
+            {
+                return memAPI.ReadU16(Timers.Stun);
+            }
+            set
+            {
+                memAPI.WriteU16(Timers.Stun, value);
+            }
+        }
+
         public uint ContactDamage
         {
             get
@@ -1332,6 +1344,16 @@ namespace SotnApi
         public void ActivateStopwatch()
         {
             memAPI.WriteByte(Effects.Activator, SotnApi.Constants.Values.Alucard.Effects.Stopwatch);
+        }
+
+        public void ForceLibraryCard()
+        {
+            memAPI.WriteByte(Effects.Activator, SotnApi.Constants.Values.Alucard.Effects.LibraryCard);
+        }
+
+        public bool EffectActive()
+        {
+            return memAPI.ReadByte(Effects.Activator) > 0;
         }
 
         public void ActivatePotion(Potion potion)

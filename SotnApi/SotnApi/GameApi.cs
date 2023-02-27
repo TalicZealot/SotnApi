@@ -4,9 +4,9 @@ using SotnApi.Constants.Addresses.Alucard;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Interfaces;
+using SotnApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Text.RegularExpressions;
 
 namespace SotnApi
@@ -20,6 +20,139 @@ namespace SotnApi
             if (memAPI == null) { throw new ArgumentNullException(nameof(memAPI)); }
 
             this.memAPI = memAPI;
+            ZoneTransitions = new Dictionary<Zone, Dictionary<Zone, ZoneTransition>>()
+            {
+                {
+                    Zone.CastleEntrance,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.MarbleGallery], memAPI) },
+                        { Zone.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.UndergroundCaverns], memAPI) },
+                        { Zone.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.AlchemyLaboratory], memAPI) },
+                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.Warp], memAPI) },
+                    }
+                },
+                {
+                    Zone.AlchemyLaboratory,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Zone.CastleEntrance], memAPI) },
+                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Zone.MarbleGallery], memAPI) },
+                        { Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Zone.RoyalChapel], memAPI) },
+                    }
+                },
+                {
+                    Zone.Colosseum,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        {Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.Colosseum[Zone.RoyalChapel], memAPI)},
+                        {Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.Colosseum[Zone.OlroxsQuarters], memAPI)},
+                    }
+                },
+                {
+                    Zone.OlroxsQuarters,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.MarbleGallery], memAPI) },
+                        { Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.RoyalChapel], memAPI) },
+                        { Zone.Colosseum, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.Colosseum], memAPI) },
+                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.Warp], memAPI) },
+                    }
+                },
+                {
+                    Zone.RoyalChapel,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.OlroxsQuarters], memAPI) },
+                        { Zone.Colosseum, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.Colosseum], memAPI) },
+                        { Zone.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.AlchemyLaboratory], memAPI) },
+                        { Zone.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.CastleKeep], memAPI) },
+                    }
+                },
+                {
+                    Zone.Warp,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.CastleKeep], memAPI) },
+                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.OuterWall], memAPI) },
+                        { Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.OlroxsQuarters], memAPI) },
+                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.CastleEntrance], memAPI) },
+                        { Zone.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.AbandonedMine], memAPI) },
+                    }
+                },
+                {
+                    Zone.MarbleGallery,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.AlchemyLaboratory], memAPI) },
+                        { Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.OlroxsQuarters], memAPI) },
+                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.OuterWall], memAPI) },
+                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.CastleEntrance], memAPI) },
+                        { Zone.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.UndergroundCaverns], memAPI) },
+                        { Zone.CenterCube, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.CenterCube], memAPI) },
+                    }
+                },
+                {
+                    Zone.LongLibrary,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.LongLibrary[Zone.OuterWall], memAPI) },
+                    }
+                },
+                {
+                    Zone.ClockTower,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.ClockTower[Zone.CastleKeep], memAPI) },
+                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.ClockTower[Zone.OuterWall], memAPI) },
+                    }
+                },
+                {
+                    Zone.CastleKeep,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.ClockTower, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Zone.ClockTower], memAPI) },
+                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Zone.Warp], memAPI) },
+                        { Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Zone.RoyalChapel], memAPI) },
+                    }
+                },
+                {
+                    Zone.UndergroundCaverns,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.AbandonedMine], memAPI) },
+                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.MarbleGallery], memAPI) },
+                        { Zone.Nightmare, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.Nightmare], memAPI) },
+                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.CastleEntrance], memAPI) },
+                    }
+                },
+                {
+                    Zone.AbandonedMine,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Zone.UndergroundCaverns], memAPI) },
+                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Zone.Warp], memAPI) },
+                        { Zone.Catacombs, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Zone.Catacombs], memAPI) },
+                    }
+                },
+                {
+                    Zone.Catacombs,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.Catacombs[Zone.AbandonedMine], memAPI) },
+                    }
+                },
+                {
+                    Zone.OuterWall,
+                    new Dictionary<Zone, ZoneTransition>()
+                    {
+                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.MarbleGallery], memAPI) },
+                        { Zone.LongLibrary, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.LongLibrary], memAPI) },
+                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.Warp], memAPI) },
+                        { Zone.ClockTower, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.ClockTower], memAPI) },
+                    }
+                },
+            };
         }
 
         public uint Status
@@ -53,6 +186,8 @@ namespace SotnApi
                 }
             }
         }
+
+        public Dictionary<Zone, Dictionary<Zone, ZoneTransition>> ZoneTransitions { get; }
 
         public bool SecondCastle
         {
@@ -174,7 +309,23 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Game.Music);
+                return memAPI.ReadByte(Game.MusicTrack);
+            }
+        }
+
+        public uint TrackVolume
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.TrackVolume);
+            }
+        }
+
+        public uint MusicVolume
+        {
+            get
+            {
+                return memAPI.ReadByte(Game.MusicVolume);
             }
         }
 
@@ -295,11 +446,11 @@ namespace SotnApi
         {
             if (flipped)
             {
-                memAPI.WriteS32(Constants.Addresses.Game.MovementSpeedDirectionInstruction, Constants.Values.Game.Various.FlippedMovementSpeedDirectionInstruction);
+                memAPI.WriteU32(Constants.Addresses.Game.MovementSpeedDirectionInstruction, Constants.Values.Game.Various.FlippedMovementSpeedDirectionInstruction);
             }
             else
             {
-                memAPI.WriteS32(Constants.Addresses.Game.MovementSpeedDirectionInstruction, Constants.Values.Game.Various.DefaultMovementSpeedDirectionInstruction);
+                memAPI.WriteU32(Constants.Addresses.Game.MovementSpeedDirectionInstruction, Constants.Values.Game.Various.DefaultMovementSpeedDirectionInstruction);
             }
         }
 
@@ -342,6 +493,20 @@ namespace SotnApi
             }
         }
 
+        public void MuteXA()
+        {
+            memAPI.WriteU32(Constants.Addresses.Game.VolumeSetInstruction, Constants.Values.Game.Various.MuteVolumeSetInstruction);
+        }
+
+        public void UnmuteXA()
+        {
+            memAPI.WriteU32(Constants.Addresses.Game.VolumeSetInstruction, Constants.Values.Game.Various.DefaultVolumeSetInstruction);
+        }
+
+        public void EnableStartWithStereo()
+        {
+            memAPI.WriteU32(Constants.Addresses.Game.StartingStereoSettingInstruction, Constants.Values.Game.Various.StereoStartingStereoSettingInstruction);
+        }
         public void SetRoomToUnvisited(long address)
         {
             if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }

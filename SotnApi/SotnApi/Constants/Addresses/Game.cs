@@ -106,9 +106,13 @@ namespace SotnApi.Constants.Addresses
         public const long CanWarp = 0x03C710;
         public const long MapItemsCollectedStart = 0x03BEE0;
         public const long UnderwaterPhysics = 0x097448;
-        public const long Music = 0x138458;
+        public const long MusicTrack = 0x138458;
+        public const long MusicVolume = 0x13B668;
+        public const long TrackVolume = 0x139820;
+        public const long VolumeSetInstruction = 0x136280;
         public const long TeleportDestination = 0x097C98;
         public const long SavePalette = 0x03C4E6;
+        public const long StartingStereoSettingInstruction = 0x0e4b88;
         public const long MovementSpeedDirectionInstruction = 0x010e3a4;
         public const long LibraryCardDestinationZone = 0x0f1724;
         public const long LibraryCardDestinationXpos = 0x0A25E2;

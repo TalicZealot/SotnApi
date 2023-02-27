@@ -256,6 +256,11 @@
             The current character, but prologue Richter still counts as Alucard.
             </returns>
         </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.ZoneTransitions">
+            <returns>
+            Zone transitions. Doesn't include cutscene and boss transitions.
+            </returns>
+        </member>
         <member name="P:SotnApi.Interfaces.IGameApi.Area">
             <returns>
             Index for the current area or subarea.
@@ -331,6 +336,16 @@
             Index of the current music track. Would need to be frozen to get set.
             </returns>
         </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.TrackVolume">
+            <summary>
+            Gets or sets the default volume for the current track.
+            </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.MusicVolume">
+            <summary>
+            Gets or sets the current volume for XA music.
+            </summary>
+        </member>
         <member name="M:SotnApi.Interfaces.IGameApi.EquipMenuOpen">
             <summary>
             Checks if the item equip menu is currently open.
@@ -404,6 +419,21 @@
         <member name="M:SotnApi.Interfaces.IGameApi.OverwriteString(System.Int64,System.String,System.Boolean)">
             <summary>
             Overwrites a string in the game.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.MuteXA">
+            <summary>
+            Mutes volume for all XA track playback without affecting load times.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.UnmuteXA">
+            <summary>
+            Unmutes volume for all XA track playback.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.EnableStartWithStereo">
+            <summary>
+            Enables stereo when starting a new game.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.ReadPresetName">

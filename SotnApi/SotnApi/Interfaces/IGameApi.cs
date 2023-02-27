@@ -1,4 +1,6 @@
 ﻿using SotnApi.Constants.Values.Game.Enums;
+using SotnApi.Models;
+using System.Collections.Generic;
 
 namespace SotnApi.Interfaces
 {
@@ -25,6 +27,10 @@ namespace SotnApi.Interfaces
         /// The current character, but prologue Richter still counts as Alucard.
         /// </returns>
         Character CurrentCharacter { get; }
+        /// <returns>
+        /// Zone transitions. Doesn't include cutscene and boss transitions.
+        /// </returns>
+        public Dictionary<Zone, Dictionary<Zone, ZoneTransition>> ZoneTransitions { get; }
         /// <returns>
         /// Index for the current area or subarea.
         /// </returns>
@@ -81,12 +87,18 @@ namespace SotnApi.Interfaces
         /// True of the game is in the process of loading a new screen.
         /// </returns>
         bool InTransition { get; }
-
         /// <returns>
         /// Index of the current music track. Would need to be frozen to get set.
         /// </returns>
         uint MusicTrack { get; }
-
+        /// <summary>
+        /// Gets or sets the default volume for the current track.
+        /// </summary>
+        uint TrackVolume { get; }
+        /// <summary>
+        /// Gets or sets the current volume for XA music.
+        /// </summary>
+        uint MusicVolume { get; }
         /// <summary>
         /// Checks if the item equip menu is currently open.
         /// </summary>
@@ -147,6 +159,18 @@ namespace SotnApi.Interfaces
         /// Overwrites a string in the game.
         /// </summary>
         void OverwriteString(long address, string text, bool safe);
+        /// <summary>
+        /// Mutes volume for all XA track playback without affecting load times.
+        /// </summary>
+        void MuteXA();
+        /// <summary>
+        /// Unmutes volume for all XA track playback.
+        /// </summary>
+        void UnmuteXA();
+        /// <summary>
+        /// Enables stereo when starting a new game.
+        /// </summary>
+        void EnableStartWithStereo();
         /// <summary>
         /// Reads the start menu string, where the  Randomizer preset is stored.
         /// </summary>

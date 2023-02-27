@@ -9,6 +9,7 @@
         public const long VisualEffectTimer = 0x072F04;
         public const long DarkMetamorphasis = 0x072F17;
         public const long AttackPotion = 0x13982D;
+        public const long StrengthPotion = 0x139838;
         public const long DefencePotion = 0x139829;
         public const long Invincibility = 0x072F1B;
         public const long PotionInvincibility = 0x072F1C;

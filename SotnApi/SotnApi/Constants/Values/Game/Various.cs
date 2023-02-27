@@ -18,8 +18,12 @@ namespace SotnApi.Constants.Values.Game
         public const uint CanWarp = 0x0E;
         public const int MapItemsCollectedSize = 143;
         public const int UnderwaterPhysicsOn = 0x0090;
-        public const int DefaultMovementSpeedDirectionInstruction = 0x14620002; //BNE v1 v0 0x2
-        public const int FlippedMovementSpeedDirectionInstruction = 0x10620002; //BEQ v1 v0 0x2
+        public const uint DefaultVolumeSetInstruction = 0x84A5B668; //LH   $a1 -0x4998($a1)
+        public const uint MuteVolumeSetInstruction = 0x34050000;    //MOVE $a1 0x0000
+        public const uint DefaultMovementSpeedDirectionInstruction = 0x14620002; //BNE v1 v0 0x2
+        public const uint FlippedMovementSpeedDirectionInstruction = 0x10620002; //BEQ v1 v0 0x2
+        public const uint MonoStartingStereoSettingInstruction = 0x34020001;    //MOVE v2 0x01, Default
+        public const uint StereoStartingStereoSettingInstruction = 0x34020000;  //MOVE v2 0x00
 
         public static readonly Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},
@@ -45,45 +49,71 @@ namespace SotnApi.Constants.Values.Game
         };
         public static readonly Dictionary<string, uint> MusicTracks = new Dictionary<string, uint>
         {
-            { "lost painting", 0x01 },
+            { "lost painting", 0x00 },
+            { "lost painting 1", 0x01 },
+            { "lost painting 2", 0x02 },
             { "cursed sanctuary", 0x03 },
+            { "cursed sanctuary 1", 0x04 },
             { "requiem for the gods", 0x05 },
+            { "requiem for the gods 1", 0x06 },
             { "rainbow cemetary", 0x07 },
+            { "rainbow cemetary 1", 0x08 },
             { "wood carving partita", 0x09 },
-            { "crystal teardrops", 0x0b },
-            { "marble gallery", 0x0d },
-            { "dracula castle", 0x0f },
+            { "wood carving partita 1", 0x0A },
+            { "crystal teardrops", 0x0B },
+            { "crystal teardrops 1", 0x0C },
+            { "marble gallery", 0x0D },
+            { "marble gallery 1", 0x0E },
+            { "dracula castle", 0x0F },
+            { "dracula castle 1", 0x10 },
             { "the tragic prince", 0x11 },
+            { "the tragic prince 1", 0x12 },
             { "tower of evil mist", 0x13 },
+            { "tower of evil mist 1", 0x14 },
             { "doorway of spirits", 0x15 },
+            { "doorway of spirits 1", 0x16 },
             { "dance of pearls", 0x17 },
+            { "dance of pearls 1", 0x18 },
             { "abandoned pit", 0x19 },
-            { "heavenly doorway", 0x1b },
-            { "festival of servants", 0x1d },
-            { "dance of illusions", 0x1f },
+            { "abandoned pit 1", 0x1A },
+            { "heavenly doorway", 0x1B },
+            { "heavenly doorway 1", 0x1C },
+            { "festival of servants", 0x1D },
+            { "festival of servants 1", 0x1E },
+            { "dance of illusions", 0x1F },
+            { "dance of illusions 1", 0x20 },
             { "prologue", 0x21 },
+            { "prologue 1", 0x22 },
             { "wandering ghosts", 0x23 },
+            { "wandering ghosts 1", 0x24 },
             { "doorway to the abyss", 0x25 },
+            { "doorway to the abyss 1", 0x26 },
             { "metamorphosis", 0x27 },
+            { "metamorphosis 1", 0x28 },
             { "metamorphosis 2", 0x29 },
-            { "ambient wind", 0x2a },
-            { "dance of gold", 0x2e },
+            { "ambient wind", 0x2A },
+            { "ambient wind 1", 0x2B },
+            { "ambient wind 2", 0x2C },
+            { "ambient wind 3", 0x2D },
+            { "dance of gold", 0x2E },
+            { "dance of gold 1", 0x2F },
             { "enchanted banquet", 0x30 },
+            { "enchanted banquet 1", 0x31 },
             { "prayer", 0x32 },
+            { "prayer 1", 0x33 },
             { "death's ballad", 0x34 },
+            { "death's ballad 1", 0x35 },
             { "blood relations", 0x36 },
+            { "blood relations 1", 0x37 },
             { "finale toccata", 0x38 },
-            { "black banquet", 0x3a },
-            { "i am the wind", 0x3c },
-            { "silence", 0x3d },
-            { "resting place", 0x3e },
-            { "nocturne", 0x3f },
-            { "moonlight nocturne", 0x40 },
-            { "die monster", 0x58 },
-            { "what is a man", 0x5d },
-            { "muted", 0x8c },
-            { "wait i beg of you", 0x92 },
-            { "thank you", 0xad }
+            { "finale toccata 1", 0x39 },
+            { "black banquet", 0x3A },
+            { "black banquet 1", 0x3B },
+            { "i am the wind", 0x3C },
+            { "silence", 0x3D },
+            { "resting place", 0x3E },
+            { "nocturne", 0x3F },
+            { "moonlight nocturne", 0x40 }
         };
         public static readonly string[] MusicTrackTitles =
         {
@@ -120,12 +150,7 @@ namespace SotnApi.Constants.Values.Game
             "Silence",
             "Resting Place",
             "Nocturne",
-            "Moonlight Nocturne",
-            "Die monster",
-            "What is a man",
-            "Muted",
-            "Wait I beg of you",
-            "Thank you"
+            "Moonlight Nocturne"
         };
         public static readonly uint[] MusicTrackValues =
         {
@@ -162,14 +187,8 @@ namespace SotnApi.Constants.Values.Game
             0x3D,
             0x3E,
             0x3F,
-            0x40,
-            0x58,
-            0x5D,
-            0x8C,
-            0x92,
-            0xAD
+            0x40
         };
-        public static readonly uint MuteValue = 0x8C;
         public static readonly string[] BossNames =
         {
             "Slogra",

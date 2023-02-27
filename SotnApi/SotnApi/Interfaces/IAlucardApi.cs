@@ -131,6 +131,7 @@ namespace SotnApi.Interfaces
         uint ShineTimer { get; set; }
         uint CurseTimer { get; set; }
         uint PoisonTimer { get; set; }
+        uint StunTimer { get; set; }
         /// <summary>Damage dealt to enemies when Alucard touches them.</summary>
         uint ContactDamage { get; set; }
         /// <summary>
@@ -167,6 +168,8 @@ namespace SotnApi.Interfaces
         bool HasControl();
         bool HasHitbox();
         void Heal(uint ammount);
+        bool EffectActive();
+        void ForceLibraryCard();
         void ActivateStopwatch();
         void ActivatePotion(Potion potion);
     }
