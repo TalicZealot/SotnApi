@@ -20,136 +20,136 @@ namespace SotnApi
             if (memAPI == null) { throw new ArgumentNullException(nameof(memAPI)); }
 
             this.memAPI = memAPI;
-            ZoneTransitions = new Dictionary<Zone, Dictionary<Zone, ZoneTransition>>()
+            ZoneTransitions = new Dictionary<Stage, Dictionary<Stage, ZoneTransition>>()
             {
                 {
-                    Zone.CastleEntrance,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.CastleEntrance,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.MarbleGallery], memAPI) },
-                        { Zone.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.UndergroundCaverns], memAPI) },
-                        { Zone.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.AlchemyLaboratory], memAPI) },
-                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Zone.Warp], memAPI) },
+                        { Stage.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Stage.MarbleGallery], memAPI) },
+                        { Stage.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Stage.UndergroundCaverns], memAPI) },
+                        { Stage.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Stage.AlchemyLaboratory], memAPI) },
+                        { Stage.Warp, new ZoneTransition(ZoneTransitionAddresses.CastleEntrance[Stage.Warp], memAPI) },
                     }
                 },
                 {
-                    Zone.AlchemyLaboratory,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.AlchemyLaboratory,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Zone.CastleEntrance], memAPI) },
-                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Zone.MarbleGallery], memAPI) },
-                        { Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Zone.RoyalChapel], memAPI) },
+                        { Stage.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Stage.CastleEntrance], memAPI) },
+                        { Stage.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Stage.MarbleGallery], memAPI) },
+                        { Stage.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.AlchemyLaboratory[Stage.RoyalChapel], memAPI) },
                     }
                 },
                 {
-                    Zone.Colosseum,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.Colosseum,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        {Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.Colosseum[Zone.RoyalChapel], memAPI)},
-                        {Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.Colosseum[Zone.OlroxsQuarters], memAPI)},
+                        {Stage.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.Colosseum[Stage.RoyalChapel], memAPI)},
+                        {Stage.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.Colosseum[Stage.OlroxsQuarters], memAPI)},
                     }
                 },
                 {
-                    Zone.OlroxsQuarters,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.OlroxsQuarters,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.MarbleGallery], memAPI) },
-                        { Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.RoyalChapel], memAPI) },
-                        { Zone.Colosseum, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.Colosseum], memAPI) },
-                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Zone.Warp], memAPI) },
+                        { Stage.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Stage.MarbleGallery], memAPI) },
+                        { Stage.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Stage.RoyalChapel], memAPI) },
+                        { Stage.Colosseum, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Stage.Colosseum], memAPI) },
+                        { Stage.Warp, new ZoneTransition(ZoneTransitionAddresses.OlroxsQuarters[Stage.Warp], memAPI) },
                     }
                 },
                 {
-                    Zone.RoyalChapel,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.RoyalChapel,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.OlroxsQuarters], memAPI) },
-                        { Zone.Colosseum, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.Colosseum], memAPI) },
-                        { Zone.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.AlchemyLaboratory], memAPI) },
-                        { Zone.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Zone.CastleKeep], memAPI) },
+                        { Stage.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Stage.OlroxsQuarters], memAPI) },
+                        { Stage.Colosseum, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Stage.Colosseum], memAPI) },
+                        { Stage.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Stage.AlchemyLaboratory], memAPI) },
+                        { Stage.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.RoyalChapel[Stage.CastleKeep], memAPI) },
                     }
                 },
                 {
-                    Zone.Warp,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.Warp,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.CastleKeep], memAPI) },
-                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.OuterWall], memAPI) },
-                        { Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.OlroxsQuarters], memAPI) },
-                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.CastleEntrance], memAPI) },
-                        { Zone.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.Warp[Zone.AbandonedMine], memAPI) },
+                        { Stage.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.Warp[Stage.CastleKeep], memAPI) },
+                        { Stage.OuterWall, new ZoneTransition(ZoneTransitionAddresses.Warp[Stage.OuterWall], memAPI) },
+                        { Stage.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.Warp[Stage.OlroxsQuarters], memAPI) },
+                        { Stage.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.Warp[Stage.CastleEntrance], memAPI) },
+                        { Stage.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.Warp[Stage.AbandonedMine], memAPI) },
                     }
                 },
                 {
-                    Zone.MarbleGallery,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.MarbleGallery,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.AlchemyLaboratory], memAPI) },
-                        { Zone.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.OlroxsQuarters], memAPI) },
-                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.OuterWall], memAPI) },
-                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.CastleEntrance], memAPI) },
-                        { Zone.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.UndergroundCaverns], memAPI) },
-                        { Zone.CenterCube, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Zone.CenterCube], memAPI) },
+                        { Stage.AlchemyLaboratory, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Stage.AlchemyLaboratory], memAPI) },
+                        { Stage.OlroxsQuarters, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Stage.OlroxsQuarters], memAPI) },
+                        { Stage.OuterWall, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Stage.OuterWall], memAPI) },
+                        { Stage.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Stage.CastleEntrance], memAPI) },
+                        { Stage.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Stage.UndergroundCaverns], memAPI) },
+                        { Stage.CenterCube, new ZoneTransition(ZoneTransitionAddresses.MarbleGallery[Stage.CenterCube], memAPI) },
                     }
                 },
                 {
-                    Zone.LongLibrary,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.LongLibrary,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.LongLibrary[Zone.OuterWall], memAPI) },
+                        { Stage.OuterWall, new ZoneTransition(ZoneTransitionAddresses.LongLibrary[Stage.OuterWall], memAPI) },
                     }
                 },
                 {
-                    Zone.ClockTower,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.ClockTower,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.ClockTower[Zone.CastleKeep], memAPI) },
-                        { Zone.OuterWall, new ZoneTransition(ZoneTransitionAddresses.ClockTower[Zone.OuterWall], memAPI) },
+                        { Stage.CastleKeep, new ZoneTransition(ZoneTransitionAddresses.ClockTower[Stage.CastleKeep], memAPI) },
+                        { Stage.OuterWall, new ZoneTransition(ZoneTransitionAddresses.ClockTower[Stage.OuterWall], memAPI) },
                     }
                 },
                 {
-                    Zone.CastleKeep,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.CastleKeep,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.ClockTower, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Zone.ClockTower], memAPI) },
-                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Zone.Warp], memAPI) },
-                        { Zone.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Zone.RoyalChapel], memAPI) },
+                        { Stage.ClockTower, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Stage.ClockTower], memAPI) },
+                        { Stage.Warp, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Stage.Warp], memAPI) },
+                        { Stage.RoyalChapel, new ZoneTransition(ZoneTransitionAddresses.CastleKeep[Stage.RoyalChapel], memAPI) },
                     }
                 },
                 {
-                    Zone.UndergroundCaverns,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.UndergroundCaverns,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.AbandonedMine], memAPI) },
-                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.MarbleGallery], memAPI) },
-                        { Zone.Nightmare, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.Nightmare], memAPI) },
-                        { Zone.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Zone.CastleEntrance], memAPI) },
+                        { Stage.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Stage.AbandonedMine], memAPI) },
+                        { Stage.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Stage.MarbleGallery], memAPI) },
+                        { Stage.Nightmare, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Stage.Nightmare], memAPI) },
+                        { Stage.CastleEntrance, new ZoneTransition(ZoneTransitionAddresses.UndergroundCaverns[Stage.CastleEntrance], memAPI) },
                     }
                 },
                 {
-                    Zone.AbandonedMine,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.AbandonedMine,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Zone.UndergroundCaverns], memAPI) },
-                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Zone.Warp], memAPI) },
-                        { Zone.Catacombs, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Zone.Catacombs], memAPI) },
+                        { Stage.UndergroundCaverns, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Stage.UndergroundCaverns], memAPI) },
+                        { Stage.Warp, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Stage.Warp], memAPI) },
+                        { Stage.Catacombs, new ZoneTransition(ZoneTransitionAddresses.AbandonedMine[Stage.Catacombs], memAPI) },
                     }
                 },
                 {
-                    Zone.Catacombs,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.Catacombs,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.Catacombs[Zone.AbandonedMine], memAPI) },
+                        { Stage.AbandonedMine, new ZoneTransition(ZoneTransitionAddresses.Catacombs[Stage.AbandonedMine], memAPI) },
                     }
                 },
                 {
-                    Zone.OuterWall,
-                    new Dictionary<Zone, ZoneTransition>()
+                    Stage.OuterWall,
+                    new Dictionary<Stage, ZoneTransition>()
                     {
-                        { Zone.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.MarbleGallery], memAPI) },
-                        { Zone.LongLibrary, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.LongLibrary], memAPI) },
-                        { Zone.Warp, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.Warp], memAPI) },
-                        { Zone.ClockTower, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Zone.ClockTower], memAPI) },
+                        { Stage.MarbleGallery, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Stage.MarbleGallery], memAPI) },
+                        { Stage.LongLibrary, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Stage.LongLibrary], memAPI) },
+                        { Stage.Warp, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Stage.Warp], memAPI) },
+                        { Stage.ClockTower, new ZoneTransition(ZoneTransitionAddresses.OuterWall[Stage.ClockTower], memAPI) },
                     }
                 },
             };
@@ -187,7 +187,7 @@ namespace SotnApi
             }
         }
 
-        public Dictionary<Zone, Dictionary<Zone, ZoneTransition>> ZoneTransitions { get; }
+        public Dictionary<Stage, Dictionary<Stage, ZoneTransition>> ZoneTransitions { get; }
 
         public bool SecondCastle
         {
@@ -213,11 +213,11 @@ namespace SotnApi
             }
         }
 
-        public uint Zone2
+        public uint StageId
         {
             get
             {
-                return memAPI.ReadByte(Game.Zone2);
+                return memAPI.ReadByte(Game.StageId);
             }
         }
 

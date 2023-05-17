@@ -84,7 +84,7 @@ namespace SotnApi.Constants.Addresses
         public const long MapYPos = 0x0730B4;
         public const long Room = 0x1375BC;
         public const long Area = 0x1375BD;
-        public const long Zone2 = 0x0974A0;
+        public const long StageId = 0x0974A0;
         public const long Hours = 0x097C30;
         public const long Minutes = 0x097C34;
         public const long Seconds = 0x097C38;
@@ -106,7 +106,8 @@ namespace SotnApi.Constants.Addresses
         public const long CanWarp = 0x03C710;
         public const long MapItemsCollectedStart = 0x03BEE0;
         public const long UnderwaterPhysics = 0x097448;
-        public const long MusicTrack = 0x138458;
+        public const long MusicTrack = 0x13901C;
+        public const long LastLoadedMusicTrack = 0x138458;
         public const long MusicVolume = 0x13B668;
         public const long TrackVolume = 0x139820;
         public const long VolumeSetInstruction = 0x136280;

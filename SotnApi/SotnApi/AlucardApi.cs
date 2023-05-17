@@ -1188,7 +1188,6 @@ namespace SotnApi
                 memAPI.WriteU16(Timers.Stun, value);
             }
         }
-
         public uint ContactDamage
         {
             get
@@ -1321,7 +1320,7 @@ namespace SotnApi
 
         public bool IsInvincible()
         {
-            return memAPI.ReadByte(Timers.Invincibility) > 0 || memAPI.ReadByte(Timers.KnockbackInvincibility) > 0 || memAPI.ReadByte(Timers.PotionInvincibility) > 0 || memAPI.ReadByte(Timers.FreezeInvincibility) > 0;
+            return memAPI.ReadU16(Timers.Invincibility) > 0 || memAPI.ReadByte(Timers.KnockbackInvincibility) > 0 || memAPI.ReadByte(Timers.PotionInvincibility) > 0 || memAPI.ReadByte(Timers.FreezeInvincibility) > 0;
         }
 
         public bool HasControl()
@@ -1332,13 +1331,19 @@ namespace SotnApi
 
         public bool HasHitbox()
         {
-            return memAPI.ReadByte(Entity.Address + Entities.HitboxWidthOffset) > 0 && memAPI.ReadByte(Entity.Address + Entities.HitboxHeightOffset) > 0;
+            return memAPI.ReadByte(Entity.Address + Entities.HitboxWidth) > 0 && memAPI.ReadByte(Entity.Address + Entities.HitboxHeight) > 0;
         }
 
         public void Heal(uint amount)
         {
             memAPI.WriteS16(Effects.HealAmount, (int)amount);
             memAPI.WriteByte(Effects.HealTrigger, 1);
+        }
+
+        public void InstantDeath()
+        {
+            memAPI.WriteS16(Constants.Addresses.Alucard.Entity.Step, 0x10);
+            memAPI.WriteS16(Constants.Addresses.Alucard.Entity.Step2, 0);
         }
 
         public void ActivateStopwatch()

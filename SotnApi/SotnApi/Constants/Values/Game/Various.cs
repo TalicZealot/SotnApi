@@ -1,5 +1,4 @@
 ﻿using SotnApi.Constants.Values.Game.Enums;
-using SotnApi.Models;
 using System.Collections.Generic;
 
 namespace SotnApi.Constants.Values.Game
@@ -18,12 +17,12 @@ namespace SotnApi.Constants.Values.Game
         public const uint CanWarp = 0x0E;
         public const int MapItemsCollectedSize = 143;
         public const int UnderwaterPhysicsOn = 0x0090;
-        public const uint DefaultVolumeSetInstruction = 0x84A5B668; //LH   $a1 -0x4998($a1)
-        public const uint MuteVolumeSetInstruction = 0x34050000;    //MOVE $a1 0x0000
-        public const uint DefaultMovementSpeedDirectionInstruction = 0x14620002; //BNE v1 v0 0x2
-        public const uint FlippedMovementSpeedDirectionInstruction = 0x10620002; //BEQ v1 v0 0x2
-        public const uint MonoStartingStereoSettingInstruction = 0x34020001;    //MOVE v2 0x01, Default
-        public const uint StereoStartingStereoSettingInstruction = 0x34020000;  //MOVE v2 0x00
+        public const uint DefaultVolumeSetInstruction = 0x84A5B668;                 //LH    $a1 -0x4998($a1)
+        public const uint MuteVolumeSetInstruction = 0x34050000;                    //MOVE  $a1  0x0000
+        public const uint DefaultMovementSpeedDirectionInstruction = 0x14620002;    //BNE   v1   v0 0x2
+        public const uint FlippedMovementSpeedDirectionInstruction = 0x10620002;    //BEQ   v1   v0 0x2
+        public const uint MonoStartingStereoSettingInstruction = 0x34020001;        //MOVE  v2   0x01
+        public const uint StereoStartingStereoSettingInstruction = 0x34020000;      //MOVE  v2   0x00
 
         public static readonly Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},
@@ -220,49 +219,49 @@ namespace SotnApi.Constants.Values.Game
             "Shaft",
             "Dracula"
         };
-        public static readonly List<TeleportZone> SafeLibraryCardZones = new List<TeleportZone>()
+        public static readonly List<Models.TeleportDestination> SafeLibraryCardZones = new List<Models.TeleportDestination>()
             {
-                new TeleportZone { Zone = (ushort)Zone.MarbleGallery, Xpos = 125, Ypos = 125, Room = 40},
-                new TeleportZone { Zone = (ushort)Zone.OuterWall, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.LongLibrary, Xpos = 132, Ypos = 16, Room = 40},
-                new TeleportZone { Zone = (ushort)Zone.Catacombs, Xpos = 125, Ypos = 125, Room = 40},
-                new TeleportZone { Zone = (ushort)Zone.OlroxsQuarters, Xpos = 125, Ypos = 125, Room = 40},
-                new TeleportZone { Zone = (ushort)Zone.AbandonedMine, Xpos = 125, Ypos = 125, Room = 24},
-                new TeleportZone { Zone = (ushort)Zone.RoyalChapel, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.CastleEntrance, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.CenterCube, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.UndergroundCaverns, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.Colosseum, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.CastleKeep, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.AlchemyLaboratory, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.MarbleGallery, Xpos = 125, Ypos = 125, Room = 40},
+                new Models.TeleportDestination { Zone = (ushort)Stage.OuterWall, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.LongLibrary, Xpos = 132, Ypos = 16, Room = 40},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Catacombs, Xpos = 125, Ypos = 125, Room = 40},
+                new Models.TeleportDestination { Zone = (ushort)Stage.OlroxsQuarters, Xpos = 125, Ypos = 125, Room = 40},
+                new Models.TeleportDestination { Zone = (ushort)Stage.AbandonedMine, Xpos = 125, Ypos = 125, Room = 24},
+                new Models.TeleportDestination { Zone = (ushort)Stage.RoyalChapel, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.CastleEntrance, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.CenterCube, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.UndergroundCaverns, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Colosseum, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.CastleKeep, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.AlchemyLaboratory, Xpos = 125, Ypos = 125, Room = 48},
                 //new TeleportZone { Zone = (ushort)Zone.ClockTower, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.Warp, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.Nightmare, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.SlograGaibon, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Karasuman, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.LesserDemon, Xpos = 500, Ypos = 500, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Cerberus, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Hippogryph, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Doppleganger10, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Scylla, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.MinotaurWerewolf, Xpos = 255, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Granfaloon, Xpos = 225, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.Olrox, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.BlackMarbleGallery, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.ReverseOuterWall, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.ForbiddenLibrary, Xpos = 125, Ypos = 125, Room = 8},
-                new TeleportZone { Zone = (ushort)Zone.FloatingCatacombs, Xpos = 125, Ypos = 125, Room = 32},
-                new TeleportZone { Zone = (ushort)Zone.DeathWingsLair, Xpos = 125, Ypos = 125, Room = 16},
-                new TeleportZone { Zone = (ushort)Zone.Cave, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.AntiChapel, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.ReverseEntrance, Xpos = 125, Ypos = 125, Room = 16},
-                new TeleportZone { Zone = (ushort)Zone.ReverseCaverns, Xpos = 125, Ypos = 125, Room = 0},
-                new TeleportZone { Zone = (ushort)Zone.ReverseColosseum, Xpos = 125, Ypos = 125, Room = 8},
-                new TeleportZone { Zone = (ushort)Zone.ReverseCastleKeep, Xpos = 125, Ypos = 125, Room = 40},
-                new TeleportZone { Zone = (ushort)Zone.NecromancyLaboratory, Xpos = 125, Ypos = 125, Room = 40},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Warp, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Nightmare, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.AlchemyLaboratory2, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ClockTower2, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.LongLibrary2, Xpos = 500, Ypos = 500, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Cerberus, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Hippogryph, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Doppleganger10, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Scylla, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.MinotaurWerewolf, Xpos = 255, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Granfaloon, Xpos = 225, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Olrox, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.BlackMarbleGallery, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ReverseOuterWall, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ForbiddenLibrary, Xpos = 125, Ypos = 125, Room = 8},
+                new Models.TeleportDestination { Zone = (ushort)Stage.FloatingCatacombs, Xpos = 125, Ypos = 125, Room = 32},
+                new Models.TeleportDestination { Zone = (ushort)Stage.DeathWingsLair, Xpos = 125, Ypos = 125, Room = 16},
+                new Models.TeleportDestination { Zone = (ushort)Stage.Cave, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.AntiChapel, Xpos = 125, Ypos = 125, Room = 48},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ReverseEntrance, Xpos = 125, Ypos = 125, Room = 16},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ReverseCaverns, Xpos = 125, Ypos = 125, Room = 0},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ReverseColosseum, Xpos = 125, Ypos = 125, Room = 8},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ReverseCastleKeep, Xpos = 125, Ypos = 125, Room = 40},
+                new Models.TeleportDestination { Zone = (ushort)Stage.NecromancyLaboratory, Xpos = 125, Ypos = 125, Room = 40},
                 //new TeleportZone { Zone = (ushort)Zone.ReverseClockTower, Xpos = 125, Ypos = 125, Room = 0}, //Darkwing
                 //new TeleportZone { Zone = (ushort)Zone.ReverseClockTower, Xpos = 125, Ypos = 125, Room = 48},
-                new TeleportZone { Zone = (ushort)Zone.ReverseWarp, Xpos = 125, Ypos = 125, Room = 8},
+                new Models.TeleportDestination { Zone = (ushort)Stage.ReverseWarp, Xpos = 125, Ypos = 125, Room = 8},
             };
     }
 }

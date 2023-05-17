@@ -36,19 +36,19 @@ namespace SotnApi.Interfaces
         /// </returns>
         long FindEntityFrom(List<SearchableActor> actors, bool enemy = true);
         /// <summary>
-        /// Scans memory for all active actors.
+        /// Scans memory for all active entities.
         /// </summary>
         /// <returns>
         /// A list of addresses where the enemy entities start.
         /// </returns>
-        List<long> GetAllActors();
+        List<long> GetAllEntities();
         /// <summary>
-        /// Scans memory for all active actors, that match the example actors.
+        /// Scans memory for all active entities, that match <paramref name="actors"/>.
         /// </summary>
         /// <returns>
         /// A list of addresses where the enemy entities start.
         /// </returns>
-        public List<long> GetAllActors(List<SearchableActor> actors);
+        public List<long> GetAllEntities(List<SearchableActor> actors);
         /// <returns>
         /// Byte range of the enemy entity.
         /// </returns>
@@ -56,7 +56,7 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// A LiveActor instance that can be used to edit the in-game entity.
         /// </returns>
-        LiveEntity GetLiveEntity(long address);
+        Entity GetLiveEntity(long address);
         /// <summary>
         /// Copies the actor data to memory. Spawning it in-game.
         /// </summary>

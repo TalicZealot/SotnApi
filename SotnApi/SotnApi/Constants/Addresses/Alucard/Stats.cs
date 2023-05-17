@@ -35,5 +35,6 @@
         public const long State = 0x073404;
         public const long Action = 0x073406;
         public const long ContactDamage = 0x073418;
+        public const long ArmorResistance = 0x097C28;
     }
 }

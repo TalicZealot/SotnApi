@@ -168,6 +168,7 @@ namespace SotnApi.Interfaces
         bool HasControl();
         bool HasHitbox();
         void Heal(uint ammount);
+        void InstantDeath();
         bool EffectActive();
         void ForceLibraryCard();
         void ActivateStopwatch();

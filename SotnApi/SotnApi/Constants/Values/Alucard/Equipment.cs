@@ -266,6 +266,39 @@ namespace SotnApi.Constants.Values.Alucard
             "Secret boots",
             "Alucart mail"
         };
+        public static readonly List<string> Relics = new List<string>
+        {
+        "Soul of Bat",
+        "Fire of Bat",
+        "Echo of Bat",
+        "Force of Echo",
+        "Soul of Wolf",
+        "Power of Wolf",
+        "Skill of Wolf",
+        "Form of Mist",
+        "Power of Mist",
+        "Gas Cloud",
+        "Cube of Zoe",
+        "Spirit Orb",
+        "Gravity Boots",
+        "Leap Stone",
+        "Holy Symbol",
+        "Faerie Scroll",
+        "Jewel of Open",
+        "Merman Statue",
+        "Bat Card",
+        "Ghost Card",
+        "Faerie Card",
+        "Demon Card",
+        "Sword Card",
+        "Sprite Card",
+        "Nose Devil Card",
+        "Heart of Vlad",
+        "Tooth of Vlad",
+        "Rib of Vlad",
+        "Ring of Vlad",
+        "Eye of Vlad",
+        };
         public const uint HelmStart = 0x1A;
         public const uint CloakStart = 0x30;
         public const uint AccessoryStart = 0x39;

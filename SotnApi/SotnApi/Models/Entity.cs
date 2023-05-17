@@ -1,265 +1,483 @@
-﻿using SotnApi.Constants.Values.Game;
+﻿using BizHawk.Client.Common;
+using SotnApi.Constants.Values.Game;
 using System;
 using System.Collections.Generic;
 
 namespace SotnApi.Models
 {
     /// <summary>
-    /// An entity object that can be rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
+    /// An object that can be rendered in-game or a live in-memory instance. Enemies, projectiles, items, hitboxes, interactable objects.
     /// </summary>
     public sealed class Entity
     {
+        private readonly IMemoryApi memAPI;
+        private bool isLive = false;
+
+        public Entity(long address, IMemoryApi? memAPI)
+        {
+            Address = address;
+            if (memAPI == null) { throw new ArgumentNullException("Memory API is null"); }
+            this.memAPI = memAPI;
+            this.isLive = true;
+        }
         public Entity(List<byte>? entity = null)
         {
             if (entity != null)
             {
-                this.Value = entity;
+                this.Data = entity;
             }
             else
             {
-                Value = new List<byte>();
-                for (int i = 0; i <= Entities.Size; i++)
-                {
-                    Value.Add(0);
-                }
+                Data = new List<byte>(new byte[Entities.Size]);
             }
         }
-        public List<byte> Value { get; set; }
 
-        public ushort Xpos
+        public long Address { get; set; }
+        public List<byte> Data { get; set; }
+
+        public double Xpos
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.XposOffset);
+                return ReadFixedPoint1616(Entities.Xpos);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.XposOffset + i] = valueBytes[i];
-                }
+                WriteU32(Entities.Xpos, (uint)value);
             }
         }
-
-        public ushort Ypos
+        public double Ypos
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.YposOffset);
+                return ReadFixedPoint1616(Entities.Ypos);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.YposOffset + i] = valueBytes[i];
-                }
+                WriteU32(Entities.Ypos, (uint)value);
             }
         }
-
-        public ushort SpeedHorizontalFract
+        public double AccelerationX
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.SpeedFractOffset);
+                return ReadFixedPoint1616(Entities.AccelerationX);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.SpeedFractOffset + i] = valueBytes[i];
-                }
+                WriteU32(Entities.AccelerationX, (uint)value);
             }
         }
-
-        public ushort SpeedHorizontal
+        public double AccelerationY
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.SpeedWholeOffset);
+                return ReadFixedPoint1616(Entities.AccelerationY);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.SpeedWholeOffset + i] = valueBytes[i];
-                }
+                WriteU32(Entities.AccelerationY, (uint)value);
             }
         }
-
-        public ushort SpeedVerticalFract
+        public ushort Facing
         {
             get
             {
-                return Value[Entities.SpeedVerticalFractOffset];
+                return ReadU16(Entities.Facing);
             }
             set
             {
-                Value[Entities.SpeedVerticalFractOffset] = (byte)value;
+                WriteU16(Entities.Facing, value);
             }
         }
-
-        public ushort SpeedVertical
+        public byte Palette
         {
             get
             {
-                return Value[Entities.SpeedVerticalWholeOffset];
+                return ReadByte(Entities.Palette);
             }
             set
             {
-                Value[Entities.SpeedVerticalWholeOffset] = (byte)value;
+                WriteByte(Entities.Palette, value);
             }
         }
-
-        public ushort AutoToggle
+        public byte BlendMode
         {
             get
             {
-                return Value[Entities.HitboxAutoToggleOffset];
+                return ReadByte(Entities.BlendMode);
             }
             set
             {
-                Value[Entities.HitboxAutoToggleOffset] = (byte)value;
+                WriteByte(Entities.BlendMode, value);
             }
         }
-
-        public ushort Hp
+        public ushort ZPriority
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.HpOffset);
+                return ReadU16(Entities.ZPriority);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.HpOffset + i] = valueBytes[i];
-                }
+                WriteU16(Entities.ZPriority, value);
             }
         }
-
-        public ushort Def
+        public ushort ObjectId
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.DefOffset);
+                return ReadU16(Entities.ObjectId);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.DefOffset + i] = valueBytes[i];
-                }
+                WriteU16(Entities.ObjectId, value);
             }
         }
-
+        public uint UpdateFunctionAddress
+        {
+            get
+            {
+                return ReadU32(Entities.UpdateFunctionAddress);
+            }
+            set
+            {
+                WriteU32(Entities.UpdateFunctionAddress, value);
+            }
+        }
+        public ushort Step
+        {
+            get
+            {
+                return ReadU16(Entities.Step);
+            }
+            set
+            {
+                WriteU16(Entities.Step, value);
+            }
+        }
+        public ushort Step2
+        {
+            get
+            {
+                return ReadU16(Entities.Step2);
+            }
+            set
+            {
+                WriteU16(Entities.Step2, value);
+            }
+        }
+        public ushort SubId
+        {
+            get
+            {
+                return ReadU16(Entities.SubId);
+            }
+            set
+            {
+                WriteU16(Entities.SubId, value);
+            }
+        }
+        public ushort ObjectRoomIndex
+        {
+            get
+            {
+                return ReadU16(Entities.ObjectRoomIndex);
+            }
+            set
+            {
+                WriteU16(Entities.ObjectRoomIndex, value);
+            }
+        }
+        public uint Flags
+        {
+            get
+            {
+                return ReadU32(Entities.Flags);
+            }
+            set
+            {
+                WriteU32(Entities.Flags, value);
+            }
+        }
+        public ushort EnemyIndex
+        {
+            get
+            {
+                return ReadU16(Entities.EnemyIndex);
+            }
+            set
+            {
+                WriteU16(Entities.EnemyIndex, value);
+            }
+        }
+        public byte AutoToggle
+        {
+            get
+            {
+                return ReadByte(Entities.HitboxAutoToggle);
+            }
+            set
+            {
+                WriteByte(Entities.HitboxAutoToggle, value);
+            }
+        }
+        public short Hp
+        {
+            get
+            {
+                return ReadS16(Entities.Hp);
+            }
+            set
+            {
+                WriteS16(Entities.Hp, value);
+            }
+        }
         public ushort Damage
         {
             get
             {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.DamageOffset);
+                return ReadU16(Entities.Damage);
             }
             set
             {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.DamageOffset + i] = valueBytes[i];
-                }
+                WriteU16(Entities.Damage, value);
             }
         }
-
-        public uint DamageTypeA
+        public byte DamageTypeA
         {
             get
             {
-                return Value[Entities.DamageTypeAOffset];
+                return ReadByte(Entities.DamageTypeA);
             }
             set
             {
-                Value[Entities.DamageTypeAOffset] = (byte)value;
+                WriteByte(Entities.DamageTypeA, value);
             }
         }
-
-        public uint DamageTypeB
+        public byte DamageTypeB
         {
             get
             {
-                return Value[Entities.DamageTypeBOffset];
+                return ReadByte(Entities.DamageTypeB);
             }
             set
             {
-                Value[Entities.DamageTypeBOffset] = (byte)value;
+                WriteByte(Entities.DamageTypeB, value);
             }
         }
-
-        public ushort Palette
-        {
-            get
-            {
-                return Value[Entities.PaletteOffset];
-            }
-            set
-            {
-                Value[Entities.PaletteOffset] = (byte)value;
-            }
-        }
-
-        public ushort ColorMode
-        {
-            get
-            {
-                return Value[Entities.ColorModeOffset];
-            }
-            set
-            {
-                Value[Entities.ColorModeOffset] = (byte)value;
-            }
-        }
-        //AI id
-        public ushort AiId
-        {
-            get
-            {
-                return BitConverter.ToUInt16(Value.ToArray(), Entities.AiIdOffset);
-            }
-            set
-            {
-                byte[] valueBytes = BitConverter.GetBytes(value);
-                for (int i = 0; i < 2; i++)
-                {
-                    Value[Entities.AiIdOffset + i] = valueBytes[i];
-                }
-            }
-        }
-
         public ushort HitboxWidth
         {
             get
             {
-                return Value[Entities.HitboxWidthOffset];
+                return Data[Entities.HitboxWidth];
             }
             set
             {
-                Value[Entities.HitboxWidthOffset] = (byte)value;
+                Data[Entities.HitboxWidth] = (byte)value;
             }
         }
-
         public ushort HitboxHeight
         {
             get
             {
-                return Value[Entities.HitboxHeightOffset];
+                return Data[Entities.HitboxHeight];
             }
             set
             {
-                Value[Entities.HitboxHeightOffset] = (byte)value;
+                Data[Entities.HitboxHeight] = (byte)value;
             }
+        }
+        public byte InvincibilityFrames
+        {
+            get
+            {
+                return ReadByte(Entities.InvincibilityFrames);
+            }
+            set
+            {
+                WriteByte(Entities.InvincibilityFrames, value);
+            }
+        }
+        public ushort AnimationFrameIndex
+        {
+            get
+            {
+                return Data[Entities.AnimationFrameIndex];
+            }
+            set
+            {
+                Data[Entities.AnimationFrameIndex] = (byte)value;
+            }
+        }
+        public ushort AnimationFrameDuration
+        {
+            get
+            {
+                return Data[Entities.AnimationFrameDuration];
+            }
+            set
+            {
+                Data[Entities.AnimationFrameDuration] = (byte)value;
+            }
+        }
+        public ushort AnimationSet
+        {
+            get
+            {
+                return Data[Entities.AnimationSet];
+            }
+            set
+            {
+                Data[Entities.AnimationSet] = (byte)value;
+            }
+        }
+        public ushort AnimationCurrentFrame
+        {
+            get
+            {
+                return Data[Entities.AnimationCurrentFrame];
+            }
+            set
+            {
+                Data[Entities.AnimationCurrentFrame] = (byte)value;
+            }
+        }
+
+        private void WriteByte(int offset, byte value)
+        {
+            if (isLive)
+            {
+                memAPI.WriteByte(Address + offset, value);
+            }
+            else
+            {
+                Data[Entities.Palette] = value;
+            }
+        }
+        private void WriteU16(int offset, ushort value)
+        {
+            if (isLive)
+            {
+                memAPI.WriteU16(Address + offset, value);
+            }
+            else
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    byte[] valueBytes = BitConverter.GetBytes(value);
+                    Data[offset + i] = valueBytes[i];
+
+                }
+            }
+        }
+        private void WriteU32(int offset, uint value)
+        {
+            if (isLive)
+            {
+                memAPI.WriteU32(Address + offset, value);
+            }
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    byte[] valueBytes = BitConverter.GetBytes(value);
+                    Data[offset + i] = valueBytes[i];
+
+                }
+            }
+        }
+        private void WriteS16(int offset, short value)
+        {
+            if (isLive)
+            {
+                memAPI.WriteS16(Address + offset, value);
+            }
+            else
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    byte[] valueBytes = BitConverter.GetBytes(value);
+                    Data[offset + i] = valueBytes[i];
+
+                }
+            }
+        }
+        private void WriteS32(int offset, int value)
+        {
+            if (isLive)
+            {
+                memAPI.WriteS32(Address + offset, value);
+            }
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    byte[] valueBytes = BitConverter.GetBytes(value);
+                    Data[offset + i] = valueBytes[i];
+
+                }
+            }
+        }
+        private byte ReadByte(int offset)
+        {
+            if (isLive)
+            {
+                return (byte)memAPI.ReadByte(Address + offset);
+            }
+            else
+            {
+                return Data[offset];
+            }
+        }
+        private ushort ReadU16(int offset)
+        {
+            if (isLive)
+            {
+                return (ushort)memAPI.ReadU16(Address + offset);
+            }
+            else
+            {
+                return BitConverter.ToUInt16(Data.ToArray(), offset);
+            }
+        }
+        private uint ReadU32(int offset)
+        {
+            if (isLive)
+            {
+                return memAPI.ReadU32(Address + offset);
+            }
+            else
+            {
+                return BitConverter.ToUInt32(Data.ToArray(), offset);
+            }
+        }
+        private short ReadS16(int offset)
+        {
+            if (isLive)
+            {
+                return (short)memAPI.ReadS16(Address + offset);
+            }
+            else
+            {
+                return BitConverter.ToInt16(Data.ToArray(), offset);
+            }
+        }
+        private int ReadS32(int offset)
+        {
+            if (isLive)
+            {
+                return memAPI.ReadS32(Address + offset);
+            }
+            else
+            {
+                return BitConverter.ToInt32(Data.ToArray(), offset);
+            }
+        }
+        private double ReadFixedPoint1616(int offset)
+        {
+            uint rawValue = ReadU32(offset);
+            return ((int)rawValue / 65536.0);
         }
     }
 }

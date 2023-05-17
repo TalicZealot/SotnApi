@@ -4,6 +4,11 @@
         <name>SotnApi</name>
     </assembly>
     <members>
+        <member name="F:SotnApi.Constants.Values.Game.Entities.ReservedSlots">
+            <summary>
+            Spawning entities in these can cause relics not to spawn.
+            </summary>
+        </member>
         <member name="T:SotnApi.Constants.Values.Game.Enums.Character">
             <summary>Prologue Richter still counts as Alucard</summary>
         </member>
@@ -196,17 +201,17 @@
             The address where the enemy entity starts. Or 0 if the enemy was not found.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllActors">
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllEntities">
             <summary>
-            Scans memory for all active actors.
+            Scans memory for all active entities.
             </summary>
             <returns>
             A list of addresses where the enemy entities start.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllActors(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllEntities(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
             <summary>
-            Scans memory for all active actors, that match the example actors.
+            Scans memory for all active entities, that match <paramref name="actors"/>.
             </summary>
             <returns>
             A list of addresses where the enemy entities start.
@@ -311,9 +316,9 @@
             Y coordinate for the current highlighted room on the map.
             </returns>
         </member>
-        <member name="P:SotnApi.Interfaces.IGameApi.Zone2">
+        <member name="P:SotnApi.Interfaces.IGameApi.StageId">
             <returns>
-            Zone Byte2.
+            Current StageId.
             </returns>
         </member>
         <member name="P:SotnApi.Interfaces.IGameApi.MapOpen">
@@ -478,12 +483,7 @@
         </member>
         <member name="T:SotnApi.Models.Entity">
             <summary>
-            An entity object that can be rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
-            </summary>
-        </member>
-        <member name="T:SotnApi.Models.LiveEntity">
-            <summary>
-            A live entity object rendered in-game. Enemies, projectiles, items, hitboxes, interactable objects.
+            An object that can be rendered in-game or a live in-memory instance. Enemies, projectiles, items, hitboxes, interactable objects.
             </summary>
         </member>
     </members>

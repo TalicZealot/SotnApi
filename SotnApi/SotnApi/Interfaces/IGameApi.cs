@@ -30,7 +30,7 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// Zone transitions. Doesn't include cutscene and boss transitions.
         /// </returns>
-        public Dictionary<Zone, Dictionary<Zone, ZoneTransition>> ZoneTransitions { get; }
+        public Dictionary<Stage, Dictionary<Stage, ZoneTransition>> ZoneTransitions { get; }
         /// <returns>
         /// Index for the current area or subarea.
         /// </returns>
@@ -72,9 +72,9 @@ namespace SotnApi.Interfaces
         /// </returns>
         uint RoomY { get; }
         /// <returns>
-        /// Zone Byte2.
+        /// Current StageId.
         /// </returns>
-        uint Zone2 { get; }
+        uint StageId { get; }
         /// <returns>
         /// True of the map is open.
         /// </returns>

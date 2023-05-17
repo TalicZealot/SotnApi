@@ -23,10 +23,10 @@ namespace SotnApi
             if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
-            long start = Game.EnemyEntitiesStart;
+            long address = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                LiveEntity actor = GetLiveEntity(start);
+                Entity actor = GetLiveEntity(address);
                 bool notBanned = true;
 
                 if (bannedHpValues is not null)
@@ -43,9 +43,9 @@ namespace SotnApi
 
                 if (actor.HitboxHeight > 1 && actor.HitboxWidth > 1 && actor.Hp >= minHp && actor.Hp <= maxHp && actor.Damage > 0 && notBanned)
                 {
-                    return start;
+                    return address;
                 }
-                start += Entities.Offset;
+                address += Entities.Size;
             }
 
             return 0;
@@ -56,16 +56,16 @@ namespace SotnApi
             if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
             if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
 
-            long start = Game.EnemyEntitiesStart;
+            long address = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                LiveEntity actor = GetLiveEntity(start);
+                Entity actor = GetLiveEntity(address);
                 bool notBanned = true;
 
                 for (int j = 0; j < bannedActors.Count; j++)
                 {
                     if (((bannedActors[j].Damage > 0 && actor.Damage == bannedActors[j].Damage) || bannedActors[j].Damage == 0) &&
-                        actor.AiId == bannedActors[j].AiId)
+                        actor.UpdateFunctionAddress == bannedActors[j].UpdateFunctionAddress)
                     {
                         notBanned = false;
                         break;
@@ -74,9 +74,9 @@ namespace SotnApi
 
                 if (actor.HitboxWidth > 1 && actor.HitboxHeight > 1 && actor.Hp >= minHp && actor.Hp <= maxHp && actor.Damage > 0 && notBanned)
                 {
-                    return start;
+                    return address;
                 }
-                start += Entities.Offset;
+                address += Entities.Size;
             }
 
             return 0;
@@ -86,12 +86,12 @@ namespace SotnApi
         {
             if (actors.Count < 1) { throw new ArgumentOutOfRangeException(nameof(actors), "actors count must be greater than 0"); }
 
-            long start = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
+            long address = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
             int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
 
             for (int i = 0; i < count; i++)
             {
-                LiveEntity currentActor = GetLiveEntity(start);
+                Entity currentActor = GetLiveEntity(address);
                 bool match = false;
 
                 for (int j = 0; j < actors.Count; j++)
@@ -103,7 +103,7 @@ namespace SotnApi
                         ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
                         ((actor.Damage > 0 && currentActor.Damage == actor.Damage) || actor.Damage == 0) &&
                         ((actor.Hp > 0 && currentActor.Hp == actor.Hp) || actor.Hp == 0) &&
-                        currentActor.AiId == actor.AiId)
+                        currentActor.UpdateFunctionAddress == actor.UpdateFunctionAddress)
                     {
                         match = true;
                         break;
@@ -112,46 +112,46 @@ namespace SotnApi
 
                 if (match)
                 {
-                    return start;
+                    return address;
                 }
                 else
                 {
-                    start += Entities.Offset;
+                    address += Entities.Size;
                 }
             }
 
             return 0;
         }
 
-        public List<long> GetAllActors()
+        public List<long> GetAllEntities()
         {
             List<long> ActorAddresses = new();
             long start = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Entities.HitboxWidthOffset);
-                long hitboxHeight = memAPI.ReadByte(start + Entities.HitboxHeightOffset);
-                long hp = memAPI.ReadU16(start + Entities.HpOffset);
-                long damage = memAPI.ReadU16(start + Entities.DamageOffset);
+                long hitboxWidth = memAPI.ReadByte(start + Entities.HitboxWidth);
+                long hitboxHeight = memAPI.ReadByte(start + Entities.HitboxHeight);
+                long hp = memAPI.ReadU16(start + Entities.Hp);
+                long damage = memAPI.ReadU16(start + Entities.Damage);
                 long sprite = memAPI.ReadU16(start + 22);
 
                 if (hitboxWidth > 0 || hitboxHeight > 0 || hp > 0 || damage > 0 || sprite > 0)
                 {
                     ActorAddresses.Add(start);
                 }
-                start += Entities.Offset;
+                start += Entities.Size;
             }
 
             return ActorAddresses;
         }
 
-        public List<long> GetAllActors(List<SearchableActor> actors)
+        public List<long> GetAllEntities(List<SearchableActor> actors)
         {
             List<long> ActorAddresses = new();
-            long start = Game.EnemyEntitiesStart;
+            long address = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                LiveEntity currentActor = GetLiveEntity(start);
+                Entity currentActor = GetLiveEntity(address);
 
                 for (int j = 0; j < actors.Count; j++)
                 {
@@ -160,14 +160,14 @@ namespace SotnApi
                         ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
                         ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
                         ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
-                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.AiId == actor.AiId)
+                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.UpdateFunctionAddress == actor.UpdateFunctionAddress)
                     {
-                        ActorAddresses.Add(start);
+                        ActorAddresses.Add(address);
                         break;
                     }
                 }
 
-                start += Entities.Offset;
+                address += Entities.Size;
             }
 
             return ActorAddresses;
@@ -178,9 +178,9 @@ namespace SotnApi
             return memAPI.ReadByteRange(address, Entities.Size);
         }
 
-        public LiveEntity GetLiveEntity(long address)
+        public Entity GetLiveEntity(long address)
         {
-            return new LiveEntity(address, memAPI);
+            return new Entity(address, memAPI);
         }
 
         /// <summary>
@@ -191,28 +191,26 @@ namespace SotnApi
         /// </returns>
         private long FindAvailableEntitySlot(bool enemy = true)
         {
-            long start = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
+            long address = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
             int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
             for (int i = 0; i < count; i++)
             {
-                LiveEntity entity = GetLiveEntity(start);
+                Entity entity = GetLiveEntity(address);
                 bool reserved = false;
 
                 for (int j = 0; j < Entities.ReservedSlots.Length; j++)
                 {
-                    if (start == Entities.ReservedSlots[j])
+                    if (address == Entities.ReservedSlots[j])
                     {
                         reserved = true;
                     }
                 }
 
-
-
-                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.AiId == 0 && !reserved)
+                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.UpdateFunctionAddress == 0 && !reserved)
                 {
-                    return start;
+                    return address;
                 }
-                start += Entities.Offset;
+                address += Entities.Size;
             }
 
             return 0;
@@ -224,7 +222,7 @@ namespace SotnApi
 
             if (slot > 0)
             {
-                memAPI.WriteByteRange(slot, actor.Value);
+                memAPI.WriteByteRange(slot, actor.Data);
             }
 
             return slot;

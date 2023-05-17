@@ -19,7 +19,7 @@ namespace ActorApiTests
             //Act
             classUnderTest.SpawnEntity(blankActor);
             //Assert
-            mockedMemAPI.Received(1).WriteByteRange(Arg.Any<long>(), blankActor.Value);
+            mockedMemAPI.Received(1).WriteByteRange(Arg.Any<long>(), blankActor.Data);
         }
     }
 }

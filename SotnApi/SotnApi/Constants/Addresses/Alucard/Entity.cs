@@ -9,5 +9,7 @@
         public const long AttackHitboxHeight_2 = 0x07409B;
         public const long HorizontalVelocityWhole = 0x0733E2;
         public const long HorizontalVelocityFract = 0x0733E1;
+        public const long Step = 0x073404;
+        public const long Step2 = 0x073406;
     }
 }

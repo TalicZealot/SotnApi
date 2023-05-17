@@ -1,6 +1,6 @@
 ﻿namespace SotnApi.Models
 {
-    public sealed class TeleportZone
+    public sealed class TeleportDestination
     {
         public ushort Zone { get; set; }
         public int Xpos { get; set; }
