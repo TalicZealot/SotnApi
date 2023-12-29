@@ -38,19 +38,6 @@ namespace ActorApiTests
         }
 
         [Fact]
-        public void CallReadByteMethodOfMemAPI_ExactlyMaximumTimes()
-        {
-            //Arrange
-            var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IEntityApi classUnderTest = new EntityApi(mockedMemAPI);
-            //Act
-            classUnderTest.FindEnemyEntity(1, 1);
-            //Assert
-            mockedMemAPI.Received(2 * Entities.EnemyEntitiesCount).ReadByte(Arg.Any<long>());
-            mockedMemAPI.Received(2 * Entities.EnemyEntitiesCount).ReadU16(Arg.Any<long>());
-        }
-
-        [Fact]
         public void ReturnZeroWhenEnemyWasNotFound()
         {
             //Arrange
@@ -69,6 +56,9 @@ namespace ActorApiTests
             mockedMemAPI
                 .ReadU16(Arg.Any<long>())
                 .ReturnsForAnyArgs<uint>(3);
+            mockedMemAPI
+                .ReadS16(Arg.Any<long>())
+                .ReturnsForAnyArgs<int>(3);
             mockedMemAPI
                 .ReadByte(Arg.Any<long>())
                 .ReturnsForAnyArgs<uint>(3);

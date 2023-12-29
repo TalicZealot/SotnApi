@@ -5,12 +5,12 @@ using SotnApi.Interfaces;
 using System;
 using Xunit;
 
-namespace RenderingApiTests
+namespace MapApiTests
 {
     public class ColorMapRoomShould
     {
-        private const int MaximumMapRows = 255;
-        private const int MaximumMapCols = 255;
+        private const int Height = 207;
+        private const int Width = 255;
         private const int MaximumColorValue = 0xF;
 
         [Fact]
@@ -18,33 +18,33 @@ namespace RenderingApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
-            string paramName = "row";
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
+            string paramName = "y";
             //Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom(MaximumMapRows + 1, default, default, default));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom(default, Height + 1, default, default));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }
 
         [Fact]
-        public void ThrowArgumentOutOfRangeException_WhenColIsGreaterThanMaximumMapCols()
+        public void ThrowArgumentOutOfRangeException_WhenYIsGreaterThanHeight()
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
-            string paramName = "col";
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
+            string paramName = "x";
             //Act&Assert
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom(default, MaximumMapCols + 1, default, default));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom( Width + 1, default, default, default));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }
 
         [Fact]
-        public void ThrowArgumentOutOfRangeException_WhenColorIsGreaterThanMaximumColorValue()
+        public void ThrowArgumentOutOfRangeException_WhenXIsGreaterThanWidth()
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
             string paramName = "color";
             //Act&Assert
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom(default, default, MaximumColorValue + 1, default));
@@ -57,7 +57,7 @@ namespace RenderingApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
             string paramName = "borderColor";
             //Act&Assert
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom(default, default, default, MaximumColorValue + 1));
@@ -70,7 +70,7 @@ namespace RenderingApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
             //Act
             classUnderTest.ColorMapRoom(default, default, default, default);
             //Assert

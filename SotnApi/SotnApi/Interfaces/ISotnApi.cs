@@ -5,6 +5,6 @@
         IGameApi GameApi { get; }
         IAlucardApi AlucardApi { get; }
         IEntityApi EntityApi { get; }
-        IRenderingApi RenderingApi { get; }
+        IMapApi MapApi { get; }
     }
 }

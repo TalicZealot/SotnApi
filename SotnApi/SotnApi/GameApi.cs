@@ -507,6 +507,7 @@ namespace SotnApi
         {
             memAPI.WriteU32(Constants.Addresses.Game.StartingStereoSettingInstruction, Constants.Values.Game.Various.StereoStartingStereoSettingInstruction);
         }
+
         public void SetRoomToUnvisited(long address)
         {
             if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }

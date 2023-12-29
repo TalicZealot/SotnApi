@@ -266,26 +266,26 @@ namespace SotnApi.Models
                 WriteByte(Entities.DamageTypeB, value);
             }
         }
-        public ushort HitboxWidth
+        public byte HitboxWidth
         {
             get
             {
-                return Data[Entities.HitboxWidth];
+                return ReadByte(Entities.HitboxWidth);
             }
             set
             {
-                Data[Entities.HitboxWidth] = (byte)value;
+                WriteByte(Entities.HitboxWidth, value);
             }
         }
-        public ushort HitboxHeight
+        public byte HitboxHeight
         {
             get
             {
-                return Data[Entities.HitboxHeight];
+                return ReadByte(Entities.HitboxHeight);
             }
             set
             {
-                Data[Entities.HitboxHeight] = (byte)value;
+                WriteByte(Entities.HitboxHeight, value);
             }
         }
         public byte InvincibilityFrames
@@ -299,48 +299,48 @@ namespace SotnApi.Models
                 WriteByte(Entities.InvincibilityFrames, value);
             }
         }
-        public ushort AnimationFrameIndex
+        public byte AnimationFrameIndex
         {
             get
             {
-                return Data[Entities.AnimationFrameIndex];
+                return ReadByte(Entities.AnimationFrameIndex);
             }
             set
             {
-                Data[Entities.AnimationFrameIndex] = (byte)value;
+                WriteByte(Entities.AnimationFrameIndex, value);
             }
         }
-        public ushort AnimationFrameDuration
+        public byte AnimationFrameDuration
         {
             get
             {
-                return Data[Entities.AnimationFrameDuration];
+                return ReadByte(Entities.AnimationFrameDuration);
             }
             set
             {
-                Data[Entities.AnimationFrameDuration] = (byte)value;
+                WriteByte(Entities.AnimationFrameDuration, value);
             }
         }
-        public ushort AnimationSet
+        public byte AnimationSet
         {
             get
             {
-                return Data[Entities.AnimationSet];
+                return ReadByte(Entities.AnimationSet);
             }
             set
             {
-                Data[Entities.AnimationSet] = (byte)value;
+                WriteByte(Entities.AnimationSet, value);
             }
         }
-        public ushort AnimationCurrentFrame
+        public byte AnimationCurrentFrame
         {
             get
             {
-                return Data[Entities.AnimationCurrentFrame];
+                return ReadByte(Entities.AnimationCurrentFrame);
             }
             set
             {
-                Data[Entities.AnimationCurrentFrame] = (byte)value;
+                WriteByte(Entities.AnimationCurrentFrame, value);
             }
         }
 

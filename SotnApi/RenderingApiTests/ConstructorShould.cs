@@ -3,14 +3,14 @@ using System;
 using Xunit;
 
 
-namespace RenderingApiTests
+namespace MapApiTests
 {
     public class ConstructorShould
     {
         [Fact]
         public void ThrowArgumentNullException_WhenMemApiIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new RenderingApi(null));
+            Assert.Throws<ArgumentNullException>(() => new MapApi(null));
         }
     }
 }

@@ -97,7 +97,7 @@ namespace SotnApi.Constants.Addresses
         public const long FamiliarEntity = 0x0736C8;
         public const long FriendlyEntitiesStart = 0x073F98;
         public const long EnemyEntitiesStart = 0x0762d8;//0736C8
-        public const long VramMapStart = 0x08AE80;
+        public const long VramMapStart = 0x089E80;
         public const long SeedStart = 0x1A78B4;
         public const long PresetStart = 0x1A78D4;
         public const long MapStart = 0x06BBDC;

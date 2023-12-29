@@ -461,22 +461,22 @@
             Respawns items on the map that have been previously collected.
             </summary>
         </member>
-        <member name="T:SotnApi.Interfaces.IRenderingApi">
+        <member name="T:SotnApi.Interfaces.IMapApi">
             <summary>
             Manipulates VRAM elements.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IRenderingApi.ColorMapRoom(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.ColorMapRoom(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
             <summary>
             Colors a room on the map as a 3x3 square with borders.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IRenderingApi.ColorMapLocation(System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.ColorMapLocation(System.UInt32,System.UInt32,System.UInt32)">
             <summary>
             Colors a location on the map as a 2x2 square.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IRenderingApi.RoomIsRendered(System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.RoomIsRendered(System.UInt32,System.UInt32)">
             <summary>
             Checks if a room on the minimap is rendered.
             </summary>

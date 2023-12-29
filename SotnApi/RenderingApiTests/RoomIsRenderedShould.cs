@@ -5,35 +5,35 @@ using SotnApi.Interfaces;
 using System;
 using Xunit;
 
-namespace RenderingApiTests
+namespace MapApiTests
 {
     public class RoomIsRenderedShould
     {
-        private const int MaximumMapRows = 255;
-        private const int MaximumMapCols = 255;
+        private const int Height = 207;
+        private const int Width = 255;
 
         [Fact]
-        public void ThrowArgumentOutOfRangeException_WhenRowIsGreaterThanMaximumMapRows()
+        public void ThrowArgumentOutOfRangeException_WhenYIsGreaterThanHeight()
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
-            string paramName = "row";
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
+            string paramName = "y";
             //Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(MaximumMapRows + 1, default));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(default, Height + 1));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }
 
         [Fact]
-        public void ThrowArgumentOutOfRangeException_WhenColIsGreaterThanMaximumMapCols()
+        public void ThrowArgumentOutOfRangeException_WhenXIsGreaterThanWidth()
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
-            string paramName = "col";
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
+            string paramName = "x";
             //Act&Assert
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(default, MaximumMapCols + 1));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(Width + 1, default));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }
@@ -43,7 +43,7 @@ namespace RenderingApiTests
         {
             //Arrange
             var mockedMemAPI = Substitute.For<IMemoryApi>();
-            IRenderingApi classUnderTest = new RenderingApi(mockedMemAPI);
+            IMapApi classUnderTest = new MapApi(mockedMemAPI);
             //Act
             classUnderTest.RoomIsRendered(default, default);
             //Assert
