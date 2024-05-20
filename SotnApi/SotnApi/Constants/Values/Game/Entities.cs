@@ -28,7 +28,7 @@
         public const int ObjectRoomIndex = 0x32;
         public const int Flags = 0x34;
         public const int Unk38 = 0x38;
-        public const int EnemyIndex = 0x3A; // determines display name and XP and in some cases Defense
+        public const int EnemyId = 0x3A; // determines display name and XP and in some cases Defense
         public const int Defense = 0x3A;
         public const int HitboxAutoToggle = 0x3C;
         public const int Hp = 0x3E;

@@ -200,15 +200,15 @@ namespace SotnApi.Models
                 WriteU32(Entities.Flags, value);
             }
         }
-        public ushort EnemyIndex
+        public ushort EnemyId
         {
             get
             {
-                return ReadU16(Entities.EnemyIndex);
+                return ReadU16(Entities.EnemyId);
             }
             set
             {
-                WriteU16(Entities.EnemyIndex, value);
+                WriteU16(Entities.EnemyId, value);
             }
         }
         public byte AutoToggle
@@ -352,7 +352,7 @@ namespace SotnApi.Models
             }
             else
             {
-                Data[Entities.Palette] = value;
+                Data[offset] = value;
             }
         }
         private void WriteU16(int offset, ushort value)

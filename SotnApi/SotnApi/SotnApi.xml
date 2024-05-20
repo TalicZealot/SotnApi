@@ -14,7 +14,7 @@
         </member>
         <member name="M:SotnApi.EntityApi.FindAvailableEntitySlot(System.Boolean)">
             <summary>
-            Scans memory for an empty actor slot.
+            Scans memory for an empty entity slot.
             </summary>
             <returns>
             The address where the slot starts. Or 0 if a free slot was not found.
@@ -182,7 +182,7 @@
             The address where the enemy entity starts. Or 0 if the enemy was not found.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IEntityApi.FindEnemyEntity(System.Int32,System.Int32,System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEnemyEntity(System.Int32,System.Int32,System.Collections.Generic.List{SotnApi.Models.Entity})">
             <summary>
             Scans memory for an enemy that matches the hp range specified.
             </summary>
@@ -193,7 +193,7 @@
             The address where the enemy entity starts. Or 0 if the enemy was not found.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IEntityApi.FindEntityFrom(System.Collections.Generic.List{SotnApi.Models.SearchableActor},System.Boolean)">
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEntityFrom(System.Collections.Generic.List{SotnApi.Models.Entity},System.Boolean)">
             <summary>
             Scans memory for an enemy from a list of accepted actor property values.
             </summary>
@@ -209,7 +209,7 @@
             A list of addresses where the enemy entities start.
             </returns>
         </member>
-        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllEntities(System.Collections.Generic.List{SotnApi.Models.SearchableActor})">
+        <member name="M:SotnApi.Interfaces.IEntityApi.GetAllEntities(System.Collections.Generic.List{SotnApi.Models.Entity})">
             <summary>
             Scans memory for all active entities, that match <paramref name="actors"/>.
             </summary>

@@ -27,14 +27,14 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// The address where the enemy entity starts. Or 0 if the enemy was not found.
         /// </returns>
-        long FindEnemyEntity(int minHp, int maxHp, List<SearchableActor> bannedActors);
+        long FindEnemyEntity(int minHp, int maxHp, List<Entity> bannedActors);
         /// <summary>
         /// Scans memory for an enemy from a list of accepted actor property values.
         /// </summary>
         /// <returns>
         /// The address where the enemy entity starts. Or 0 if the enemy was not found.
         /// </returns>
-        long FindEntityFrom(List<SearchableActor> actors, bool enemy = true);
+        long FindEntityFrom(List<Entity> actors, bool enemy = true);
         /// <summary>
         /// Scans memory for all active entities.
         /// </summary>
@@ -48,7 +48,7 @@ namespace SotnApi.Interfaces
         /// <returns>
         /// A list of addresses where the enemy entities start.
         /// </returns>
-        public List<long> GetAllEntities(List<SearchableActor> actors);
+        public List<long> GetAllEntities(List<Entity> actors);
         /// <returns>
         /// Byte range of the enemy entity.
         /// </returns>
