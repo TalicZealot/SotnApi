@@ -111,9 +111,9 @@ namespace SotnApi.Interfaces
         uint State { get; set; }
         uint Action { get; set; }
         /// <summary>Horizontal coordinate of Alucard on the screen.</summary>
-        uint ScreenX { get; }
+        double ScreenX { get; }
         /// <summary>Vertical coordinate of Alucard on the screen.</summary>
-        uint ScreenY { get; }
+        double ScreenY { get; }
         /// <summary>Horizontal position of the blinking indicator on the map.</summary>
         uint MapX { get; }
         /// <summary>Vertical position of the blinking indicator on the map.</summary>

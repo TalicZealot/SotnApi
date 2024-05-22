@@ -27,8 +27,8 @@
         public const long MapOffsetX = 0x0973F1;
         public const long MapOffsetY = 0x0973F5;
         public const long HasControl = 0x072EFC;
-        public const long ScreenX = 0x072F9C;
-        public const long ScreenY = 0x072F9E;
+        public const long ScreenX = 0x0733D8;
+        public const long ScreenY = 0x0733DC;
         public const long MapX = 0x0730B0;
         public const long MapY = 0x0730B4;
         public const long Facing = 0x0733EC;

@@ -9,32 +9,12 @@ namespace SotnApi.Interfaces
     public interface IEntityApi
     {
         /// <summary>
-        /// Scans memory for an enemy that matches the hp range specified.
-        /// </summary>
-        /// <param name="bannedHpValues">Exclude actors with these hp values.</param>
-        /// <param name="minHp">Minimum allowed actor hp.</param>
-        /// <param name="maxHp">Maximum allowed actor hp.</param>
-        /// <returns>
-        /// The address where the enemy entity starts. Or 0 if the enemy was not found.
-        /// </returns>
-        long FindEnemyEntity(int minHp, int maxHp, int[]? bannedHpValues = null);
-        /// <summary>
-        /// Scans memory for an enemy that matches the hp range specified.
-        /// </summary>
-        /// <param name="bannedActors">Exclude actors with these values.</param>
-        /// <param name="minHp">Minimum allowed actor hp.</param>
-        /// <param name="maxHp">Maximum allowed actor hp.</param>
-        /// <returns>
-        /// The address where the enemy entity starts. Or 0 if the enemy was not found.
-        /// </returns>
-        long FindEnemyEntity(int minHp, int maxHp, List<Entity> bannedActors);
-        /// <summary>
-        /// Scans memory for an enemy from a list of accepted actor property values.
+        /// Scans memory for an entity matching <paramref name="enemyIds"/>.
         /// </summary>
         /// <returns>
         /// The address where the enemy entity starts. Or 0 if the enemy was not found.
         /// </returns>
-        long FindEntityFrom(List<Entity> actors, bool enemy = true);
+        long FindEntityFrom(List<ushort> enemyIds, bool enemy = true);
         /// <summary>
         /// Scans memory for all active entities.
         /// </summary>
@@ -43,12 +23,12 @@ namespace SotnApi.Interfaces
         /// </returns>
         List<long> GetAllEntities();
         /// <summary>
-        /// Scans memory for all active entities, that match <paramref name="actors"/>.
+        /// Scans memory for all active entities matching <paramref name="enemyIds"/>.
         /// </summary>
         /// <returns>
         /// A list of addresses where the enemy entities start.
         /// </returns>
-        public List<long> GetAllEntities(List<Entity> actors);
+        public List<long> GetAllEntities(List<ushort> enemyIds);
         /// <returns>
         /// Byte range of the enemy entity.
         /// </returns>

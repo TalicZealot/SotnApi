@@ -5,6 +5,7 @@ using SotnApi.Constants.Values.Alucard.Enums;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
 using System;
+using System.Net;
 using Effects = SotnApi.Constants.Addresses.Alucard.Effects;
 
 namespace SotnApi
@@ -1010,18 +1011,20 @@ namespace SotnApi
                 memAPI.WriteByte(Stats.Action, value);
             }
         }
-        public uint ScreenX
+        public double ScreenX
         {
             get
             {
-                return memAPI.ReadByte(Stats.ScreenX);
+                uint rawValue = memAPI.ReadU32(Stats.ScreenX);
+                return ((int)rawValue / 65536.0);
             }
         }
-        public uint ScreenY
+        public double ScreenY
         {
             get
             {
-                return memAPI.ReadByte(Stats.ScreenY);
+                uint rawValue = memAPI.ReadU32(Stats.ScreenY);
+                return ((int)rawValue / 65536.0);
             }
         }
         public uint MapX

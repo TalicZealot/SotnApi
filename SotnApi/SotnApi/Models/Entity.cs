@@ -43,7 +43,7 @@ namespace SotnApi.Models
             }
             set
             {
-                WriteU32(Entities.Xpos, (uint)value);
+                WriteFixedPoint1616(Entities.Xpos, value);
             }
         }
         public double Ypos
@@ -54,7 +54,7 @@ namespace SotnApi.Models
             }
             set
             {
-                WriteU32(Entities.Ypos, (uint)value);
+                WriteFixedPoint1616(Entities.Ypos, value);
             }
         }
         public double AccelerationX
@@ -65,7 +65,7 @@ namespace SotnApi.Models
             }
             set
             {
-                WriteU32(Entities.AccelerationX, (uint)value);
+                WriteFixedPoint1616(Entities.AccelerationX, value);
             }
         }
         public double AccelerationY
@@ -76,7 +76,7 @@ namespace SotnApi.Models
             }
             set
             {
-                WriteU32(Entities.AccelerationY, (uint)value);
+                WriteFixedPoint1616(Entities.AccelerationY, value);
             }
         }
         public ushort Facing
@@ -90,26 +90,37 @@ namespace SotnApi.Models
                 WriteU16(Entities.Facing, value);
             }
         }
-        public byte Palette
+        public ushort Palette
         {
             get
             {
-                return ReadByte(Entities.Palette);
+                return ReadU16(Entities.Palette);
             }
             set
             {
-                WriteByte(Entities.Palette, value);
+                WriteU16(Entities.Palette, value);
             }
         }
-        public byte BlendMode
+        public byte DrawMode
         {
             get
             {
-                return ReadByte(Entities.BlendMode);
+                return ReadByte(Entities.DrawMode);
             }
             set
             {
-                WriteByte(Entities.BlendMode, value);
+                WriteByte(Entities.DrawMode, value);
+            }
+        }
+        public byte DrawFlags
+        {
+            get
+            {
+                return ReadByte(Entities.DrawFlags);
+            }
+            set
+            {
+                WriteByte(Entities.DrawFlags, value);
             }
         }
         public ushort ZPriority
@@ -478,6 +489,10 @@ namespace SotnApi.Models
         {
             uint rawValue = ReadU32(offset);
             return ((int)rawValue / 65536.0);
+        }
+        private void WriteFixedPoint1616(int offset, double value)
+        {
+            WriteU32(offset, (uint)(value * 65536.0));
         }
     }
 }

@@ -18,92 +18,25 @@ namespace SotnApi
             this.memAPI = memAPI;
         }
 
-        public long FindEnemyEntity(int minHp, int maxHp, int[]? bannedHpValues = null)
+        public long FindEntityFrom(List<ushort> enemyIds, bool enemy = true)
         {
-            if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
-            if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
-
-            long address = Game.EnemyEntitiesStart;
-            for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
-            {
-                Entity actor = GetLiveEntity(address);
-                bool notBanned = true;
-
-                if (bannedHpValues is not null)
-                {
-                    for (int j = 0; j < bannedHpValues.Length; j++)
-                    {
-                        if (actor.Hp == bannedHpValues[j])
-                        {
-                            notBanned = false;
-                            break;
-                        }
-                    }
-                }
-
-                if (actor.HitboxHeight > 1 && actor.HitboxWidth > 1 && actor.Hp >= minHp && actor.Hp <= maxHp && actor.Damage > 0 && notBanned)
-                {
-                    return address;
-                }
-                address += Entities.Size;
-            }
-
-            return 0;
-        }
-
-        public long FindEnemyEntity(int minHp, int maxHp, List<Entity> banned)
-        {
-            if (minHp < 1) { throw new ArgumentOutOfRangeException(nameof(minHp), "minHp must be greater than 0"); }
-            if (maxHp < 1) { throw new ArgumentOutOfRangeException(nameof(maxHp), "maxHp must be greater than 0"); }
-
-            long address = Game.EnemyEntitiesStart;
-            for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
-            {
-                Entity actor = GetLiveEntity(address);
-                bool notBanned = true;
-
-                for (int j = 0; j < banned.Count; j++)
-                {
-                    if (((banned[j].Damage > 0 && actor.Damage == banned[j].Damage) || banned[j].Damage == 0) &&
-                        actor.UpdateFunctionAddress == banned[j].UpdateFunctionAddress)
-                    {
-                        notBanned = false;
-                        break;
-                    }
-                }
-
-                if (actor.HitboxWidth > 1 && actor.HitboxHeight > 1 && actor.Hp >= minHp && actor.Hp <= maxHp && actor.Damage > 0 && notBanned)
-                {
-                    return address;
-                }
-                address += Entities.Size;
-            }
-
-            return 0;
-        }
-
-        public long FindEntityFrom(List<Entity> entities, bool enemy = true)
-        {
-            if (entities.Count < 1) { throw new ArgumentOutOfRangeException(nameof(entities), "entity count must be greater than 0"); }
-
             long address = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
             int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
 
             for (int i = 0; i < count; i++)
             {
-                Entity currentActor = GetLiveEntity(address);
+                Entity current = GetLiveEntity(address);
                 bool match = false;
 
-                for (int j = 0; j < entities.Count; j++)
+                if (current.UpdateFunctionAddress == 0)
                 {
-                    if (((entities[j].HitboxWidth > 0 && currentActor.HitboxWidth == entities[j].HitboxWidth) || currentActor.HitboxWidth > 1) &&
-                        ((entities[j].HitboxHeight > 0 && currentActor.HitboxHeight == entities[j].HitboxHeight) || currentActor.HitboxHeight > 1) &&
-                        ((entities[j].Xpos > 0 && currentActor.Xpos == entities[j].Xpos) || entities[j].Xpos == 0) &&
-                        ((entities[j].Ypos > 0 && currentActor.Ypos == entities[j].Ypos) || entities[j].Ypos == 0) &&
-                        ((entities[j].Damage > 0 && currentActor.Damage == entities[j].Damage) || entities[j].Damage == 0) &&
-                        ((entities[j].Hp > 0 && currentActor.Hp == entities[j].Hp) || entities[j].Hp == 0) &&
-                        (entities[j].EnemyId > 0 && currentActor.EnemyId == entities[j].EnemyId) &&
-                        (entities[j].UpdateFunctionAddress > 0 && currentActor.UpdateFunctionAddress == entities[j].UpdateFunctionAddress))
+                    address += Entities.Size;
+                    continue;
+                }
+
+                for (int j = 0; j < enemyIds.Count; j++)
+                {
+                    if (current.EnemyId == enemyIds[j])
                     {
                         match = true;
                         break;
@@ -145,22 +78,17 @@ namespace SotnApi
             return ActorAddresses;
         }
 
-        public List<long> GetAllEntities(List<Entity> actors)
+        public List<long> GetAllEntities(List<ushort> enemyIds)
         {
             List<long> ActorAddresses = new();
             long address = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                Entity currentActor = GetLiveEntity(address);
+                Entity current = GetLiveEntity(address);
 
-                for (int j = 0; j < actors.Count; j++)
+                for (int j = 0; j < enemyIds.Count; j++)
                 {
-                    Entity? actor = actors[j];
-                    if (((actor.HitboxWidth > 0 && currentActor.HitboxWidth == actor.HitboxWidth) || currentActor.HitboxWidth > 1) &&
-                        ((actor.HitboxHeight > 0 && currentActor.HitboxHeight == actor.HitboxHeight) || currentActor.HitboxHeight > 1) &&
-                        ((actor.Xpos > 0 && currentActor.Xpos == actor.Xpos) || actor.Xpos == 0) &&
-                        ((actor.Ypos > 0 && currentActor.Ypos == actor.Ypos) || actor.Ypos == 0) &&
-                        currentActor.Hp == actor.Hp && currentActor.Damage == actor.Damage && currentActor.UpdateFunctionAddress == actor.UpdateFunctionAddress)
+                    if (current.EnemyId == enemyIds[j])
                     {
                         ActorAddresses.Add(address);
                         break;
