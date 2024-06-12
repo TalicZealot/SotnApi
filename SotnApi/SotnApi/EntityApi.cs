@@ -2,20 +2,41 @@
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
-using SotnApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using Entity = SotnApi.Models.Entity;
 
 namespace SotnApi
 {
     public sealed class EntityApi : IEntityApi
     {
         private readonly IMemoryApi memAPI;
+        private readonly List<byte> clearEntity = new List<byte>(new byte[Entities.Size]);
 
         public EntityApi(IMemoryApi? memAPI)
         {
             if (memAPI == null) { throw new ArgumentNullException("Memory API is null"); }
             this.memAPI = memAPI;
+        }
+
+        public long FindEntity(ushort enemyId, bool enemy = true)
+        {
+            long address = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
+            int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
+
+            for (int i = 0; i < count; i++)
+            {
+                ushort currentEnemyId = (ushort)memAPI.ReadU16(address + Entities.EnemyId);
+
+                if (currentEnemyId == enemyId)
+                {
+                    return address;
+                }
+                address += Entities.Size;
+            }
+
+            return 0;
         }
 
         public long FindEntityFrom(List<ushort> enemyIds, bool enemy = true)
@@ -25,32 +46,38 @@ namespace SotnApi
 
             for (int i = 0; i < count; i++)
             {
-                Entity current = GetLiveEntity(address);
-                bool match = false;
-
-                if (current.UpdateFunctionAddress == 0)
-                {
-                    address += Entities.Size;
-                    continue;
-                }
+                ushort currentEnemyId = (ushort)memAPI.ReadU16(address + Entities.EnemyId);
 
                 for (int j = 0; j < enemyIds.Count; j++)
                 {
-                    if (current.EnemyId == enemyIds[j])
+                    if (currentEnemyId == enemyIds[j])
                     {
-                        match = true;
-                        break;
+                        return address;
                     }
                 }
+                address += Entities.Size;
+            }
 
-                if (match)
+            return 0;
+        }
+
+        public long FindEntityFrom(List<Entity> entities, bool enemy = true)
+        {
+            long address = enemy ? Game.EnemyEntitiesStart : Game.FriendlyEntitiesStart;
+            int count = enemy ? Entities.EnemyEntitiesCount : Entities.FriendEntitiesCount;
+
+            for (int i = 0; i < count; i++)
+            {
+                Entity current = GetLiveEntity(address);
+
+                for (int j = 0; j < entities.Count; j++)
                 {
-                    return address;
+                    if (current.EnemyId == entities[j].EnemyId && current.ObjectId == entities[j].ObjectId)
+                    {
+                        return address;
+                    }
                 }
-                else
-                {
-                    address += Entities.Size;
-                }
+                address += Entities.Size;
             }
 
             return 0;
@@ -62,13 +89,15 @@ namespace SotnApi
             long start = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                long hitboxWidth = memAPI.ReadByte(start + Entities.HitboxWidth);
-                long hitboxHeight = memAPI.ReadByte(start + Entities.HitboxHeight);
-                long hp = memAPI.ReadU16(start + Entities.Hp);
-                long damage = memAPI.ReadU16(start + Entities.Damage);
-                long sprite = memAPI.ReadU16(start + 22);
+                uint hitboxWidth = memAPI.ReadByte(start + Entities.HitboxWidth);
+                uint hitboxHeight = memAPI.ReadByte(start + Entities.HitboxHeight);
+                uint hp = memAPI.ReadU16(start + Entities.Hp);
+                uint damage = memAPI.ReadU16(start + Entities.Damage);
+                uint sprite = memAPI.ReadU16(start + 22);
+                uint enemyId = memAPI.ReadU16(start + Entities.EnemyId);
+                uint objectId = memAPI.ReadU16(start + Entities.ObjectId);
 
-                if (hitboxWidth > 0 || hitboxHeight > 0 || hp > 0 || damage > 0 || sprite > 0)
+                if (hitboxWidth > 0 || hitboxHeight > 0 || hp > 0 || damage > 0 || sprite > 0 || enemyId > 0 || objectId > 0)
                 {
                     ActorAddresses.Add(start);
                 }
@@ -84,11 +113,11 @@ namespace SotnApi
             long address = Game.EnemyEntitiesStart;
             for (int i = 0; i < Entities.EnemyEntitiesCount; i++)
             {
-                Entity current = GetLiveEntity(address);
+                ushort currentEnemyId = (ushort)memAPI.ReadU16(address + Entities.EnemyId);
 
                 for (int j = 0; j < enemyIds.Count; j++)
                 {
-                    if (current.EnemyId == enemyIds[j])
+                    if (currentEnemyId == enemyIds[j])
                     {
                         ActorAddresses.Add(address);
                         break;
@@ -134,7 +163,7 @@ namespace SotnApi
                     }
                 }
 
-                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.UpdateFunctionAddress == 0 && !reserved)
+                if (entity.HitboxWidth == 0 && entity.HitboxHeight == 0 && entity.Hp == 0 && entity.Damage == 0 && entity.UpdateFunctionAddress == 0 && entity.ObjectId == 0 && !reserved)
                 {
                     return address;
                 }
@@ -154,6 +183,11 @@ namespace SotnApi
             }
 
             return slot;
+        }
+
+        public void FreeEntity(long address)
+        {
+            memAPI.WriteByteRange(address, clearEntity.AsReadOnly());
         }
     }
 }

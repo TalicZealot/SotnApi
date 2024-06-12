@@ -34,7 +34,7 @@ namespace MapApiTests
             IMapApi classUnderTest = new MapApi(mockedMemAPI);
             string paramName = "x";
             //Act&Assert
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom( Width + 1, default, default, default));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.ColorMapRoom(Width + 1, default, default, default));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }

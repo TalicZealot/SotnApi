@@ -5,7 +5,6 @@ using SotnApi.Constants.Values.Alucard.Enums;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
 using System;
-using System.Net;
 using Effects = SotnApi.Constants.Addresses.Alucard.Effects;
 
 namespace SotnApi

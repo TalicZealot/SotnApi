@@ -213,6 +213,22 @@ namespace SotnApi
             }
         }
 
+        public float CameraAdjustmentX
+        {
+            get
+            {
+                return memAPI.ReadS32(Game.CameraAdjustmentX);
+            }
+        }
+
+        public float CameraAdjustmentY
+        {
+            get
+            {
+                return memAPI.ReadS32(Game.CameraAdjustmentY);
+            }
+        }
+
         public uint StageId
         {
             get
@@ -326,6 +342,22 @@ namespace SotnApi
             get
             {
                 return memAPI.ReadByte(Game.MusicVolume);
+            }
+        }
+
+        public ushort InputFlags
+        {
+            get
+            {
+                return (ushort)memAPI.ReadU16(Game.InputFlags);
+            }
+        }
+
+        public ushort QcfInputCounter
+        {
+            get
+            {
+                return (ushort)memAPI.ReadU16(Game.QcfInputCounter);
             }
         }
 
@@ -501,6 +533,15 @@ namespace SotnApi
         public void UnmuteXA()
         {
             memAPI.WriteU32(Constants.Addresses.Game.VolumeSetInstruction, Constants.Values.Game.Various.DefaultVolumeSetInstruction);
+        }
+
+        public void SetStopwatchTimer(byte value = 0)
+        {
+            if (value == 0)
+            {
+                value = 0x05;
+            }
+            memAPI.WriteByte(Constants.Addresses.Game.StopwatchTImerValue, value);
         }
 
         public void EnableStartWithStereo()

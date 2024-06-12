@@ -23,6 +23,7 @@ namespace SotnApi.Constants.Values.Game
         public const uint FlippedMovementSpeedDirectionInstruction = 0x10620002;    //BEQ   v1   v0 0x2
         public const uint MonoStartingStereoSettingInstruction = 0x34020001;        //MOVE  v2   0x01
         public const uint StereoStartingStereoSettingInstruction = 0x34020000;      //MOVE  v2   0x00
+        public const uint DefaultStopwatchTimerInstruction = 0x34020005;            //MOVE  v0   0x05
 
         public static readonly Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},

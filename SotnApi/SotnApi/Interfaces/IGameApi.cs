@@ -72,6 +72,14 @@ namespace SotnApi.Interfaces
         /// </returns>
         uint RoomY { get; }
         /// <returns>
+        /// Shift for entity X positions based on how the camera moved.
+        /// </returns>
+        public float CameraAdjustmentX { get; }
+        /// <returns>
+        /// Shift for entity Y positions based on how the camera moved.
+        /// </returns>
+        public float CameraAdjustmentY { get; }
+        /// <returns>
         /// Current StageId.
         /// </returns>
         uint StageId { get; }
@@ -99,6 +107,14 @@ namespace SotnApi.Interfaces
         /// Gets or sets the current volume for XA music.
         /// </summary>
         uint MusicVolume { get; }
+        /// <summary>
+        /// State of the buttons on the controller.
+        /// </summary>
+        ushort InputFlags { get; }
+        /// <summary>
+        /// Counter for the QCF input sequence
+        /// </summary>
+        ushort QcfInputCounter { get; }
         /// <summary>
         /// Checks if the item equip menu is currently open.
         /// </summary>
@@ -167,6 +183,10 @@ namespace SotnApi.Interfaces
         /// Unmutes volume for all XA track playback.
         /// </summary>
         void UnmuteXA();
+        /// <summary>
+        /// Sets or resets the duration of a stopwatch cast.
+        /// </summary>
+        void SetStopwatchTimer(byte value = 0);
         /// <summary>
         /// Enables stereo when starting a new game.
         /// </summary>

@@ -2,14 +2,14 @@
 {
     public static class Entities
     {
-        public const int EnemyEntitiesCount = 131;
+        public const int EnemyEntitiesCount = 190;
         public const int FriendEntitiesCount = 6;
-        public const int Poison = 0x81;
-        public const int Curse = 0x1;
-        public const int Stone = 0x2;
-        public const int LockedOn = 0x2;
-        public const int Slam = 0x25;
-        public const int Size = 0xBC;
+        public const ushort Poison = 0x0081;
+        public const ushort Curse = 0x0100;
+        public const ushort Stone = 0x0202;
+        public const ushort LockedOn = 0x2;
+        public const ushort Slam = 0x0025;
+        public const byte Size = 0xBC;
         //Entity Offsets
         public const int Xpos = 0x00;
         public const int Ypos = 0x04;
@@ -34,19 +34,23 @@
         public const int Flags = 0x34;
         public const int Unk38 = 0x38;
         public const int EnemyId = 0x3A;
-        public const int Defense = 0x3A;
-        public const int HitboxAutoToggle = 0x3C;
+        public const int HitboxState = 0x3C;
         public const int Hp = 0x3E;
         public const int Damage = 0x40;
-        public const int DamageTypeA = 0x42;
-        public const int DamageTypeB = 0x43;
+        public const int DamageType = 0x42;
         public const int HitboxWidth = 0x46;
         public const int HitboxHeight = 0x47;
         public const int InvincibilityFrames = 0x49;
+        public const int Unk4A = 0x4A;
+        public const int AnimationFunctionAddress = 0x4C;
         public const int AnimationFrameIndex = 0x50;
         public const int AnimationFrameDuration = 0x52;
         public const int AnimationSet = 0x54;
-        public const int AnimationCurrentFrame = 0x58;
+        public const int AnimationCurrentFrame = 0x56;
+        public const int StunFrames = 0x58;
+        public const int Unk5A = 0x5A;
+        public const int PrimIndex = 0x64;
+        public const int HitEffect = 0x6A;
         //* 0x64 */ s32 firstPolygonIndex;
 
         //Spawning entities in these can cause relics not to spawn.

@@ -9,12 +9,26 @@ namespace SotnApi.Interfaces
     public interface IEntityApi
     {
         /// <summary>
+        /// Scans memory for an entity matching <paramref name="enemyId"/>.
+        /// </summary>
+        /// <returns>
+        /// The address where the enemy entity starts. Or 0 if the enemy was not found.
+        /// </returns>
+        long FindEntity(ushort enemyId, bool enemy = true);
+        /// <summary>
         /// Scans memory for an entity matching <paramref name="enemyIds"/>.
         /// </summary>
         /// <returns>
         /// The address where the enemy entity starts. Or 0 if the enemy was not found.
         /// </returns>
         long FindEntityFrom(List<ushort> enemyIds, bool enemy = true);
+        /// <summary>
+        /// Scans memory for an entity matching EnemyId and ObjectId from <paramref name="entities"/>.
+        /// </summary>
+        /// <returns>
+        /// The address where the enemy entity starts. Or 0 if the enemy was not found.
+        /// </returns>
+        long FindEntityFrom(List<Entity> entities, bool enemy = true);
         /// <summary>
         /// Scans memory for all active entities.
         /// </summary>
@@ -44,5 +58,9 @@ namespace SotnApi.Interfaces
         /// The address, where the actor was spawned.
         /// </returns>
         long SpawnEntity(Entity actor, bool enemy = true);
+        /// <summary>
+        /// Frees entity at address from memory.
+        /// </summary>
+        void FreeEntity(long address);
     }
 }

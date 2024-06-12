@@ -12,7 +12,9 @@
         public const uint Wolf = 0x18;
         public const uint UntransformWolf = 0x19;
         public const uint DarkMetamorphosis = 0x20;
+        public const uint SummonSpirit = 0x21;
         public const uint Hellfire = 0x22;
+        public const uint TetraSpirit = 0x23;
         public const uint What = 0x30;
         public const uint Standing = 0x0;
         public const uint Walking = 0x1;

@@ -166,9 +166,25 @@
             Spawns, finds and edits actor entities in memory.
             </summary>
         </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEntity(System.UInt16,System.Boolean)">
+            <summary>
+            Scans memory for an entity matching <paramref name="enemyId"/>.
+            </summary>
+            <returns>
+            The address where the enemy entity starts. Or 0 if the enemy was not found.
+            </returns>
+        </member>
         <member name="M:SotnApi.Interfaces.IEntityApi.FindEntityFrom(System.Collections.Generic.List{System.UInt16},System.Boolean)">
             <summary>
             Scans memory for an entity matching <paramref name="enemyIds"/>.
+            </summary>
+            <returns>
+            The address where the enemy entity starts. Or 0 if the enemy was not found.
+            </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.FindEntityFrom(System.Collections.Generic.List{SotnApi.Models.Entity},System.Boolean)">
+            <summary>
+            Scans memory for an entity matching EnemyId and ObjectId from <paramref name="entities"/>.
             </summary>
             <returns>
             The address where the enemy entity starts. Or 0 if the enemy was not found.
@@ -207,6 +223,11 @@
             <returns>
             The address, where the actor was spawned.
             </returns>
+        </member>
+        <member name="M:SotnApi.Interfaces.IEntityApi.FreeEntity(System.Int64)">
+            <summary>
+            Frees entity at address from memory.
+            </summary>
         </member>
         <member name="T:SotnApi.Interfaces.IGameApi">
             <returns>
@@ -289,6 +310,16 @@
             Y coordinate for the current highlighted room on the map.
             </returns>
         </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.CameraAdjustmentX">
+            <returns>
+            Shift for entity X positions based on how the camera moved.
+            </returns>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.CameraAdjustmentY">
+            <returns>
+            Shift for entity Y positions based on how the camera moved.
+            </returns>
+        </member>
         <member name="P:SotnApi.Interfaces.IGameApi.StageId">
             <returns>
             Current StageId.
@@ -322,6 +353,16 @@
         <member name="P:SotnApi.Interfaces.IGameApi.MusicVolume">
             <summary>
             Gets or sets the current volume for XA music.
+            </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.InputFlags">
+            <summary>
+            State of the buttons on the controller.
+            </summary>
+        </member>
+        <member name="P:SotnApi.Interfaces.IGameApi.QcfInputCounter">
+            <summary>
+            Counter for the QCF input sequence
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.EquipMenuOpen">
@@ -407,6 +448,11 @@
         <member name="M:SotnApi.Interfaces.IGameApi.UnmuteXA">
             <summary>
             Unmutes volume for all XA track playback.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.SetStopwatchTimer(System.Byte)">
+            <summary>
+            Sets or resets the duration of a stopwatch cast.
             </summary>
         </member>
         <member name="M:SotnApi.Interfaces.IGameApi.EnableStartWithStereo">

@@ -12,6 +12,7 @@ namespace SotnApi.Models
     {
         private readonly IMemoryApi memAPI;
         private bool isLive = false;
+        private Locals locals = new();
 
         public Entity(long address, IMemoryApi? memAPI)
         {
@@ -34,6 +35,10 @@ namespace SotnApi.Models
 
         public long Address { get; set; }
         public List<byte> Data { get; set; }
+        public Locals Locals
+        {
+            get { return locals; }
+        }
 
         public double Xpos
         {
@@ -121,6 +126,61 @@ namespace SotnApi.Models
             set
             {
                 WriteByte(Entities.DrawFlags, value);
+            }
+        }
+        public ushort RotX
+        {
+            get
+            {
+                return ReadU16(Entities.RotX);
+            }
+            set
+            {
+                WriteU16(Entities.RotX, value);
+            }
+        }
+        public ushort RotY
+        {
+            get
+            {
+                return ReadU16(Entities.RotY);
+            }
+            set
+            {
+                WriteU16(Entities.RotY, value);
+            }
+        }
+        public ushort RotZ
+        {
+            get
+            {
+                return ReadU16(Entities.RotZ);
+            }
+            set
+            {
+                WriteU16(Entities.RotZ, value);
+            }
+        }
+        public ushort RotPivotX
+        {
+            get
+            {
+                return ReadU16(Entities.RotPivotX);
+            }
+            set
+            {
+                WriteU16(Entities.RotPivotX, value);
+            }
+        }
+        public ushort RotPivotY
+        {
+            get
+            {
+                return ReadU16(Entities.RotPivotY);
+            }
+            set
+            {
+                WriteU16(Entities.RotPivotY, value);
             }
         }
         public ushort ZPriority
@@ -222,15 +282,15 @@ namespace SotnApi.Models
                 WriteU16(Entities.EnemyId, value);
             }
         }
-        public byte AutoToggle
+        public byte HitboxState
         {
             get
             {
-                return ReadByte(Entities.HitboxAutoToggle);
+                return ReadByte(Entities.HitboxState);
             }
             set
             {
-                WriteByte(Entities.HitboxAutoToggle, value);
+                WriteByte(Entities.HitboxState, value);
             }
         }
         public short Hp
@@ -255,26 +315,15 @@ namespace SotnApi.Models
                 WriteU16(Entities.Damage, value);
             }
         }
-        public byte DamageTypeA
+        public ushort DamageType
         {
             get
             {
-                return ReadByte(Entities.DamageTypeA);
+                return ReadU16(Entities.DamageType);
             }
             set
             {
-                WriteByte(Entities.DamageTypeA, value);
-            }
-        }
-        public byte DamageTypeB
-        {
-            get
-            {
-                return ReadByte(Entities.DamageTypeB);
-            }
-            set
-            {
-                WriteByte(Entities.DamageTypeB, value);
+                WriteU16(Entities.DamageType, value);
             }
         }
         public byte HitboxWidth
@@ -310,52 +359,96 @@ namespace SotnApi.Models
                 WriteByte(Entities.InvincibilityFrames, value);
             }
         }
-        public byte AnimationFrameIndex
+        public ushort Unk4A
         {
             get
             {
-                return ReadByte(Entities.AnimationFrameIndex);
+                return ReadU16(Entities.Unk4A);
             }
             set
             {
-                WriteByte(Entities.AnimationFrameIndex, value);
+                WriteU16(Entities.Unk4A, value);
             }
         }
-        public byte AnimationFrameDuration
+        public uint AnimationFunctionAddress
         {
             get
             {
-                return ReadByte(Entities.AnimationFrameDuration);
+                return ReadU32(Entities.AnimationFunctionAddress);
             }
             set
             {
-                WriteByte(Entities.AnimationFrameDuration, value);
+                WriteU32(Entities.AnimationFunctionAddress, value);
             }
         }
-        public byte AnimationSet
+        public ushort AnimationFrameIndex
         {
             get
             {
-                return ReadByte(Entities.AnimationSet);
+                return ReadU16(Entities.AnimationFrameIndex);
             }
             set
             {
-                WriteByte(Entities.AnimationSet, value);
+                WriteU16(Entities.AnimationFrameIndex, value);
             }
         }
-        public byte AnimationCurrentFrame
+        public ushort AnimationFrameDuration
         {
             get
             {
-                return ReadByte(Entities.AnimationCurrentFrame);
+                return ReadU16(Entities.AnimationFrameDuration);
             }
             set
             {
-                WriteByte(Entities.AnimationCurrentFrame, value);
+                WriteU16(Entities.AnimationFrameDuration, value);
+            }
+        }
+        public ushort AnimationSet
+        {
+            get
+            {
+                return ReadU16(Entities.AnimationSet);
+            }
+            set
+            {
+                WriteU16(Entities.AnimationSet, value);
+            }
+        }
+        public ushort AnimationCurrentFrame
+        {
+            get
+            {
+                return ReadU16(Entities.AnimationCurrentFrame);
+            }
+            set
+            {
+                WriteU16(Entities.AnimationCurrentFrame, value);
+            }
+        }
+        public ushort StunFrames
+        {
+            get
+            {
+                return ReadU16(Entities.StunFrames);
+            }
+            set
+            {
+                WriteU16(Entities.StunFrames, value);
+            }
+        }
+        public ushort Unk5A
+        {
+            get
+            {
+                return ReadU16(Entities.Unk5A);
+            }
+            set
+            {
+                WriteU16(Entities.Unk5A, value);
             }
         }
 
-        private void WriteByte(int offset, byte value)
+        public void WriteByte(int offset, byte value)
         {
             if (isLive)
             {
@@ -374,11 +467,10 @@ namespace SotnApi.Models
             }
             else
             {
-                for (int i = 0; i < 2; i++)
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < valueBytes.Length; i++)
                 {
-                    byte[] valueBytes = BitConverter.GetBytes(value);
                     Data[offset + i] = valueBytes[i];
-
                 }
             }
         }
@@ -390,11 +482,10 @@ namespace SotnApi.Models
             }
             else
             {
-                for (int i = 0; i < 4; i++)
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < valueBytes.Length; i++)
                 {
-                    byte[] valueBytes = BitConverter.GetBytes(value);
                     Data[offset + i] = valueBytes[i];
-
                 }
             }
         }
@@ -406,11 +497,10 @@ namespace SotnApi.Models
             }
             else
             {
-                for (int i = 0; i < 2; i++)
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < valueBytes.Length; i++)
                 {
-                    byte[] valueBytes = BitConverter.GetBytes(value);
                     Data[offset + i] = valueBytes[i];
-
                 }
             }
         }
@@ -422,11 +512,10 @@ namespace SotnApi.Models
             }
             else
             {
-                for (int i = 0; i < 4; i++)
+                byte[] valueBytes = BitConverter.GetBytes(value);
+                for (int i = 0; i < valueBytes.Length; i++)
                 {
-                    byte[] valueBytes = BitConverter.GetBytes(value);
                     Data[offset + i] = valueBytes[i];
-
                 }
             }
         }

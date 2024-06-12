@@ -82,6 +82,10 @@ namespace SotnApi.Constants.Addresses
         public const long SettingsMenuOpen = 0x03D04E;
         public const long MapXPos = 0x0730B0;
         public const long MapYPos = 0x0730B4;
+        public const long CameraXPos = 0x07308C;
+        public const long CameraYPos = 0x073090;
+        public const long CameraAdjustmentX = 0x1375B4;
+        public const long CameraAdjustmentY = 0x1375B8;
         public const long Room = 0x1375BC;
         public const long Area = 0x1375BD;
         public const long StageId = 0x0974A0;
@@ -90,6 +94,8 @@ namespace SotnApi.Constants.Addresses
         public const long Seconds = 0x097C38;
         public const long Frames = 0x097C3C;
         public const long Character = 0x03C9A0;
+        public const long InputFlags = 0x072EF0;
+        public const long QcfInputCounter = 0x138FC4;
         public const long Prologue = 0x20;
         public const long LibraryCard = 0x1FFC99;
         public const long TeleportToLevelEntrance = 0x03C9A4;
@@ -119,5 +125,7 @@ namespace SotnApi.Constants.Addresses
         public const long LibraryCardDestinationXpos = 0x0A25E2;
         public const long LibraryCardDestinationYpos = 0x0A25E4;
         public const long LibraryCardDestinationRoom = 0x0A25E6; //base 8
+        public const long StopwatchTimerInstruction = 0x012aad8;
+        public const long StopwatchTImerValue = 0x12AAD8;
     }
 }
