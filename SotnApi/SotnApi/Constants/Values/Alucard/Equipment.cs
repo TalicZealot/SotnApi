@@ -299,6 +299,7 @@ namespace SotnApi.Constants.Values.Alucard
         "Ring of Vlad",
         "Eye of Vlad",
         };
+        public static readonly int[] CategoryHeaders = new int[]{ 0, 169, 195, 217, 226 };
         public const uint HelmStart = 0x1A;
         public const uint CloakStart = 0x30;
         public const uint AccessoryStart = 0x39;

@@ -130,11 +130,11 @@
         </member>
         <member name="M:SotnApi.Interfaces.IAlucardApi.ClearInventory">
             <summary>
-            Reduces the count of all owned items to 0.
+            Reduces the count of all items to 0.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IAlucardApi.GetSelectedItemName">
-            <returns>The item at the cursor position in the equip submenu.</returns>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GetSelectedItem">
+            <returns>The item index at the cursor position in the equip submenu, or -1 if the item is not valid.</returns>
         </member>
         <member name="M:SotnApi.Interfaces.IAlucardApi.GetSelectedRelic">
             <returns>The relic at the cursor position in the relics submenu.</returns>
@@ -145,11 +145,11 @@
             </summary>
             <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         </member>
-        <member name="M:SotnApi.Interfaces.IAlucardApi.TakeOneItemByName(System.String)">
+        <member name="M:SotnApi.Interfaces.IAlucardApi.TakeOneItem(System.Int32)">
             <summary>
             Reduces the count of held items of the type by one.
             </summary>
-            <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
+            <param name="item">Item index acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         </member>
         <member name="M:SotnApi.Interfaces.IAlucardApi.GrantRelic(SotnApi.Constants.Values.Alucard.Enums.Relic,System.Boolean)">
             <summary>

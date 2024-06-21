@@ -18,5 +18,8 @@
         public const ushort R1 = 0x0008;
         public const ushort R2 = 0x0002;
         public const ushort R3 = 0x0400;
+
+        public const ushort Start = 0x0800;
+        public const ushort Select = 0x0100;
     }
 }

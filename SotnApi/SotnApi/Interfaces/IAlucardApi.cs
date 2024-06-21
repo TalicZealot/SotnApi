@@ -135,11 +135,11 @@ namespace SotnApi.Interfaces
         /// <summary>Damage dealt to enemies when Alucard touches them.</summary>
         uint ContactDamage { get; set; }
         /// <summary>
-        /// Reduces the count of all owned items to 0.
+        /// Reduces the count of all items to 0.
         /// </summary>
         void ClearInventory();
-        /// <returns>The item at the cursor position in the equip submenu.</returns>
-        string GetSelectedItemName();
+        /// <returns>The item index at the cursor position in the equip submenu, or -1 if the item is not valid.</returns>
+        int GetSelectedItem();
         /// <returns>The relic at the cursor position in the relics submenu.</returns>
         Relic GetSelectedRelic();
         /// <summary>
@@ -150,20 +150,20 @@ namespace SotnApi.Interfaces
         /// <summary>
         /// Reduces the count of held items of the type by one.
         /// </summary>
-        /// <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
-        void TakeOneItemByName(string name);
+        /// <param name="item">Item index acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
+        void TakeOneItem(int item);
         /// <summary>
         /// Grants relic and turns it on it if is not a familiar card. Allow spawn will make the normal relics still spawn where they were supposed to.
         /// </summary>
-        void GrantRelic(Relic name, bool allowSpawn = false);
+        void GrantRelic(Relic relic, bool allowSpawn = false);
         /// <summary>
         /// Takes relic away.
         /// </summary>
-        void TakeRelic(Relic name);
+        void TakeRelic(Relic relic);
         void GrantFirstCastleWarp(Warp warp);
         void GrantSecondCastleWarp(Warp warp);
-        bool HasItemInInventory(string name);
-        bool HasRelic(Relic name);
+        bool HasItemInInventory(int item);
+        bool HasRelic(Relic relic);
         bool IsInvincible();
         bool HasControl();
         bool HasHitbox();

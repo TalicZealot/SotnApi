@@ -22,8 +22,8 @@ namespace SotnApi
 
         public void ColorMapRoom(uint x, uint y, uint color, uint borderColor)
         {
-            if (y > Height) throw new ArgumentOutOfRangeException(nameof(y));
-            if (x > Width) throw new ArgumentOutOfRangeException(nameof(x));
+            if (y > Height || y < 0) throw new ArgumentOutOfRangeException(nameof(y));
+            if (x > Width || x < 0) throw new ArgumentOutOfRangeException(nameof(x));
             if (color > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(color));
             if (borderColor > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(borderColor));
             x /= 2;
@@ -59,8 +59,8 @@ namespace SotnApi
 
         public void ColorMapLocation(uint x, uint y, uint color)
         {
-            if (y > Height) throw new ArgumentOutOfRangeException(nameof(y));
-            if (x > Width) throw new ArgumentOutOfRangeException(nameof(x));
+            if (y > Height || y < 0) throw new ArgumentOutOfRangeException(nameof(y));
+            if (x > Width || x < 0) throw new ArgumentOutOfRangeException(nameof(x));
             if (color > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(color));
             bool even = x % 2 == 0;
             x /= 2;

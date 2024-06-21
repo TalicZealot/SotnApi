@@ -94,7 +94,7 @@ namespace SotnApi.Constants.Addresses
         public const long Seconds = 0x097C38;
         public const long Frames = 0x097C3C;
         public const long Character = 0x03C9A0;
-        public const long InputFlags = 0x072EF0;
+        public const long InputFlags = 0x097490;
         public const long QcfInputCounter = 0x138FC4;
         public const long Prologue = 0x20;
         public const long LibraryCard = 0x1FFC99;

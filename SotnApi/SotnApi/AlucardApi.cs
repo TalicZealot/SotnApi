@@ -1202,9 +1202,8 @@ namespace SotnApi
             }
         }
 
-        public string GetSelectedItemName()
+        public int GetSelectedItem()
         {
-            string item;
             uint category = memAPI.ReadByte(Inventory.Category);
             uint cursor;
             int itemIndex = 0;
@@ -1235,8 +1234,14 @@ namespace SotnApi
                 default:
                     break;
             }
-            item = Equipment.Items[itemIndex];
-            return item;
+            for (int i = 0; i < Equipment.CategoryHeaders.Length; i++)
+            {
+                if (itemIndex == Equipment.CategoryHeaders[i])
+                {
+                    return -1;
+                }
+            }
+            return itemIndex;
         }
 
         public Relic GetSelectedRelic()
@@ -1249,27 +1254,35 @@ namespace SotnApi
             return (Relic)cursor;
         }
 
-        public bool HasRelic(Relic name)
+        public bool HasRelic(Relic relic)
         {
-            return memAPI.ReadByte(Relics.AllRelics[name.ToString()]) > 0;
+            return memAPI.ReadByte(Relics.AllRelics[relic.ToString()]) > 0;
         }
 
-        public void TakeRelic(Relic name)
+        public void TakeRelic(Relic relic)
         {
-            memAPI.WriteByte(Relics.AllRelics[name.ToString()], 0);
+            memAPI.WriteByte(Relics.AllRelics[relic.ToString()], 0);
         }
 
-        public void GrantRelic(Relic name, bool allowSpawn = false)
+        public void GrantRelic(Relic relic, bool allowSpawn = false)
         {
             uint relicOn = 3;
             uint relicOff = 1;
+            uint value = 0;
             if (allowSpawn)
             {
                 relicOn = 6;
                 relicOff = 5;
             }
-            uint value = name.ToString().Contains("Card") ? relicOff : relicOn;
-            memAPI.WriteByte(Relics.AllRelics[name.ToString()], value);
+            if (relic >= Relic.BatCard && relic <= Relic.NoseDevilCard)
+            {
+                value = relicOff;
+            }
+            else
+            {
+                value = relicOn;
+            }
+            memAPI.WriteByte(Relics.AllRelics[relic.ToString()], value);
         }
 
         public void GrantFirstCastleWarp(Warp warp)
@@ -1282,11 +1295,9 @@ namespace SotnApi
             memAPI.WriteByte(Stats.WarpsSecondCastle, WarpsSecondCastle | (uint)warp);
         }
 
-        public bool HasItemInInventory(string name)
+        public bool HasItemInInventory(int item)
         {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            int item = Equipment.Items.IndexOf(name);
-            if (item == -1) throw new ArgumentException("Invalid item name!");
+            if (item == -1) throw new ArgumentException("Invalid item!");
 
             uint value = memAPI.ReadByte(Inventory.HandQuantityStart + item);
             return value > 0;
@@ -1306,15 +1317,12 @@ namespace SotnApi
             }
         }
 
-        public void TakeOneItemByName(string name)
+        public void TakeOneItem(int item)
         {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            int item = Equipment.Items.IndexOf(name);
-            if (item == -1) throw new ArgumentException("Invalid item name!");
+            if (item < 0) throw new ArgumentException("Invalid item index!");
             uint itemCount = memAPI.ReadByte(Inventory.HandQuantityStart + item);
             if (itemCount == 0)
             {
-                Console.WriteLine($"Item {name} not in inventory.");
                 return;
             }
             memAPI.WriteByte(Inventory.HandQuantityStart + item, itemCount - 1);
