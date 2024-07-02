@@ -87,7 +87,7 @@ namespace SotnApi
             }
         }
 
-        public bool RoomIsRendered(uint x, uint y)
+        public bool RoomIsRendered(uint x, uint y, uint color)
         {
             if (y > Height) throw new ArgumentOutOfRangeException(nameof(y));
             if (x > Width) throw new ArgumentOutOfRangeException(nameof(x));
@@ -95,8 +95,8 @@ namespace SotnApi
 
             long start = Game.VramMapStart;
             long rowOffset = Various.RowOffset;
-            uint value = memAPI.ReadByte(start + (y * rowOffset) + x, "GPURAM");
-            return value > 0;
+            uint value = memAPI.ReadByte(start + (y * rowOffset) + x + 1, "GPURAM");
+            return value == color;
         }
     }
 }

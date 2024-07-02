@@ -20,7 +20,7 @@ namespace MapApiTests
             IMapApi classUnderTest = new MapApi(mockedMemAPI);
             string paramName = "y";
             //Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(default, Height + 1));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(default, Height + 1, 1));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }
@@ -33,7 +33,7 @@ namespace MapApiTests
             IMapApi classUnderTest = new MapApi(mockedMemAPI);
             string paramName = "x";
             //Act&Assert
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(Width + 1, default));
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => classUnderTest.RoomIsRendered(Width + 1, default, 1));
             //Assert
             Assert.Equal(paramName, exception.ParamName);
         }
@@ -45,7 +45,7 @@ namespace MapApiTests
             var mockedMemAPI = Substitute.For<IMemoryApi>();
             IMapApi classUnderTest = new MapApi(mockedMemAPI);
             //Act
-            classUnderTest.RoomIsRendered(default, default);
+            classUnderTest.RoomIsRendered(default, default, 1);
             //Assert
             mockedMemAPI.Received(1).ReadByte(Arg.Any<long>(), "GPURAM");
         }

@@ -145,6 +145,11 @@ namespace SotnApi.Interfaces
         /// <summary>
         /// Increases the count of held items of the type by one.
         /// </summary>
+        /// <param name="index">Item index acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
+        void GrantItem(int index);
+        /// <summary>
+        /// Increases the count of held items of the type by one.
+        /// </summary>
         /// <param name="name">Item name acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
         void GrantItemByName(string name);
         /// <summary>

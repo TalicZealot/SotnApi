@@ -1303,6 +1303,18 @@ namespace SotnApi
             return value > 0;
         }
 
+        public void GrantItem(int index)
+        {
+            if (index < 0) throw new ArgumentOutOfRangeException("Item must be greater than 0!");
+
+            uint itemCount = memAPI.ReadByte(Inventory.HandQuantityStart + index);
+            memAPI.WriteByte(Inventory.HandQuantityStart + index, itemCount + 1);
+            if (itemCount == 0)
+            {
+                SortItemInventory((uint)index);
+            }
+        }
+
         public void GrantItemByName(string name)
         {
             if (name == null) throw new ArgumentNullException(nameof(name));

@@ -16,6 +16,6 @@
         /// <summary>
         /// Checks if a room on the minimap is rendered.
         /// </summary>
-        bool RoomIsRendered(uint x, uint y);
+        bool RoomIsRendered(uint x, uint y, uint color);
     }
 }

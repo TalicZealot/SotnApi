@@ -139,6 +139,12 @@
         <member name="M:SotnApi.Interfaces.IAlucardApi.GetSelectedRelic">
             <returns>The relic at the cursor position in the relics submenu.</returns>
         </member>
+        <member name="M:SotnApi.Interfaces.IAlucardApi.GrantItem(System.Int32)">
+            <summary>
+            Increases the count of held items of the type by one.
+            </summary>
+            <param name="index">Item index acording to the list at SotnApi.Constants.Values.Alucard.Equipment.Items</param>
+        </member>
         <member name="M:SotnApi.Interfaces.IAlucardApi.GrantItemByName(System.String)">
             <summary>
             Increases the count of held items of the type by one.
@@ -495,7 +501,7 @@
             Colors a location on the map as a 2x2 square.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IMapApi.RoomIsRendered(System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.RoomIsRendered(System.UInt32,System.UInt32,System.UInt32)">
             <summary>
             Checks if a room on the minimap is rendered.
             </summary>
