@@ -106,8 +106,8 @@ namespace SotnApi.Constants.Addresses
         public const long VramMapStart = 0x089E80;
         public const long SeedStart = 0x1A78B4;
         public const long PresetStart = 0x1A78D4;
-        public const long MapStart = 0x06BBDC;
-        public const long MapEnd = 0x06C30B;
+        public const long MapStart = 0x06BB74;
+        public const long MapEnd =   0x06C374;
         public const long CanSave = 0x03C708;
         public const long CanWarp = 0x03C710;
         public const long MapItemsCollectedStart = 0x03BEE0;
@@ -119,6 +119,7 @@ namespace SotnApi.Constants.Addresses
         public const long VolumeSetInstruction = 0x136280;
         public const long TeleportDestination = 0x097C98;
         public const long SavePalette = 0x03C4E6;
+        public const long MapRevealFirstComparison = 0x0F1C18;
         public const long StartingStereoSettingInstruction = 0x0e4b88;
         public const long MovementSpeedDirectionInstruction = 0x010e3a4;
         public const long LibraryCardDestinationZone = 0x0f1724;

@@ -691,15 +691,26 @@ namespace SotnApi
                 memAPI.WriteByte(Speeds.WalkingFract, value);
             }
         }
-        public int BackdashWholeSpeed
+        public short BackdashWholeSpeed
         {
             get
             {
-                return memAPI.ReadS16(Speeds.BackdashWhole);
+                return (short)memAPI.ReadS16(Speeds.BackdashWhole);
             }
             set
             {
                 memAPI.WriteS16(Speeds.BackdashWhole, value);
+            }
+        }
+        public uint BackdashDecel
+        {
+            get
+            {
+                return memAPI.ReadByte(Speeds.BackdashDecel);
+            }
+            set
+            {
+                memAPI.WriteByte(Speeds.BackdashDecel, value);
             }
         }
         public uint JumpingHorizontalWholeSpeed
@@ -810,17 +821,6 @@ namespace SotnApi
             set
             {
                 memAPI.WriteByte(Speeds.WolfDashTopLeft, (uint)value);
-            }
-        }
-        public uint BackdashDecel
-        {
-            get
-            {
-                return memAPI.ReadByte(Speeds.BackdashDecel);
-            }
-            set
-            {
-                memAPI.WriteByte(Speeds.BackdashDecel, value);
             }
         }
         public uint RightHand

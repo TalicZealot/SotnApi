@@ -128,9 +128,21 @@ namespace SotnApi.Interfaces
         /// </summary>
         bool CanMenu();
         /// <summary>
+        /// Gets the current value of a map room by address.
+        /// </summary>
+        public byte GetRoomValue(long address);
+        /// <summary>
+        /// Gets the current value of a map room by index.
+        /// </summary>
+        public byte GetRoomValue(ushort index);
+        /// <summary>
         /// Sets a room on the map to unvisited. Alucard can discover it again.
         /// </summary>
         void SetRoomToUnvisited(long address);
+        /// <summary>
+        /// Sets a room on the map to unvisited. Alucard can discover it again.
+        /// </summary>
+        public void SetRoomToUnvisited(ushort index);
         /// <summary>
         /// Sets a room on the map to visited. It will not reflect on the map unless a map reload occurs. Library cards and castle switches reload the map.
         /// </summary>
@@ -183,6 +195,10 @@ namespace SotnApi.Interfaces
         /// Unmutes volume for all XA track playback.
         /// </summary>
         void UnmuteXA();
+        /// <summary>
+        /// When revealing a new map squre the game will not check for the existing color.
+        /// </summary>
+        void RemoveMapRevealCheck();
         /// <summary>
         /// Sets or resets the duration of a stopwatch cast.
         /// </summary>

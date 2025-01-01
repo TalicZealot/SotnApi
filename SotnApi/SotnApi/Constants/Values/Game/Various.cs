@@ -15,15 +15,17 @@ namespace SotnApi.Constants.Values.Game
         public const uint LibraryWarped = 0x78;
         public const uint CanSave = 0x20;
         public const uint CanWarp = 0x0E;
+        public const int MapLenght = 2048;
         public const int MapItemsCollectedSize = 143;
         public const int UnderwaterPhysicsOn = 0x0090;
-        public const uint DefaultVolumeSetInstruction = 0x84A5B668;                 //LH    $a1 -0x4998($a1)
-        public const uint MuteVolumeSetInstruction = 0x34050000;                    //MOVE  $a1  0x0000
-        public const uint DefaultMovementSpeedDirectionInstruction = 0x14620002;    //BNE   v1   v0 0x2
-        public const uint FlippedMovementSpeedDirectionInstruction = 0x10620002;    //BEQ   v1   v0 0x2
-        public const uint MonoStartingStereoSettingInstruction = 0x34020001;        //MOVE  v2   0x01
-        public const uint StereoStartingStereoSettingInstruction = 0x34020000;      //MOVE  v2   0x00
-        public const uint DefaultStopwatchTimerInstruction = 0x34020005;            //MOVE  v0   0x05
+        public const uint RemoveMapRevealCheck = 0x14e00000;                        //BNE   $zero 0x0000
+        public const uint DefaultVolumeSetInstruction = 0x84A5B668;                 //LH    $a1  -0x4998($a1)
+        public const uint MuteVolumeSetInstruction = 0x34050000;                    //MOVE  $a1   0x0000
+        public const uint DefaultMovementSpeedDirectionInstruction = 0x14620002;    //BNE   v1    v0 0x2
+        public const uint FlippedMovementSpeedDirectionInstruction = 0x10620002;    //BEQ   v1    v0 0x2
+        public const uint MonoStartingStereoSettingInstruction = 0x34020001;        //MOVE  v2    0x01
+        public const uint StereoStartingStereoSettingInstruction = 0x34020000;      //MOVE  v2    0x00
+        public const uint DefaultStopwatchTimerInstruction = 0x34020005;            //MOVE  v0    0x05
 
         public static readonly Dictionary<uint, char> CharacterMap = new Dictionary<uint, char> {
             {0x43, ','},

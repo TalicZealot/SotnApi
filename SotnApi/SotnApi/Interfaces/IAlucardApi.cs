@@ -22,19 +22,9 @@ namespace SotnApi.Interfaces
         uint Kills { get; set; }
         uint WarpsFirstCastle { get; set; }
         uint WarpsSecondCastle { get; set; }
-        bool WarpEntrance { get; set; }
-        bool WarpMines { get; set; }
-        bool WarpOuterWall { get; set; }
-        bool WarpKeep { get; set; }
-        bool WarpOlrox { get; set; }
-        bool WarpInvertedEntrance { get; set; }
-        bool WarpInvertedMines { get; set; }
-        bool WarpInvertedOuterWall { get; set; }
-        bool WarpInvertedKeep { get; set; }
-        bool WarpInvertedOlrox { get; set; }
         bool OuterWallElevator { get; set; }
-        bool EntranceToMarble { get; set; }
         bool AlchemyElevator { get; set; }
+        bool EntranceToMarble { get; set; }
         bool ChapelStatue { get; set; }
         bool ColosseumElevator { get; set; }
         bool ColosseumToChapel { get; set; }
@@ -54,7 +44,9 @@ namespace SotnApi.Interfaces
         /// <summary> Alucard walking fractional speed. </summary>
         uint WalkingFractSpeed { get; set; }
         /// <summary> Alucard backdash whole speed in pixels per frame.. </summary>
-        int BackdashWholeSpeed { get; set; }
+        short BackdashWholeSpeed { get; set; }
+        /// <summary> Alucard backdash deceleration rate. </summary>
+        uint BackdashDecel { get; set; }
         /// <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
         uint JumpingHorizontalWholeSpeed { get; set; }
         /// <summary> Alucard jumping horizontal fractional speed. </summary>
@@ -75,8 +67,6 @@ namespace SotnApi.Interfaces
         sbyte WolfDashTopRightSpeed { get; set; }
         /// <summary> Alucard standard wolf dash going right to left maximum speed in pixels per frame. </summary>
         sbyte WolfDashTopLeftSpeed { get; set; }
-        /// <summary> Alucard backdash deceleration rate. </summary>
-        uint BackdashDecel { get; set; }
         /// <summary> Index of the currently equipped item in the Right Hand slot.</summary>
         uint RightHand { get; set; }
         /// <summary> Index of the currently equipped item in the Left Hand slot.</summary>

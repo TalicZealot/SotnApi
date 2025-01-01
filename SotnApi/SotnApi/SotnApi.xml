@@ -32,6 +32,9 @@
         <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashWholeSpeed">
             <summary> Alucard backdash whole speed in pixels per frame.. </summary>
         </member>
+        <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashDecel">
+            <summary> Alucard backdash deceleration rate. </summary>
+        </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.JumpingHorizontalWholeSpeed">
             <summary> Alucard jumping horizontal speed in pixels per frame. </summary>
         </member>
@@ -61,9 +64,6 @@
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.WolfDashTopLeftSpeed">
             <summary> Alucard standard wolf dash going right to left maximum speed in pixels per frame. </summary>
-        </member>
-        <member name="P:SotnApi.Interfaces.IAlucardApi.BackdashDecel">
-            <summary> Alucard backdash deceleration rate. </summary>
         </member>
         <member name="P:SotnApi.Interfaces.IAlucardApi.RightHand">
             <summary> Index of the currently equipped item in the Right Hand slot.</summary>
@@ -386,7 +386,22 @@
             Checks if it is currently possible for the player to access the menu.
             </summary>
         </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.GetRoomValue(System.Int64)">
+            <summary>
+            Gets the current value of a map room by address.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.GetRoomValue(System.UInt16)">
+            <summary>
+            Gets the current value of a map room by index.
+            </summary>
+        </member>
         <member name="M:SotnApi.Interfaces.IGameApi.SetRoomToUnvisited(System.Int64)">
+            <summary>
+            Sets a room on the map to unvisited. Alucard can discover it again.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.SetRoomToUnvisited(System.UInt16)">
             <summary>
             Sets a room on the map to unvisited. Alucard can discover it again.
             </summary>
@@ -456,6 +471,11 @@
             Unmutes volume for all XA track playback.
             </summary>
         </member>
+        <member name="M:SotnApi.Interfaces.IGameApi.RemoveMapRevealCheck">
+            <summary>
+            When revealing a new map squre the game will not check for the existing color.
+            </summary>
+        </member>
         <member name="M:SotnApi.Interfaces.IGameApi.SetStopwatchTimer(System.Byte)">
             <summary>
             Sets or resets the duration of a stopwatch cast.
@@ -491,17 +511,22 @@
             Manipulates VRAM elements.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IMapApi.ColorMapRoom(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.ColorMapRoom(System.Byte,System.Byte,System.Byte,System.Byte)">
             <summary>
             Colors a room on the map as a 3x3 square with borders.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IMapApi.ColorMapLocation(System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.ClearMapRoom(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Clears non-vanilla colors from a room.
+            </summary>
+        </member>
+        <member name="M:SotnApi.Interfaces.IMapApi.ColorMapLocation(System.Byte,System.Byte,System.Byte)">
             <summary>
             Colors a location on the map as a 2x2 square.
             </summary>
         </member>
-        <member name="M:SotnApi.Interfaces.IMapApi.RoomIsRendered(System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:SotnApi.Interfaces.IMapApi.RoomIsRendered(System.Byte,System.Byte,System.Byte)">
             <summary>
             Checks if a room on the minimap is rendered.
             </summary>

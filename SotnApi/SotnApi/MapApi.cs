@@ -3,15 +3,12 @@ using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
 using System;
+using System.Diagnostics;
 
 namespace SotnApi
 {
     public sealed class MapApi : IMapApi
     {
-        private const int Height = 207;
-        private const int Width = 255;
-        private const int MaximumColorValue = 0xF;
-
         private readonly IMemoryApi memAPI;
         public MapApi(IMemoryApi? memAPI)
         {
@@ -20,48 +17,69 @@ namespace SotnApi
             this.memAPI = memAPI;
         }
 
-        public void ColorMapRoom(uint x, uint y, uint color, uint borderColor)
+        public void ColorMapRoom(byte x, byte y, byte color, byte borderColor)
         {
-            if (y > Height || y < 0) throw new ArgumentOutOfRangeException(nameof(y));
-            if (x > Width || x < 0) throw new ArgumentOutOfRangeException(nameof(x));
-            if (color > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(color));
-            if (borderColor > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(borderColor));
             x /= 2;
-
             long start = Game.VramMapStart;
             long rowOffset = Various.RowOffset;
 
-            memAPI.WriteByte(start + ((y - 1) * rowOffset) + x, borderColor * 0x10 + borderColor, "GPURAM");
-            memAPI.WriteByte(start + ((y - 1) * rowOffset) + x + 1, borderColor * 0x10 + borderColor, "GPURAM");
+            memAPI.WriteByte(start + ((y - 1) * rowOffset) + x, (uint)(borderColor * 0x10 + borderColor), "GPURAM");
+            memAPI.WriteByte(start + ((y - 1) * rowOffset) + x + 1, (uint)(borderColor * 0x10 + borderColor), "GPURAM");
             byte rightPixelColor = (byte)((byte)memAPI.ReadByte(start + ((y - 1) * rowOffset) + x + 2, "GPURAM") & 0xF0);
-            memAPI.WriteByte(start + ((y - 1) * rowOffset) + x + 2, rightPixelColor + borderColor, "GPURAM");
+            memAPI.WriteByte(start + ((y - 1) * rowOffset) + x + 2, (uint)(rightPixelColor + borderColor), "GPURAM");
 
-            memAPI.WriteByte(start + (y * rowOffset) + x, color * 0x10 + borderColor, "GPURAM");
-            memAPI.WriteByte(start + (y * rowOffset) + x + 1, color * 0x10 + color, "GPURAM");
+            memAPI.WriteByte(start + (y * rowOffset) + x, (uint)(color * 0x10 + borderColor), "GPURAM");
+            memAPI.WriteByte(start + (y * rowOffset) + x + 1, (uint)(color * 0x10 + color), "GPURAM");
             rightPixelColor = (byte)((byte)memAPI.ReadByte(start + (y * rowOffset) + x + 2, "GPURAM") & 0xF0);
-            memAPI.WriteByte(start + (y * rowOffset) + x + 2, rightPixelColor + borderColor, "GPURAM");
+            memAPI.WriteByte(start + (y * rowOffset) + x + 2, (uint)(rightPixelColor + borderColor), "GPURAM");
 
-            memAPI.WriteByte(start + ((y + 1) * rowOffset) + x, color * 0x10 + borderColor, "GPURAM");
-            memAPI.WriteByte(start + ((y + 1) * rowOffset) + x + 1, color * 0x10 + color, "GPURAM");
+            memAPI.WriteByte(start + ((y + 1) * rowOffset) + x, (uint)(color * 0x10 + borderColor), "GPURAM");
+            memAPI.WriteByte(start + ((y + 1) * rowOffset) + x + 1, (uint)(color * 0x10 + color), "GPURAM");
             rightPixelColor = (byte)((byte)memAPI.ReadByte(start + ((y + 1) * rowOffset) + x + 2, "GPURAM") & 0xF0);
-            memAPI.WriteByte(start + ((y + 1) * rowOffset) + x + 2, rightPixelColor + borderColor, "GPURAM");
+            memAPI.WriteByte(start + ((y + 1) * rowOffset) + x + 2, (uint)(rightPixelColor + borderColor), "GPURAM");
 
-            memAPI.WriteByte(start + ((y + 2) * rowOffset) + x, color * 0x10 + borderColor, "GPURAM");
-            memAPI.WriteByte(start + ((y + 2) * rowOffset) + x + 1, color * 0x10 + color, "GPURAM");
+            memAPI.WriteByte(start + ((y + 2) * rowOffset) + x, (uint)(color * 0x10 + borderColor), "GPURAM");
+            memAPI.WriteByte(start + ((y + 2) * rowOffset) + x + 1, (uint)(color * 0x10 + color), "GPURAM");
             rightPixelColor = (byte)((byte)memAPI.ReadByte(start + ((y + 2) * rowOffset) + x + 2, "GPURAM") & 0xF0);
-            memAPI.WriteByte(start + ((y + 2) * rowOffset) + x + 2, rightPixelColor + borderColor, "GPURAM");
+            memAPI.WriteByte(start + ((y + 2) * rowOffset) + x + 2, (uint)(rightPixelColor + borderColor), "GPURAM");
 
-            memAPI.WriteByte(start + ((y + 3) * rowOffset) + x, borderColor * 0x10 + borderColor, "GPURAM");
-            memAPI.WriteByte(start + ((y + 3) * rowOffset) + x + 1, borderColor * 0x10 + borderColor, "GPURAM");
+            memAPI.WriteByte(start + ((y + 3) * rowOffset) + x, (uint)(borderColor * 0x10 + borderColor), "GPURAM");
+            memAPI.WriteByte(start + ((y + 3) * rowOffset) + x + 1, (uint)(borderColor * 0x10 + borderColor), "GPURAM");
             rightPixelColor = (byte)((byte)memAPI.ReadByte(start + ((y + 3) * rowOffset) + x + 2, "GPURAM") & 0xF0);
-            memAPI.WriteByte(start + ((y + 3) * rowOffset) + x + 2, rightPixelColor + borderColor, "GPURAM");
+            memAPI.WriteByte(start + ((y + 3) * rowOffset) + x + 2, (uint)(rightPixelColor + borderColor), "GPURAM");
         }
 
-        public void ColorMapLocation(uint x, uint y, uint color)
+        public void ClearMapRoom(byte x, byte y, byte color, byte borderColor)
         {
-            if (y > Height || y < 0) throw new ArgumentOutOfRangeException(nameof(y));
-            if (x > Width || x < 0) throw new ArgumentOutOfRangeException(nameof(x));
-            if (color > MaximumColorValue) throw new ArgumentOutOfRangeException(nameof(color));
+            x /= 2;
+            long start = Game.VramMapStart;
+            long rowOffset = Various.RowOffset;
+            byte value;
+
+            for (int i = -1; i < 5; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    value = (byte)memAPI.ReadByte(start + ((y + i) * rowOffset) + x + j, "GPURAM");
+                    byte highNibble = (byte)((value & 0xF0) >> 4);
+                    byte lowNibble = (byte)(value & 0x0F);
+
+                    if (highNibble == color || highNibble == borderColor)
+                    {
+                        value = (byte)(value & 0x0F);
+                    }
+                    if (lowNibble == color || lowNibble == borderColor)
+                    {
+                        value = (byte)(value & 0xF0);
+                    }
+
+                    memAPI.WriteByte(start + ((y + i) * rowOffset) + x + j, value, "GPURAM");
+                }
+            }
+        }
+
+        public void ColorMapLocation(byte x, byte y, byte color)
+        {
             bool even = x % 2 == 0;
             x /= 2;
 
@@ -70,29 +88,26 @@ namespace SotnApi
 
             if (even)
             {
-                memAPI.WriteByte(start + (y * rowOffset) + x, color * 0x10 + color, "GPURAM");
-                memAPI.WriteByte(start + ((y + 1) * rowOffset) + x, color * 0x10 + color, "GPURAM");
+                memAPI.WriteByte(start + (y * rowOffset) + x, (uint)(color * 0x10 + color), "GPURAM");
+                memAPI.WriteByte(start + ((y + 1) * rowOffset) + x, (uint)(color * 0x10 + color), "GPURAM");
             }
             else
             {
-                uint adjusted = color * 0x10 + (byte)((byte)memAPI.ReadByte(start + (y * rowOffset) + x, "GPURAM") & 0x0F);
+                uint adjusted = (uint)(color * 0x10 + (byte)((byte)memAPI.ReadByte(start + (y * rowOffset) + x, "GPURAM") & 0x0F));
                 memAPI.WriteByte(start + (y * rowOffset) + x, adjusted, "GPURAM");
-                adjusted = (byte)((byte)memAPI.ReadByte(start + (y * rowOffset) + x + 1, "GPURAM") & 0xF0) + color;
+                adjusted = (uint)((byte)((byte)memAPI.ReadByte(start + (y * rowOffset) + x + 1, "GPURAM") & 0xF0) + color);
                 memAPI.WriteByte(start + (y * rowOffset) + x + 1, adjusted, "GPURAM");
 
-                adjusted = color * 0x10 + (byte)((byte)memAPI.ReadByte(start + ((y + 1) * rowOffset) + x, "GPURAM") & 0x0F);
+                adjusted = (uint)(color * 0x10 + (byte)((byte)memAPI.ReadByte(start + ((y + 1) * rowOffset) + x, "GPURAM") & 0x0F));
                 memAPI.WriteByte(start + ((y + 1) * rowOffset) + x, adjusted, "GPURAM");
-                adjusted = (byte)((byte)memAPI.ReadByte(start + ((y + 1) * rowOffset) + x + 1, "GPURAM") & 0xF0) + color;
+                adjusted = (uint)((byte)((byte)memAPI.ReadByte(start + ((y + 1) * rowOffset) + x + 1, "GPURAM") & 0xF0) + color);
                 memAPI.WriteByte(start + ((y + 1) * rowOffset) + x + 1, adjusted, "GPURAM");
             }
         }
 
-        public bool RoomIsRendered(uint x, uint y, uint color)
+        public bool RoomIsRendered(byte x, byte y, byte color)
         {
-            if (y > Height) throw new ArgumentOutOfRangeException(nameof(y));
-            if (x > Width) throw new ArgumentOutOfRangeException(nameof(x));
             x /= 2;
-
             long start = Game.VramMapStart;
             long rowOffset = Various.RowOffset;
             uint value = memAPI.ReadByte(start + (y * rowOffset) + x + 1, "GPURAM");

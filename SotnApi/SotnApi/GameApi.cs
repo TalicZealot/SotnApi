@@ -7,7 +7,11 @@ using SotnApi.Interfaces;
 using SotnApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Markup;
 
 namespace SotnApi
 {
@@ -535,6 +539,11 @@ namespace SotnApi
             memAPI.WriteU32(Constants.Addresses.Game.VolumeSetInstruction, Constants.Values.Game.Various.DefaultVolumeSetInstruction);
         }
 
+        public void RemoveMapRevealCheck()
+        {
+            memAPI.WriteU32(Constants.Addresses.Game.MapRevealFirstComparison, Constants.Values.Game.Various.RemoveMapRevealCheck);
+        }
+
         public void SetStopwatchTimer(byte value = 0)
         {
             if (value == 0)
@@ -549,21 +558,33 @@ namespace SotnApi
             memAPI.WriteU32(Constants.Addresses.Game.StartingStereoSettingInstruction, Constants.Values.Game.Various.StereoStartingStereoSettingInstruction);
         }
 
+        public byte GetRoomValue(long address)
+        {
+            return (byte)memAPI.ReadByte(address);
+        }
+
+        public byte GetRoomValue(ushort index)
+        {
+            return (byte)memAPI.ReadByte(Game.MapStart + index);
+        }
+
         public void SetRoomToUnvisited(long address)
         {
-            if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
             memAPI.WriteByte(address, 0);
+        }
+
+        public void SetRoomToUnvisited(ushort index)
+        {
+            memAPI.WriteByte(Game.MapStart + index, 0);
         }
 
         public void SetRoomToVisited(long address)
         {
-            if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
             memAPI.WriteByte(address, 0xFF);
         }
 
         public void SetRoomValue(long address, byte value)
         {
-            if (address < Game.MapStart || address > Game.MapEnd) { throw new ArgumentOutOfRangeException(nameof(address), "Not a valid map address."); }
             memAPI.WriteByte(address, value);
         }
 
@@ -582,7 +603,7 @@ namespace SotnApi
 
         private string ReadString(long address)
         {
-            string result = "";
+            StringBuilder result = new StringBuilder();
             bool digit = false;
             bool symbol = false;
 
@@ -606,24 +627,24 @@ namespace SotnApi
                     if (digit)
                     {
                         digit = false;
-                        result += ((int)(currentByte - 79));
+                        result.Append((int)(currentByte - 79));
                     }
                     else if (symbol)
                     {
                         symbol = false;
                         if (Various.CharacterMap.ContainsKey(currentByte))
                         {
-                            result += Various.CharacterMap[currentByte];
+                            result.Append(Various.CharacterMap[currentByte]);
                         }
                     }
                     else if (currentByte > 0)
                     {
-                        result += (char)((int)currentByte);
+                        result.Append((char)((int)currentByte));
                     }
                 }
             }
 
-            return result;
+            return result.ToString();
         }
     }
 }
