@@ -1,5 +1,5 @@
-﻿using SotnApi;
-using System;
+﻿using System;
+using SotnApi;
 using Xunit;
 
 namespace AlucardApiTests

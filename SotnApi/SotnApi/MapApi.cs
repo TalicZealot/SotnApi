@@ -1,9 +1,8 @@
-﻿using BizHawk.Client.Common;
+﻿using System;
+using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
-using System;
-using System.Diagnostics;
 
 namespace SotnApi
 {

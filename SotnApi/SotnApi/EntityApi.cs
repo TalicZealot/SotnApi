@@ -1,10 +1,9 @@
-﻿using BizHawk.Client.Common;
+﻿using System;
+using System.Collections.Generic;
+using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Net;
 using Entity = SotnApi.Models.Entity;
 
 namespace SotnApi

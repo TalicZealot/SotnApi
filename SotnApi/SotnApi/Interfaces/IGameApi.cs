@@ -1,6 +1,6 @@
-﻿using SotnApi.Constants.Values.Game.Enums;
+﻿using System.Collections.Generic;
+using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Models;
-using System.Collections.Generic;
 
 namespace SotnApi.Interfaces
 {

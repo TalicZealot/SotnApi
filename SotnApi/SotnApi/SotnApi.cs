@@ -1,6 +1,6 @@
-﻿using BizHawk.Client.Common;
+﻿using System;
+using BizHawk.Client.Common;
 using SotnApi.Interfaces;
-using System;
 
 namespace SotnApi.Main
 {

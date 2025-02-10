@@ -1,5 +1,5 @@
-﻿using SotnApi.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SotnApi.Models;
 
 namespace SotnApi.Interfaces
 {

@@ -1,10 +1,10 @@
-﻿using BizHawk.Client.Common;
+﻿using System;
+using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses.Alucard;
 using SotnApi.Constants.Values.Alucard;
 using SotnApi.Constants.Values.Alucard.Enums;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Interfaces;
-using System;
 using Effects = SotnApi.Constants.Addresses.Alucard.Effects;
 
 namespace SotnApi

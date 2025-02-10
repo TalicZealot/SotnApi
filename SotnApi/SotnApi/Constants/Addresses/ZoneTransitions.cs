@@ -1,5 +1,5 @@
-﻿using SotnApi.Constants.Values.Game.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SotnApi.Constants.Values.Game.Enums;
 
 namespace SotnApi.Constants.Addresses
 {

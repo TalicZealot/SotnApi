@@ -1,17 +1,14 @@
-﻿using BizHawk.Client.Common;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
+using BizHawk.Client.Common;
 using SotnApi.Constants.Addresses;
 using SotnApi.Constants.Addresses.Alucard;
 using SotnApi.Constants.Values.Game;
 using SotnApi.Constants.Values.Game.Enums;
 using SotnApi.Interfaces;
 using SotnApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Markup;
 
 namespace SotnApi
 {
@@ -197,7 +194,7 @@ namespace SotnApi
         {
             get
             {
-                return memAPI.ReadByte(Game.SecondCastle) > 0;
+                return (memAPI.ReadByte(Game.StageId) & 0x20) > 0;
             }
         }
 

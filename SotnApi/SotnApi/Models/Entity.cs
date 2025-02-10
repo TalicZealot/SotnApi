@@ -1,7 +1,7 @@
-﻿using BizHawk.Client.Common;
-using SotnApi.Constants.Values.Game;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BizHawk.Client.Common;
+using SotnApi.Constants.Values.Game;
 
 namespace SotnApi.Models
 {

@@ -1,8 +1,8 @@
-﻿using BizHawk.Client.Common;
+﻿using System;
+using BizHawk.Client.Common;
 using NSubstitute;
 using SotnApi;
 using SotnApi.Interfaces;
-using System;
 using Xunit;
 
 namespace AlucardApiTests

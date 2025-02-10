@@ -1,5 +1,5 @@
-﻿using BizHawk.Client.Common;
-using System;
+﻿using System;
+using BizHawk.Client.Common;
 
 namespace SotnApi.Models
 {
